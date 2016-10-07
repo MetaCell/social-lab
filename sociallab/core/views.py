@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
+
 
 def index(request):
-    return HttpResponse("Hello - You're at the Social Lab index.")
+    template = loader.get_template('core/index.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
