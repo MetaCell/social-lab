@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'otree'
-
 ]
 
 MIDDLEWARE = [
