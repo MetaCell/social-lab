@@ -16,7 +16,10 @@ Including another URLconf
 
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from otree.default_urls import urlpatterns
 
 urlpatterns.append(url(r'^$', include('core.urls')))
 urlpatterns.append(url(r'^admin/', admin.site.urls))
+urlpatterns.append(url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'))
+urlpatterns.append(url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'))

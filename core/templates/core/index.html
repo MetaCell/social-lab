@@ -5,6 +5,15 @@
     <title>Social Lab</title>
 </head>
 <body>
+<header>
+    <h1>Django Simple Login</h1>
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <a href="{% url 'logout' %}">logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">login</a>
+    {% endif %}
+</header>
 <p>Hello - welcome to Social Lab</p>
 <a href="/demo">Gimme games</a>
 </body>
