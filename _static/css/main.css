@@ -1,0 +1,55 @@
+html{
+    height: 100%;
+}
+body {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a9a9a9+0,818181+100 */
+    background: #a9a9a9; /* Old browsers */
+    background: -moz-linear-gradient(top, #a9a9a9 0%, #818181 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #a9a9a9 0%, #818181 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #a9a9a9 0%, #818181 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9a9a9', endColorstr='#818181', GradientType=0); /* IE6-9 */
+    height:100%;
+    color:white;
+    font-family: "Helvetica Neue";
+    font-weight:100;
+
+}
+
+.nav{
+    font-family: 'aileronsregular';
+}
+nav.navbar{
+    box-shadow: none;
+}
+#socialLablogo {
+    background-image: url("../img/social_lab_logo.png");
+    width: 150px;
+    height: 78px;
+    margin: 0 auto;
+    background-size: 150px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
+    #socialLablogo {
+        background-image: url("../img/social_lab_logo@2x.png");
+        background-size: 150px;
+
+    }
+}
+
+footer.page-footer {
+    background-color: transparent;
+}
+footer{
+    position: absolute;
+    bottom:0px;
+    width: 100%;
+    background-color: transparent;
+}
+
+p.lead{
+    font-weight: 100;
+}
+.card-block{
+    background-color: #519f8f;
+}
