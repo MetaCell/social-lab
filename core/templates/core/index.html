@@ -1,23 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-{% load static %}
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Social Lab</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
-</head>
+{% extends 'base.html' %}
 
-<body>
-<header>
-    {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-    <a href="/demo">Games</a>
-</header>
-<div id="socialLablogo"></div>
+{% block title %}Social Lab{% endblock %}
 
-</body>
-</html>
+{% block content %}
+  <h2>Welcome to Social Lab!</h2>
+{% endblock %}

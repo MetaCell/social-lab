@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Social Lab{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"/>
+</head>
+<body>
+<header>
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <a href="{% url 'logout' %}">logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">login</a>
+    {% endif %}
+    <a href="/demo">Games</a>
+</header>
+<div id="socialLablogo"></div>
+<hr>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<hr>
+<footer>
+    <p>Copyright © 2017 UCL</p>
+</footer>
+</body>
+</html>
