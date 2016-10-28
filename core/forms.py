@@ -2,6 +2,7 @@ import re
 from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from core.models import Profile
 
 
 class RegistrationForm(forms.Form):
@@ -14,6 +15,8 @@ class RegistrationForm(forms.Form):
     password2 = forms.CharField(
         widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)),
         label=_("Password (again)"))
+    birth_date = forms.DateField(widget=forms.DateInput(), required=False, label=_("Date of birth"))
+    gender = forms.ChoiceField(choices=Profile.GENDER, widget=forms.Select(), label=_("Gender"), required=False)
 
     def clean_username(self):
         try:

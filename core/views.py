@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from core.forms import *
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from core.forms import *
+from core.models import Profile
 
 
 def index(request):
@@ -24,6 +25,11 @@ def register(request):
                 password=form.cleaned_data['password1'],
                 email=form.cleaned_data['email']
             )
+
+            user.profile.birth_date = form.cleaned_data['birth_date']
+            user.profile.gender = form.cleaned_data['gender']
+            user.save()
+
             return HttpResponseRedirect('/register/success/')
     else:
         form = RegistrationForm()
