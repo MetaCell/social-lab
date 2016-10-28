@@ -1,2 +1,1 @@
-web: social-lab webandworkers
-timeoutworker: social-lab timeoutworker
+web: python manage.py runserver
