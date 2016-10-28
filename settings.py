@@ -10,16 +10,50 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os
 from os import environ
-import sys
-print(sys.path)
+import os, sys, urlparse
+urlparse.uses_netloc.append('postgres')
+urlparse.uses_netloc.append('mysql')
 sys.path.insert(0, os.getcwd()+"/otree")
 
 import dj_database_url
 from boto.mturk import qualification
 
 import otree.settings
+
+
+# Database
+# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sociallab',
+        'USER': 'social_lab_admin',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+
+try:
+    if os.environ.has_key('DATABASE_URL'):
+        url = urlparse.urlparse(os.environ['DATABASE_URL'])
+        DATABASES['default'] = {
+            'NAME':     url.path[1:],
+            'USER':     url.username,
+            'PASSWORD': url.password,
+            'HOST':     url.hostname,
+            'PORT':     url.port,
+        }
+        if url.scheme == 'postgres':
+            DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+        if url.scheme == 'mysql':
+            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+except:
+    print "Unexpected error:", sys.exc_info()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -81,28 +115,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sociallab.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-'''
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'sociallab',
-        'USER': 'social_lab_admin',
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-    }
-}
 
 
 # Password validation
