@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 from os import environ
 import sys
+print(sys.path)
 sys.path.insert(0, os.getcwd()+"/otree")
 
 import dj_database_url
