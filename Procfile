@@ -1,2 +1,2 @@
-web: sociallab webandworkers
-timeoutworker: sociallab timeoutworker
+web: social-lab webandworkers
+timeoutworker: social-lab timeoutworker
