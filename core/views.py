@@ -7,8 +7,8 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from django.utils.dateformat import DateFormat
 from core.forms import *
-from core.models import Profile
 
 
 def index(request):
@@ -35,9 +35,7 @@ def register(request):
             return HttpResponseRedirect('/register/success/')
     else:
         form = RegistrationForm()
-    variables = RequestContext(request, {
-        'form': form
-    })
+    variables = RequestContext(request, {'form': form})
 
     return render_to_response(
         'register.html',
@@ -52,11 +50,11 @@ def register_success(request):
 
 @login_required(login_url='/login/')
 def update(request):
+    # retrieve user
+    user = request.user
     if request.method == 'POST':
         form = UpdateProfileForm(request.POST)
         if form.is_valid():
-            # retrieve user
-            user = request.user
             # set new values
             user.set_password(form.cleaned_data['password1'])
             user.email=form.cleaned_data['email']
@@ -68,10 +66,10 @@ def update(request):
 
             return HttpResponseRedirect('/update/success/')
     else:
-        form = UpdateProfileForm()
-    variables = RequestContext(request, {
-        'form': form
-    })
+        form = UpdateProfileForm(initial={'email': user.email,
+                                          'birth_date': DateFormat(user.profile.birth_date).format('d/m/Y'),
+                                          'gender': user.profile.gender})
+    variables = RequestContext(request, {'form': form})
 
     return render_to_response(
         'update.html',
