@@ -26,3 +26,5 @@ urlpatterns.append(url(r'^login/$', auth_views.login, {'template_name': 'login.h
 urlpatterns.append(url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'))
 urlpatterns.append(url(r'^register/$', register, name='register'))
 urlpatterns.append(url(r'^register/success/$', register_success, name='register_success'))
+urlpatterns.append(url(r'^update/$', update, name='update'))
+urlpatterns.append(url(r'^update/success/$', index, name='index'))
