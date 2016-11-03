@@ -50,7 +50,7 @@ def register_success(request):
         'success.html',
     )
 
-@login_required
+@login_required(login_url='/login/')
 def update(request):
     if request.method == 'POST':
         form = UpdateProfileForm(request.POST)
