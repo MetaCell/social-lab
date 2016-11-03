@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
 from core.forms import *
 from core.models import Profile
 
@@ -57,11 +58,13 @@ def update(request):
             # retrieve user
             user = request.user
             # set new values
-            user.password=form.cleaned_data['password1']
+            user.set_password(form.cleaned_data['password1'])
             user.email=form.cleaned_data['email']
             user.profile.birth_date = form.cleaned_data['birth_date']
             user.profile.gender = form.cleaned_data['gender']
             user.save()
+
+            update_session_auth_hash(request, request.user)
 
             return HttpResponseRedirect('/update/success/')
     else:
