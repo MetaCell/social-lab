@@ -53,3 +53,35 @@ p.lead{
 .card-block{
     background-color: #519f8f;
 }
+
+.gameContainer{
+    width: 800px;
+    height:630px;
+    margin:0 auto;
+    padding:5px;
+    background-color:#00acc1;
+}
+.playerContainer{
+    width: 750px;
+    height:290px;
+    margin:0 auto;
+    margin:15px;
+}
+.otherplayer{
+    height:128px;
+    width:136px;
+    background-image: url("../img/human.png");
+    margin: 0 auto;
+}
+.self{
+    position:relative;
+    top:150px;
+    height:128px;
+    width:136px;
+    background-image: url("../img/human.png");
+    margin: 0 auto;
+
+}
+.popover-content{
+    color:black;
+}
