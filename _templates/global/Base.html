@@ -10,12 +10,8 @@
     <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/ailerons.css' %}" rel="stylesheet">
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();
-        });
+    <script type="text/javascript" src="{% static 'js/games.js' %}"></script>
 
-    </script>
 {%  endblock %}
 
 {% block global_styles  %}
@@ -29,18 +25,30 @@
         <div class="playerContainer">
             <div class="player otherplayer" data-toggle="popover" data-html="true" data-placement="left" data-content='{% block otherballoon %}{% endblock %}'></div>
         </div>
-    <div class="situation">
-    {% block current %}{% endblock %}
-    </div>
+        <div class="situation">
+            {% block current %}{% endblock %}
+        </div>
         <div class="playerContainer">
             <div class="player self" data-toggle="popover" data-html="true" data-placement="top" data-content='{% block selfballoon %}{% endblock %}'></div>
         </div>
 
-        <div style="display:none;">
-            {% block pagecontent %}{% endblock %}
+
+
+        <div id="instructionsModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Game instructions</h4>
+                    </div>
+                    <div class="modal-body">
+                        {% include Constants.instructions_template %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
         </div>
-    <div>
-    <div class="instructions">
-        {% block instructions %}{% endblock %}
-    </div>
+
 {% endblock %}

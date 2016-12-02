@@ -50,8 +50,7 @@ class Results(Page):
     pass
 
 
-page_sequence = [Introduction,
-                 Offer,
+page_sequence = [Offer,
                  WaitForProposer,
                  Accept,
                  AcceptStrategy,
