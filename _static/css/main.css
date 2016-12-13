@@ -57,3 +57,7 @@ p.lead{
 main {
     margin-left: 5%;
 }
+
+#login-form-container {
+    width: 400px;
+}
