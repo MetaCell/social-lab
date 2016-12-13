@@ -135,3 +135,10 @@ p.lead{
     margin-top:20px;
     text-align: center;
 }
+
+main {
+    margin-left: 5%;
+}
+#login-form-container {
+    width: 400px;
+}

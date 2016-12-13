@@ -6,14 +6,14 @@ from core.models import Profile
 
 
 class RegistrationForm(forms.Form):
-    username = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30)),
+    username = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30, maxlength=30)),
                                 label=_("Username"), error_messages={
             'invalid': _("This value must contain only letters, numbers and underscores.")})
-    email = forms.EmailField(widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Email address"))
+    email = forms.EmailField(widget=forms.TextInput(attrs=dict(required=True, max_length=30, maxlength=30)), label=_("Email address"))
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Password"))
+        widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, maxlength=30, render_value=False)), label=_("Password"))
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)),
+        widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, maxlength=30, render_value=False)),
         label=_("Password (again)"))
     birth_date = forms.DateField(widget=forms.DateInput(), required=False, label=_("Date of birth"))
     gender = forms.ChoiceField(choices=Profile.GENDER, widget=forms.Select(), label=_("Gender"), required=False)
@@ -33,11 +33,11 @@ class RegistrationForm(forms.Form):
 
 
 class UpdateProfileForm(forms.Form):
-    email = forms.EmailField(widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Email address"))
+    email = forms.EmailField(widget=forms.TextInput(attrs=dict(required=True, max_length=30, maxlength=30)), label=_("Email address"))
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Password"))
+        widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, maxlength=30, render_value=False)), label=_("Password"))
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)),
+        widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, maxlength=30, render_value=False)),
         label=_("Password (again)"))
     birth_date = forms.DateField(widget=forms.DateInput(), required=False, label=_("Date of birth"))
     gender = forms.ChoiceField(choices=Profile.GENDER, widget=forms.Select(), label=_("Gender"), required=False)
