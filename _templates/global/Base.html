@@ -22,13 +22,13 @@
 
 {% block content %}
     <div class="gameContainer">
-        <div class="playerContainer">
+        <div class="playerContainer otherplayer">
             <div class="player otherplayer" data-toggle="popover" data-html="true" data-placement="left" data-content='{% block otherballoon %}{% endblock %}'></div>
         </div>
         <div class="situation">
             {% block current %}{% endblock %}
         </div>
-        <div class="playerContainer">
+        <div class="playerContainer self">
             <div class="player self" data-toggle="popover" data-html="true" data-placement="top" data-content='{% block selfballoon %}{% endblock %}'></div>
         </div>
 

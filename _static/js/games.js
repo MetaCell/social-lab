@@ -8,9 +8,9 @@ $(document).ready(function(){
     },1000);
 
     window.setTimeout(function(){
-        $('.otherplayer').popover('hide');
+        //$('.otherplayer').popover('hide');
         $('.self').popover('show');
-    },3000);
+    },2000);
 
 
 });

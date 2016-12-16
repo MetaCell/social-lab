@@ -5,7 +5,7 @@ from .models import Constants
 
 
 class Introduction(Page):
-    timeout_seconds = 600
+    timeout_seconds = 6000
 
 
 class Offer(Page):
@@ -15,7 +15,7 @@ class Offer(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1
 
-    timeout_seconds = 600
+    timeout_seconds = 6000
 
 
 class WaitForProposer(WaitPage):
@@ -29,7 +29,7 @@ class Accept(Page):
     def is_displayed(self):
         return self.player.id_in_group == 2 and not self.group.strategy
 
-    timeout_seconds = 600
+    timeout_seconds = 6000
 
 
 class AcceptStrategy(Page):
@@ -53,6 +53,5 @@ class Results(Page):
 page_sequence = [Offer,
                  WaitForProposer,
                  Accept,
-                 AcceptStrategy,
                  ResultsWaitPage,
                  Results]

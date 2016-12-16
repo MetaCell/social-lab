@@ -1,6 +1,4 @@
-html{
-    height: 100%;
-}
+
 body {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a9a9a9+0,818181+100 */
     background: #a9a9a9; /* Old browsers */
@@ -64,15 +62,21 @@ p.lead{
     font-weight: 200;
     margin-right: 10px;
     margin-left: 10px;
-    font-size: 16px;
+
 }
 
 .form-group {
     margin-bottom:5px;
 }
-.popover{
+
+.self .popover{
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
-    width:600px;
+
+}
+
+.otherplayer .popover{
+    max-width: 100%; /* Max Width of the popover (depending on the container!) */
+    width:300px;
 }
 
 .gameContainer{
@@ -80,11 +84,11 @@ p.lead{
     width: 900px;
     height:630px;
     margin:0 auto;
-    margin-top:100px;
+    margin-top:50px;
     padding:5px;
     padding-left:50px;
     padding-right:50px;
-    background-color:rgba(5, 5, 5, 0.13);
+
 }
 .playerContainer{
     width: 750px;
@@ -92,24 +96,34 @@ p.lead{
     margin:0 auto;
     margin:15px;
 }
-.otherplayer{
+.player.otherplayer{
     height:128px;
-    width:136px;
-    background-image: url("../img/human.png");
+    width:150px;
+    background-image: url("../img/humanRobot.png");
     margin: 0 auto;
 }
-.self{
+.player.self{
     position:relative;
-    top:190px;
+    top:170px;
     height:128px;
-    width:136px;
+    width:113px;
     background-image: url("../img/human.png");
     margin: 0 auto;
 
 }
+.popover{
+    border-radius: 100px;
+    padding:15px;
+}
+
+.popover.left .arrow {
+    right: -10px;
+}
 .popover-content{
     color:black;
     text-align: center;
+    font-weight: 200;
+    font-size: 16px;
 }
 
 .popover-content select.form-control{
@@ -118,6 +132,8 @@ p.lead{
 
 .situation{
     text-align: center;
+    font-size: 20px;
+    font-weight: 200;
 }
 
 .instructionsContainer{
