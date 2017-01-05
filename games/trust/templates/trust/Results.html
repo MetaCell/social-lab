@@ -12,7 +12,7 @@
             points)-{{ group.sent_amount }}+{{ group.sent_back_amount }}={{ player.payoff }}</strong>.
         {% else %}
             You were initially endowed with <strong>0 points</strong>, received <strong>{{ tripled_amount }}</strong>, chose to return
-            <strong>{{ group.sent_back_amount }}</strong> thus you now have <strong>{{ tripled_amount }}-{{ group.sent_back_amount }}={{ player.payoff }}</strong>
+            <strong>{{ group.sent_back_amount }}</strong> thus you now have <strong>{{ player.payoff }}</strong>
         {% endif %}
     </p>
 {% endblock %}
