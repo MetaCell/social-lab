@@ -1,17 +1,33 @@
 {% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
-{% block title %}
-    Your Choice
+
+{% block current %}
+    <p>
+         The points you were given tripled, now you have {{tripled_amount}}.
+    </p>
+    <p>
+            How many points will you send back?
+    </p>
 {% endblock %}
 
-{% block content %}
-<p>
-You are Participant B. Participant A sent you {{group.sent_amount}} and you received {{tripled_amount}}. Now you have {{tripled_amount}}. How many points will you send to participant A?
-</p>
+
+{% block otherballoon %}
+
+    I am happy to give you {{group.sent_amount}} points
+
+{% endblock %}
+
+{% block selfballoon %}
+
 
     {% formfield group.sent_back_amount with label=prompt %}
-    <p>{% next_button %}</p>
-    {% include Constants.instructions_template %}
+        {% next_button %}
+        <button class="btn" data-toggle="modal" data-target="#instructionsModal">?</button>
 
 {% endblock %}
+
+
+
+
+

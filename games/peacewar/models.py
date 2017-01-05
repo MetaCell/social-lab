@@ -5,18 +5,18 @@ from otree.api import (
 import random
 
 doc = """
-This is a one-shot "Prisoner's Dilemma". Two players are asked separately
-whether they want to cooperate or defect. Their choices directly determine the
-payoffs.
+This is an intention based "Peace War". Two players are asked separately
+whether they intend to declare peace or war. They are then asked to follow through with their intentions or not.
+Their choices directly determine the payoffs.
 """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'prisoner'
+    name_in_url = 'peacewar'
     players_per_group = 2
     num_rounds = 1
 
-    instructions_template = 'prisoner/Instructions.html'
+    instructions_template = 'peacewar/Instructions.html'
 
     # payoff if 1 player defects and the other cooperates""",
     betray_payoff = c(300)
@@ -37,8 +37,14 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     decision = models.CharField(
-        choices=['Cooperate', 'Defect'],
+        choices=['Peace', 'War'],
         doc="""This player's decision""",
+        widget=widgets.RadioSelect()
+    )
+
+    intention = models.CharField(
+        choices=['Peace', 'War'],
+        doc="""This player's intention""",
         widget=widgets.RadioSelect()
     )
 
@@ -46,11 +52,11 @@ class Player(BasePlayer):
         return self.get_others_in_group()[0]
 
     def set_payoff(self):
-        points_matrix = {'Cooperate': {'Cooperate': Constants.both_cooperate_payoff,
-                                       'Defect': Constants.betrayed_payoff},
-                         'Defect': {
-                             'Cooperate': Constants.betray_payoff,
-                             'Defect': Constants.both_defect_payoff}}
+        points_matrix = {'Peace': {'Peace': Constants.both_cooperate_payoff,
+                                       'War': Constants.betrayed_payoff},
+                         'War': {
+                             'Peace': Constants.betray_payoff,
+                             'War': Constants.both_defect_payoff}}
 
         self.payoff = (points_matrix[self.decision]
                        [self.other_player().decision])

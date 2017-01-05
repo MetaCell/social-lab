@@ -8,14 +8,27 @@ class Introduction(Page):
     timeout_seconds = 100
 
 
+class Intention(Page):
+    form_model = models.Player
+    form_fields = ['intention']
+
+
 class Decision(Page):
     form_model = models.Player
     form_fields = ['decision']
 
+    def vars_for_template(self):
+
+        return {
+            'other_player_intention': self.player.other_player().intention,
+        }
+
+
+class WaitForOther(WaitPage):
+    pass
+
 
 class ResultsWaitPage(WaitPage):
-    body_text = 'Waiting for the other participant to choose.'
-
     def after_all_players_arrive(self):
         for p in self.group.get_players():
             p.set_payoff()
@@ -26,6 +39,8 @@ class Results(Page):
         self.player.set_payoff()
 
         return {
+            'my_intention': self.player.intention.lower(),
+            'other_player_intention': self.player.other_player().intention.lower(),
             'my_decision': self.player.decision.lower(),
             'other_player_decision': self.player.other_player().decision.lower(),
             'same_choice': self.player.decision == self.player.other_player().decision,
@@ -33,7 +48,8 @@ class Results(Page):
 
 
 page_sequence = [
-    Introduction,
+    Intention,
+    WaitForOther,
     Decision,
     ResultsWaitPage,
     Results

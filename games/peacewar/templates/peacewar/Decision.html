@@ -1,0 +1,32 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block current %}
+
+    <p>
+        You and your neighbouring country are at a political crossroads.
+        You have both declared your intentions, now it's time for both of you to honour your word...or not.
+    </p>
+
+{% endblock %}
+
+{% block otherballoon %}
+
+    {% if other_player_intention == "Peace" %}
+        I would like peace between us
+    {% else %}
+        Only war will get us through this
+    {% endif %}
+
+{% endblock %}
+
+{% block selfballoon %}
+
+    <button name="decision" value="Peace" class="btn btn-primary btn-large">I declare peace</button>
+    <button name="decision" value="War" class="btn btn-primary btn-large">I declare war</button>
+    <button class="btn" data-toggle="modal" data-target="#instructionsModal">?</button>
+
+{% endblock %}
+
+

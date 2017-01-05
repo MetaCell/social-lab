@@ -272,14 +272,14 @@ SESSION_CONFIGS = [
         'app_sequence': ['games.trust', 'games.payment_info'],
     },
     {
-        'name': 'prisoner',
-        'display_name': "Prisoner's Dilemma",
+        'name': 'peacewar',
+        'display_name': "Peace War",
         'num_demo_participants': 2,
-        'app_sequence': ['games.prisoner', 'games.payment_info'],
+        'app_sequence': ['games.peacewar', 'games.payment_info'],
     },
     {
         'name': 'ultimatum',
-        'display_name': "Ultimatum (randomized: strategy vs. direct response)",
+        'display_name': "Ultimatum",
         'num_demo_participants': 2,
         'app_sequence': ['games.ultimatum', 'games.payment_info'],
     }

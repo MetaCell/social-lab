@@ -13,7 +13,7 @@
         In this study, you will be randomly and anonymously paired with another
         participant.
         Each of you simultaneously and privately chooses whether you want to
-        cooperate or defect.
+        declare peace or war.
         Your payoffs will be determined by the choices of both as below:
     </p>
     <p><i>In each cell, the amount (in points) to the left is the payoff for
@@ -26,17 +26,17 @@
             <th colspan=2>The Other Participant</th>
         </tr>
         <tr>
-            <th>Cooperate</th>
-            <th>Defect</th>
+            <th>Peace</th>
+            <th>War</th>
         </tr>
         <tr>
             <th rowspan=2><span class="rotate90">You</span></th>
-            <th>Cooperate</th>
+            <th>Peace</th>
             <td>{{ Constants.both_cooperate_payoff }}, {{ Constants.both_cooperate_payoff }}</td>
             <td>0 point, {{ Constants.betray_payoff }}</td>
         </tr>
         <tr>
-            <th>Defect</th>
+            <th>War</th>
             <td>{{ Constants.betray_payoff }}, 0 point</td>
             <td>{{ Constants.both_defect_payoff }}, {{ Constants.both_defect_payoff }}</td>
         </tr>

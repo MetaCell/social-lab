@@ -1,21 +1,25 @@
 {% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
-{% block title %}
-    Your Choice
+
+{% block current %}
+    <p>
+        You have {{Constants.amount_allocated}}.
+    </p>
 {% endblock %}
 
-{% block content %}
 
-    <p>
-    You are Participant A. Now you have {{Constants.amount_allocated}}. How many points will you send to participant B?
-    </p>
+{% block otherballoon %}
+    How many points will you give me?
+{% endblock %}
 
-    {% formfield group.sent_amount with label="Please enter a number from 0 to 100:" %}
-    <p>
+{% block selfballoon %}
+    {% formfield group.sent_amount with label="I want to offer" %}
     {% next_button %}
-    </p>
-
-    {% include Constants.instructions_template %}
+    <button class="btn" data-toggle="modal" data-target="#instructionsModal">?</button>
 
 {% endblock %}
+
+
+
+
