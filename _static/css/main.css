@@ -194,8 +194,10 @@ p.lead{
 
 .situation{
     text-align: center;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 200;
+    position: relative;
+    margin-top: -20px;
 }
 
 .instructionsContainer{
@@ -209,6 +211,29 @@ p.lead{
     z-index:1090;
 }
 
+.flip{
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    transition: 0.6s;
+	transform-style: preserve-3d;
+    -ms-filter: "FlipH";
+}
+
+.unflip{
+    -moz-transform: scaleX(1);
+    -o-transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    filter: FlipH;
+    transition: 0.6s;
+	transform-style: preserve-3d;
+    -ms-filter: "FlipH";
+}
+
+
 #time-limit{
     top: 40px;
     right: 40px;
@@ -220,4 +245,29 @@ main {
 }
 #login-form-container {
     width: 400px;
+}
+
+.shake{
+    animation-name: shake;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
