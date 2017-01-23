@@ -24,6 +24,14 @@ $(document).ready(function () {
         }
     }, 5000);
 
+    window.setInterval(function () {
+        var other = $('.self .popover');
+        other.addClass("shake");
+        window.setTimeout(function () {
+            other.removeClass("shake");
+        },500);
+    }, 10000);
+
     window.addEventListener('resize', resizeGame, false);
     window.addEventListener('orientationchange', resizeGame, false);
 
