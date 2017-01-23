@@ -75,3 +75,9 @@ def update(request):
         'update.html',
         variables,
     )
+
+
+def wait(request):
+    return render_to_response(
+        'wait.html',
+    )
