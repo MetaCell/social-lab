@@ -209,6 +209,29 @@ p.lead{
     z-index:1090;
 }
 
+.flip{
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    transition: 0.6s;
+	transform-style: preserve-3d;
+    -ms-filter: "FlipH";
+}
+
+.unflip{
+    -moz-transform: scaleX(1);
+    -o-transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    filter: FlipH;
+    transition: 0.6s;
+	transform-style: preserve-3d;
+    -ms-filter: "FlipH";
+}
+
+
 #time-limit{
     top: 40px;
     right: 40px;
