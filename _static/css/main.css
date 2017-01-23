@@ -1,3 +1,7 @@
+html{
+    height:100%;
+}
+
 
 body {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a9a9a9+0,818181+100 */
@@ -11,6 +15,39 @@ body {
 
 
 }
+
+body.ingame{
+    	padding: 40px;
+	overflow-x: hidden; /* For Opera */
+	-webkit-box-shadow:
+		inset #519f8f 0 0 0 5px,
+		inset #5fbba8 0 0 0 1px,
+		inset #69ceb9 0 0 0 10px,
+		inset #73e1ca 0 0 0 11px,
+		inset #78ead2 0 0 0 16px,
+		inset #7df4db 0 0 0 17px,
+		inset #c5f4ff 0 0 0 22px,
+		inset #81fbe1 0 0 0 23px;
+	-moz-box-shadow:
+		inset #519f8f 0 0 0 5px,
+		inset #5fbba8 0 0 0 1px,
+		inset #69ceb9 0 0 0 10px,
+		inset #73e1ca 0 0 0 11px,
+		inset #78ead2 0 0 0 16px,
+		inset #7df4db 0 0 0 17px,
+		inset #c5f4ff 0 0 0 22px,
+		inset #81fbe1 0 0 0 23px;
+	box-shadow:
+		inset #519f8f 0 0 0 5px,
+		inset #5fbba8 0 0 0 1px,
+		inset #69ceb9 0 0 0 10px,
+		inset #73e1ca 0 0 0 11px,
+		inset #78ead2 0 0 0 16px,
+		inset #7df4db 0 0 0 17px,
+		inset #c5f4ff 0 0 0 22px,
+		inset #81fbe1 0 0 0 23px;
+}
+
 .home{
     color:white;
     font-weight:100;
@@ -22,12 +59,22 @@ body {
 nav.navbar{
     box-shadow: none;
 }
+
+.btn{
+    text-shadow: none;
+}
 #socialLablogo {
     background-image: url("../img/social_lab_logo.png");
     width: 150px;
     height: 78px;
     margin: 0 auto;
     background-size: 150px;
+}
+
+#socialLablogo.ingame{
+    top: 40px;
+    position:absolute;
+    left:40px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
@@ -66,11 +113,12 @@ p.lead{
 }
 
 .form-group {
-    margin-bottom:5px;
+    margin-bottom:0px;
 }
 
 .self .popover{
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
+    width:550px;
 
 }
 
@@ -79,17 +127,25 @@ p.lead{
     width:300px;
 }
 
-.gameContainer{
+.gameContainer {
 
-    width: 900px;
-    height:630px;
+    width: 100%;
+    height: 100%;
     margin:0 auto;
     margin-top:50px;
     padding:5px;
     padding-left:50px;
     padding-right:50px;
-
 }
+
+#gameArea{
+    position: absolute;
+    left:     50%;
+    top:      50%;
+    width: 900px;
+    height:630px;
+}
+
 .playerContainer{
     width: 750px;
     height:180px;
@@ -100,15 +156,17 @@ p.lead{
     height:128px;
     width:150px;
     background-image: url("../img/humanRobot.png");
-    margin: 0 auto;
+    position:absolute;
+    right:100px;
+
 }
 .player.self{
-    position:relative;
-    top:170px;
+    position:absolute;
+    top:450px;
+    left:100px;
     height:128px;
     width:113px;
     background-image: url("../img/human.png");
-    margin: 0 auto;
 
 }
 .popover{
@@ -129,6 +187,10 @@ p.lead{
 .popover-content select.form-control{
     width:100%;
 }
+.controls{
+    float:left;
+    width: 240px;
+}
 
 .situation{
     text-align: center;
@@ -148,8 +210,9 @@ p.lead{
 }
 
 #time-limit{
-    margin-top:20px;
-    text-align: center;
+    top: 40px;
+    right: 40px;
+    position: absolute;
 }
 
 main {
