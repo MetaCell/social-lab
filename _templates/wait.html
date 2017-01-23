@@ -1,0 +1,14 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block content %}
+    <h1>Game instructions</h1>
+    <p id="game-description"></p>
+    <button id="ready-button" type="button">Ready to play!</button>
+{% endblock %}
+
+<!--end content_main-->
+{% block internal_scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/wait.js' %}"></script>
+{% endblock %}
