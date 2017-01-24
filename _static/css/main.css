@@ -9,6 +9,8 @@ body {
     background: -webkit-linear-gradient(top, #a9a9a9 0%, #818181 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, #a9a9a9 0%, #818181 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9a9a9', endColorstr='#818181', GradientType=0); /* IE6-9 */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100%;
     font-family: "Helvetica Neue";
 }
@@ -371,6 +373,10 @@ main {
     font-family: "aileronsregular";
     font-size: 48px;
     margin-bottom: 40px;
+}
+
+#game-instructions {
+
 }
 
 /*SPINNER*/
