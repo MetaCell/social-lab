@@ -9,11 +9,13 @@ class Introduction(Page):
 
 
 class Intention(Page):
+    timeout_seconds = 6000
     form_model = models.Player
     form_fields = ['intention']
 
 
 class Decision(Page):
+    timeout_seconds = 6000
     form_model = models.Player
     form_fields = ['decision']
 

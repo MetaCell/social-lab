@@ -8,7 +8,10 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.utils.dateformat import DateFormat
+from django.template.backends.django import Template
+from django.template.backends.django import Context
 from core.forms import *
+
 
 
 def index(request):
@@ -83,14 +86,28 @@ def wait(request):
         return {
             'trust': "Trust",
             'ultimatum': 'Ultimatum',
-            'prisoner-dilemma': 'Peace/War',
+            'peacewar': 'Peace War',
             'chat': 'Chat'
         }[x]
 
+    def get_instructions(x):
+        if x == "trust":
+            from games.trust.models import Constants
+        elif x == "peacewar":
+            from games.peacewar.models import Constants
+        elif x == "ultimatum":
+            from games.ultimatum.models import Constants
+        elif x == 'chat':
+            pass
+        t = loader.get_template(Constants.instructions_template)
+        c = Context({"Constants": Constants.__dict__})
+        return t.render(c)
+
     game = request.GET.get('game')
     game_label = get_game_label(game)
+    instructions = get_instructions(game)
 
     return render_to_response(
         'wait.html',
-        {'game': game, 'game_label': game_label}
+        {'game': game, 'game_label': game_label, 'instructions': instructions}
     )

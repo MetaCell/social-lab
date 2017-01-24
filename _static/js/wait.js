@@ -6,7 +6,9 @@ $(document).ready(function () {
 
     $('#ready-button').click(function () {
         $('#ready-button').hide();
-        $('#message-panel').append('<p>Looking for an opponent</p>');
+        $('#instructions_label').hide();
+        $("#loader").show();
+        $('#message-panel').append('<p>Looking for an opponent...</p>');
 
         if (game != undefined && game != null) {
             socket = new WebSocket("ws://" + window.location.host + "/matchmaking/" + game + "/");
