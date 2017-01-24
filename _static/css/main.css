@@ -359,7 +359,7 @@ main {
 #instructions_label {
     text-align: center;
     margin-top: 50px;
-    font-weight: 600;
+    font-weight: 400;
     color: white;
 }
 
@@ -381,7 +381,7 @@ main {
     width: 10px;
     position: relative;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-bottom: 50px;
 }
 
