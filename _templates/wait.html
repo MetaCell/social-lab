@@ -9,26 +9,16 @@
 {% block content %}
     <div class="gameIntroPage">
         <h1 class="gameIntroTitle"><b>{{ game_label }}</b></h1>
-
+        <div id="loader" style="display:none;"></div>
         <div id="message-panel"></div>
         <button class="btn btn-default btn-large" id="ready-button" type="button">Ready to play!</button>
-        </div>
-        <p>
-            Read the instructions and click the ready button to queue up for a game!
-            You will be able to access instructions in game too.
-        </p>
-        <div id="game-instructions">
-            {% if game == 'trust' %}
-                {% include 'trust/Instructions.html' %}
-            {% endif %}
-            {% if game == 'peacewar' %}
-                {% include 'peacewar/Instructions.html' %}
-            {% endif %}
-            {% if game == 'ultimatum' %}
-                {% include 'ultimatum/Instructions.html' %}
-            {% endif %}
-            {% if game == 'chat' %}
-                {% include 'chat/Instructions.html' %}
-            {% endif %}
+
+    </div>
+    <p id="instructions_label">
+        Click the ready button to queue up for a game! </br>
+        You will be able to access instructions in game too.
+    </p>
+    <div id="game-instructions">
+        {{ instructions |safe }}
     </div>
 {% endblock %}
