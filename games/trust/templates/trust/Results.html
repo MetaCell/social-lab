@@ -3,7 +3,7 @@
 
 
 {% block current %}
-   <p>
+
         {% if player.role == 'A' %}
             You were initially endowed with <strong>100 points</strong>,
             chose to send <strong>{{ group.sent_amount }}</strong>,
@@ -14,7 +14,7 @@
             You were initially endowed with <strong>0 points</strong>, received <strong>{{ tripled_amount }}</strong>, chose to return
             <strong>{{ group.sent_back_amount }}</strong> thus you now have <strong>{{ player.payoff }}</strong>
         {% endif %}
-    </p>
+
 {% endblock %}
 
 {% block otherballoon %}

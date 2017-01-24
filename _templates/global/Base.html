@@ -27,7 +27,17 @@
             <div class="player otherplayer" data-toggle="popover" data-html="true" data-placement="left" data-content='{% block otherballoon %}{% endblock %}'></div>
         </div>
         <div class="situation">
-            {% block current %}{% endblock %}
+            <p class="typing">
+                {% block current %}{% endblock %}
+            </p>
+            <div class="hiders">
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+            </div>
+
         </div>
         <div class="playerContainer self">
             <div class="player self" data-toggle="popover" data-html="true" data-placement="right" data-content='{% block selfballoon %}{% endblock %}'></div>

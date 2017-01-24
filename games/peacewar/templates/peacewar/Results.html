@@ -2,13 +2,13 @@
 {% load staticfiles otree_tags %}
 
 {% block current %}
-    <p>
+
         {% if my_decision == other_player_decision %}
             You both want {{ my_intention }}, you earn {{ player.payoff }}.
         {% else %}
             You declared {{ my_decision }} and the other participant declared {{ other_player_decision }}, you earn {{ player.payoff }}.
         {% endif %}
-    </p>
+
 {% endblock %}
 
 

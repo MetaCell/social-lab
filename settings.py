@@ -269,19 +269,19 @@ SESSION_CONFIGS = [
         'name': 'trust',
         'display_name': "Trust Game",
         'num_demo_participants': 2,
-        'app_sequence': ['games.trust', 'games.payment_info'],
+        'app_sequence': ['games.trust', 'games.human_test'],
     },
     {
         'name': 'peacewar',
         'display_name': "Peace War",
         'num_demo_participants': 2,
-        'app_sequence': ['games.peacewar', 'games.payment_info'],
+        'app_sequence': ['games.peacewar', 'games.human_test'],
     },
     {
         'name': 'ultimatum',
         'display_name': "Ultimatum",
         'num_demo_participants': 2,
-        'app_sequence': ['games.ultimatum', 'games.payment_info'],
+        'app_sequence': ['games.ultimatum', 'games.human_test'],
     }
 ]
 

@@ -1,7 +1,6 @@
-html{
-    height:100%;
+html {
+    height: 100%;
 }
-
 
 body {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a9a9a9+0,818181+100 */
@@ -10,59 +9,56 @@ body {
     background: -webkit-linear-gradient(top, #a9a9a9 0%, #818181 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, #a9a9a9 0%, #818181 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9a9a9', endColorstr='#818181', GradientType=0); /* IE6-9 */
-    height:100%;
+    height: 100%;
     font-family: "Helvetica Neue";
-
-
 }
 
-body.ingame{
-    	padding: 40px;
-	overflow-x: hidden; /* For Opera */
-	-webkit-box-shadow:
-		inset #519f8f 0 0 0 5px,
-		inset #5fbba8 0 0 0 1px,
-		inset #69ceb9 0 0 0 10px,
-		inset #73e1ca 0 0 0 11px,
-		inset #78ead2 0 0 0 16px,
-		inset #7df4db 0 0 0 17px,
-		inset #c5f4ff 0 0 0 22px,
-		inset #81fbe1 0 0 0 23px;
-	-moz-box-shadow:
-		inset #519f8f 0 0 0 5px,
-		inset #5fbba8 0 0 0 1px,
-		inset #69ceb9 0 0 0 10px,
-		inset #73e1ca 0 0 0 11px,
-		inset #78ead2 0 0 0 16px,
-		inset #7df4db 0 0 0 17px,
-		inset #c5f4ff 0 0 0 22px,
-		inset #81fbe1 0 0 0 23px;
-	box-shadow:
-		inset #519f8f 0 0 0 5px,
-		inset #5fbba8 0 0 0 1px,
-		inset #69ceb9 0 0 0 10px,
-		inset #73e1ca 0 0 0 11px,
-		inset #78ead2 0 0 0 16px,
-		inset #7df4db 0 0 0 17px,
-		inset #c5f4ff 0 0 0 22px,
-		inset #81fbe1 0 0 0 23px;
+body.ingame {
+    padding: 40px;
+    overflow-x: hidden; /* For Opera */
+    -webkit-box-shadow: inset #519f8f 0 0 0 5px,
+    inset #5fbba8 0 0 0 1px,
+    inset #69ceb9 0 0 0 10px,
+    inset #73e1ca 0 0 0 11px,
+    inset #78ead2 0 0 0 16px,
+    inset #7df4db 0 0 0 17px,
+    inset #c5f4ff 0 0 0 22px,
+    inset #81fbe1 0 0 0 23px;
+    -moz-box-shadow: inset #519f8f 0 0 0 5px,
+    inset #5fbba8 0 0 0 1px,
+    inset #69ceb9 0 0 0 10px,
+    inset #73e1ca 0 0 0 11px,
+    inset #78ead2 0 0 0 16px,
+    inset #7df4db 0 0 0 17px,
+    inset #c5f4ff 0 0 0 22px,
+    inset #81fbe1 0 0 0 23px;
+    box-shadow: inset #519f8f 0 0 0 5px,
+    inset #5fbba8 0 0 0 1px,
+    inset #69ceb9 0 0 0 10px,
+    inset #73e1ca 0 0 0 11px,
+    inset #78ead2 0 0 0 16px,
+    inset #7df4db 0 0 0 17px,
+    inset #c5f4ff 0 0 0 22px,
+    inset #81fbe1 0 0 0 23px;
 }
 
-.home{
-    color:white;
-    font-weight:100;
+.home {
+    color: white;
+    font-weight: 100;
 }
 
-.nav{
+.nav {
     font-family: 'aileronsregular';
 }
-nav.navbar{
+
+nav.navbar {
     box-shadow: none;
 }
 
-.btn{
+.btn {
     text-shadow: none;
 }
+
 #socialLablogo {
     background-image: url("../img/social_lab_logo.png");
     width: 150px;
@@ -71,10 +67,10 @@ nav.navbar{
     background-size: 150px;
 }
 
-#socialLablogo.ingame{
+#socialLablogo.ingame {
     top: 40px;
-    position:absolute;
-    left:40px;
+    position: absolute;
+    left: 40px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
@@ -89,22 +85,23 @@ footer.page-footer {
     background-color: transparent;
 }
 
-footer{
+footer {
     position: absolute;
-    bottom:0px;
+    bottom: 0px;
     width: 100%;
     background-color: transparent;
 }
 
-p.lead{
+p.lead {
     font-weight: 100;
 }
-.card-block{
+
+.card-block {
     background-color: #519f8f;
 }
 
-.control-label{
-    float:left;
+.control-label {
+    float: left;
     margin-top: 12px;
     font-weight: 200;
     margin-right: 10px;
@@ -113,128 +110,201 @@ p.lead{
 }
 
 .form-group {
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
 
-.self .popover{
+.self .popover {
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
-    width:550px;
+    width: 550px;
 
 }
 
-.otherplayer .popover{
+.popover.right .arrow {
+    left: -10px;
+}
+
+.otherplayer .popover {
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
-    width:300px;
+    width: 300px;
 }
 
 .gameContainer {
-
     width: 100%;
     height: 100%;
-    margin:0 auto;
-    margin-top:50px;
-    padding:5px;
-    padding-left:50px;
-    padding-right:50px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
-#gameArea{
+#gameArea {
     position: absolute;
-    left:     50%;
-    top:      50%;
+    left: 50%;
+    top: 50%;
     width: 900px;
-    height:630px;
+    height: 630px;
 }
 
-.playerContainer{
+.playerContainer {
     width: 750px;
-    height:180px;
-    margin:0 auto;
-    margin:15px;
+    height: 180px;
+    margin: 0 auto;
+    margin: 15px;
 }
-.player.otherplayer{
-    height:128px;
-    width:150px;
+
+.player.otherplayer {
+    height: 128px;
+    width: 150px;
     background-image: url("../img/humanRobot.png");
-    position:absolute;
-    right:100px;
+    position: absolute;
+    right: 100px;
 
 }
-.player.self{
-    position:absolute;
-    top:450px;
-    left:100px;
-    height:128px;
-    width:113px;
+
+.player.self {
+    position: absolute;
+    top: 550px;
+    left: 100px;
+    height: 128px;
+    width: 113px;
     background-image: url("../img/human.png");
 
 }
-.popover{
+
+.popover {
     border-radius: 100px;
-    padding:15px;
+    padding: 15px;
 }
 
 .popover.left .arrow {
     right: -10px;
 }
-.popover-content{
-    color:black;
+
+.popover-content {
+    color: black;
     text-align: center;
     font-weight: 200;
     font-size: 16px;
 }
 
-.popover-content select.form-control{
-    width:100%;
+.popover-content select.form-control {
+    width: 100%;
 }
-.controls{
-    float:left;
+
+.controls {
+    float: left;
     width: 240px;
 }
 
-.situation{
+.situation {
     text-align: center;
-    font-size: 23px;
+    font-size: 20px;
+    height: 200px;
     font-weight: 200;
     position: relative;
-    margin-top: -20px;
+    background: #919191; /* same as page background */
+    letter-spacing: .15em;
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    margin-top: -10px;
+    position: relative;
+    z-index: 0;
+
 }
 
-.instructionsContainer{
-    display:none;
+@keyframes typing {
+    from {
+        width: 100%
+    }
+    to {
+        width: 0
+    }
+
+}
+
+.typing {
+    text-align: center;
+    padding: 25px;
+
+    background: #919191; /* same as page background */
+    top: 0;
+    margin: 0;
+    z-index: 1;
+
+}
+
+.hiders {
+    padding: 25px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    z-index: 2;
+}
+
+.hiders p {
+    position: relative;
+    clear: both;
+    margin: 0;
+    float: right; /* makes animation go left-to-right */
+    width: 0; /* graceful degradation: if animation doesn't work, these are invisible by default */
+    background: #919191; /* same as page background */
+    animation: typing 2s steps(30, end);
+    animation-fill-mode: both; /* load first keyframe on page load, leave on last frame at end */
+}
+
+.hiders p:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.hiders p:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.hiders p:nth-child(4) {
+    animation-delay: 6s;
+}
+
+.hiders p:nth-child(5) {
+    animation-delay: 8s;
+}
+
+.instructionsContainer {
+    display: none;
 }
 
 .modal-dialog {
-    z-index:1100;
-}
-.modal{
-    z-index:1090;
+    z-index: 1100;
 }
 
-.flip{
+.modal {
+    z-index: 1090;
+}
+
+.flip {
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
     transition: 0.6s;
-	transform-style: preserve-3d;
+    transform-style: preserve-3d;
     -ms-filter: "FlipH";
 }
 
-.unflip{
+.unflip {
     -moz-transform: scaleX(1);
     -o-transform: scaleX(1);
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
     filter: FlipH;
     transition: 0.6s;
-	transform-style: preserve-3d;
+    transform-style: preserve-3d;
     -ms-filter: "FlipH";
 }
 
-
-#time-limit{
+#time-limit {
     top: 40px;
     right: 40px;
     position: absolute;
@@ -243,11 +313,12 @@ p.lead{
 main {
     margin-left: 5%;
 }
+
 #login-form-container {
     width: 400px;
 }
 
-.shake{
+.shake {
     animation-name: shake;
     animation-duration: 100ms;
     animation-timing-function: ease-in-out;
@@ -255,19 +326,19 @@ main {
 }
 
 @keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
 
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
 
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
 
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
 }

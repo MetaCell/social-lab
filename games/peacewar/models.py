@@ -14,7 +14,7 @@ Their choices directly determine the payoffs.
 class Constants(BaseConstants):
     name_in_url = 'peacewar'
     players_per_group = 2
-    num_rounds = 10
+    num_rounds = 1
 
     instructions_template = 'peacewar/Instructions.html'
 
