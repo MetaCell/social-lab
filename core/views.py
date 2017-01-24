@@ -83,7 +83,7 @@ def wait(request):
         return {
             'trust': "Trust",
             'ultimatum': 'Ultimatum',
-            'prisoner-dilemma': 'Peace/War',
+            'peacewar': 'Peace War',
             'chat': 'Chat'
         }[x]
 

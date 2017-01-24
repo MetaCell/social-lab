@@ -128,6 +128,22 @@ p.lead {
     width: 300px;
 }
 
+.gameIntroPage {
+    text-align: center;
+}
+
+.gameIntroTitle {
+    font-family: "aileronsregular";
+    font-size: 48px;
+}
+
+.btn-large {
+    height: 54px;
+    line-height: 34px;
+    font-size: 1.6rem;
+}
+
+
 .gameContainer {
     width: 100%;
     height: 100%;
@@ -312,6 +328,7 @@ p.lead {
 
 main {
     margin-left: 5%;
+    margin-right: 5%;
 }
 
 #login-form-container {
