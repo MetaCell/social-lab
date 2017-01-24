@@ -14,8 +14,19 @@ $(document).ready(function () {
             socket = new WebSocket("ws://" + window.location.host + "/matchmaking/" + game + "/");
 
             socket.onmessage = function (e) {
-                //$('#message-panel').append('<p>' + e.data + '</p>');
-                // TODO: on match found message redirect to game URL
+                var message = JSON.parse(e.data);
+
+                // log message for debugging
+                console.log('Message received: ' + message.status + ' / ' + message.message);
+
+                // ignore other message types for now
+                if(message.status === 'SESSION_CREATED') {
+                    // grab url and redirect
+                    var participantUrl = message.url;
+                    if (participantUrl != undefined) {
+                        window.location.href = participantUrl;
+                    }
+                }
             };
 
             socket.onopen = function () {
@@ -27,7 +38,7 @@ $(document).ready(function () {
                 socket.onopen();
             }
         } else {
-            $('#message-panel').html('Error: no game selected!');
+            console.log('Error: no game selected!');
         }
     });
 });
