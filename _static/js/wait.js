@@ -1,33 +1,32 @@
 /**
- * Created by giovanniidili on 23/01/2017.
+ * Author: giovanniidili 23/01/2017
  */
-$(document).ready(function(){
+$(document).ready(function () {
     var game = getParameterByName('game');
 
-    switch (game) {
-    case 'ultimatum':
-        $('#game-description').append('Ultimatum game description');
-        break;
-    case 'trust':
-        $('#game-description').append('Trust game description');
-        break;
-    case 'prisoner-dilemma':
-        $('#game-description').append('Peace-war game description');
-        break;
-    case 'chat':
-        $('#game-description').append('Chat game description');
-        break;
-    default:
-        $('#game-description').append('No game selected!');
+    $('#ready-button').click(function () {
         $('#ready-button').hide();
-        break;
-    }
+        $('#message-panel').append('<p>Looking for an opponent</p>');
 
-    $('#ready-button').click(function(){
-        // TODO: open web-socket connection
-        // TODO: queue up user
-        // TODO: listen to messages
-        // TODO: on match found message redirect to game URL
+        if (game != undefined && game != null) {
+            socket = new WebSocket("ws://" + window.location.host + "/matchmaking/" + game + "/");
+
+            socket.onmessage = function (e) {
+                $('#message-panel').append('<p>' + e.data + '</p>');
+                // TODO: on match found message redirect to game URL
+            };
+
+            socket.onopen = function () {
+                socket.send("a new user wants to play " + game);
+            };
+
+            // Call onopen directly if socket is already open
+            if (socket.readyState == WebSocket.OPEN){
+                socket.onopen();
+            }
+        } else {
+            $('#message-panel').html('Error: no game selected!');
+        }
     });
 });
 

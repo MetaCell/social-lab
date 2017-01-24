@@ -78,6 +78,19 @@ def update(request):
 
 
 def wait(request):
+
+    def get_game_label(x):
+        return {
+            'trust': "Trust",
+            'ultimatum': 'Ultimatum',
+            'prisoner-dilemma': 'Peace/War',
+            'chat': 'Chat'
+        }[x]
+
+    game = request.GET.get('game')
+    game_label = get_game_label(game)
+
     return render_to_response(
         'wait.html',
+        {'game': game, 'game_label': game_label}
     )
