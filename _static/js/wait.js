@@ -11,7 +11,8 @@ $(document).ready(function () {
         $('#message-panel').append('<p>Looking for an opponent...</p>');
 
         if (game != undefined && game != null) {
-            socket = new WebSocket("ws://" + window.location.host + "/matchmaking/" + game + "/");
+            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            socket = new WebSocket(ws_scheme + "://" + window.location.host + "/matchmaking/" + game + "/");
 
             socket.onmessage = function (e) {
                 var message = JSON.parse(e.data);
