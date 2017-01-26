@@ -20,7 +20,7 @@ $(document).ready(function () {
                 console.log('Message received: ' + message.status + ' / ' + message.message);
 
                 // ignore other message types for now
-                if(message.status === 'SESSION_CREATED') {
+                if (message.status === 'SESSION_CREATED') {
                     // grab url and redirect
                     var participantUrl = message.url;
                     if (participantUrl != undefined) {
@@ -34,7 +34,7 @@ $(document).ready(function () {
             };
 
             // Call onopen directly if socket is already open
-            if (socket.readyState == WebSocket.OPEN){
+            if (socket.readyState == WebSocket.OPEN) {
                 socket.onopen();
             }
         } else {
@@ -47,3 +47,4 @@ function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
+

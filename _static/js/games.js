@@ -3,14 +3,16 @@
  */
 $(document).ready(function () {
 
-    //resizeGame();
 
     window.setTimeout(function () {
         $('.otherplayer').popover('show');
+        adjustPopovers('other');
     }, 1000);
 
     window.setTimeout(function () {
         $('.self').popover('show');
+
+        adjustPopovers('self');
     }, 2000);
 
     window.setInterval(function () {
@@ -29,7 +31,7 @@ $(document).ready(function () {
         other.addClass("shake");
         window.setTimeout(function () {
             other.removeClass("shake");
-        },500);
+        }, 500);
     }, 10000);
 
     window.addEventListener('resize', resizeGame, false);
@@ -42,7 +44,23 @@ function showInstructions() {
 }
 
 
+function adjustPopovers(x) {
+    if (x == 'self' || x == undefined) {
+        var self = $('.self .popover');
+        self.css("left", "+=20");
+        self.css("top", "-=10");
+    }
+    if (x == 'other' || x == undefined) {
+        var other = $('.otherplayer .popover');
+        other.css("left", "-=20");
+        other.css("top", "-=10");
+    }
+
+    $('.btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span><span></span></div>');
+}
 function resizeGame() {
     $('.self').popover('show');
     $('.otherplayer').popover('show');
+    adjustPopovers();
+
 }

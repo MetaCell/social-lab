@@ -9,6 +9,7 @@
     <!-- Material Design Bootstrap -->
     <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/ailerons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/minecraft.css' %}" rel="stylesheet">
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <script type="text/javascript" src="{% static 'js/games.js' %}"></script>
 
@@ -27,6 +28,8 @@
             <div class="player otherplayer" data-toggle="popover" data-html="true" data-placement="left" data-content='{% block otherballoon %}{% endblock %}'></div>
         </div>
         <div class="situation">
+            <div class="situation-portrait"></div>
+
             <p class="typing">
                 {% block current %}{% endblock %}
             </p>
@@ -40,6 +43,9 @@
 
         </div>
         <div class="playerContainer self">
+            <div id="youContainer">
+                This is you
+            </div>
             <div class="player self" data-toggle="popover" data-html="true" data-placement="right" data-content='{% block selfballoon %}{% endblock %}'></div>
         </div>
 
@@ -56,7 +62,7 @@
                         {% include Constants.instructions_template %}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn socialblue" data-dismiss="modal">Close</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
