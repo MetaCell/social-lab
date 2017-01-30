@@ -98,7 +98,7 @@ def wait(request):
         elif x == "ultimatum":
             from games.ultimatum.models import Constants
         elif x == 'chat':
-            pass
+            from games.chat.models import Constants
         t = loader.get_template(Constants.instructions_template)
         c = Context({"Constants": Constants.__dict__})
         return t.render(c)

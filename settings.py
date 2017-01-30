@@ -268,7 +268,7 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
         'name': 'trust',
-        'display_name': "Trust Game",
+        'display_name': "Trust",
         'num_demo_participants': 2,
         'app_sequence': ['games.trust', 'games.human_test'],
     },
@@ -283,6 +283,12 @@ SESSION_CONFIGS = [
         'display_name': "Ultimatum",
         'num_demo_participants': 2,
         'app_sequence': ['games.ultimatum', 'games.human_test'],
+    },
+    {
+        'name': 'chat',
+        'display_name': "Chat",
+        'num_demo_participants': 2,
+        'app_sequence': ['games.chat', 'games.human_test'],
     }
 ]
 

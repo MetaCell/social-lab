@@ -49,6 +49,7 @@ function adjustPopovers(x) {
         var self = $('.self .popover');
         self.css("left", "+=20");
         self.css("top", "-=10");
+        $('.self .popover #selfMessage').focus();
     }
     if (x == 'other' || x == undefined) {
         var other = $('.otherplayer .popover');
