@@ -44,15 +44,19 @@ $(document).ready(function () {
                 socket.onopen();
             }
 
-            /*var pollingInterval = setInterval(function(){
-                var payload = { 'status': 'POLLING', 'message': ''};
-                socket.send(JSON.stringify(payload));
-            }, 10000);*/
+            /*pollingInterval = startPolling(socket, 10000);*/
         } else {
             console.log('Error: no game selected!');
         }
     });
 });
+
+function startPolling(w_socket, interval) {
+    return setInterval(function(){
+                var payload = { 'status': 'POLLING', 'message': ''};
+                w_socket.send(JSON.stringify(payload));
+    }, interval);
+}
 
 function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
