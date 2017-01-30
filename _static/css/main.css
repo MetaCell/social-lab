@@ -18,9 +18,21 @@ body {
     background-attachment: fixed;
     height: 100%;
     margin-bottom: 70px;
-    font-family: "Helvetica Neue";
+    font-family: "Minecraft Regular";
 }
 
+
+.homeLeads{
+    height: 140px;
+    font-family: "Minecraft Regular";
+    font-size: 25px;
+    color: #ffcb00;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+}
 .nav {
     font-family: 'aileronsregular';
 }
@@ -109,6 +121,7 @@ body.ingame {
 
 .btn {
     text-shadow: none;
+    font-weight: normal;
 }
 
 #socialLablogo {
