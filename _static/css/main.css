@@ -256,7 +256,6 @@ p.lead {
 
 .playerContainer {
     width: 750px;
-    height: 180px;
     margin: 0 auto;
     margin: 15px;
 }
@@ -272,8 +271,8 @@ p.lead {
 
 .player.self {
     position: absolute;
-    top: 550px;
     left: 100px;
+    bottom: 100px;
     background-image: url("../img/human.png");
     outline: solid 8px #3e8273;
     background-color: #69ceb9;
@@ -283,6 +282,7 @@ p.lead {
     margin-top: 39px;
     height: 150px;
     width: 150px;
+    z-index: 2;
 
 }
 
@@ -340,12 +340,12 @@ p.lead {
     font-size: 18px;
     height: 200px;
     font-weight: 200;
-    position: relative;
     background: #582710; /* same as page background */
     letter-spacing: .15em;
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    margin-top: -10px;
-    position: relative;
+    position: absolute;
+    left: 10%;
+    top: 35%;
+    width: 70%;
     font-family: "Minecraft Regular";
     z-index: 0;
     color: white;
@@ -929,9 +929,8 @@ main {
 }
 
 #youContainer {
-    position: absolute;
-    top: 556px;
-    left: 160px;
+    margin-top: -35px;
+    margin-left: 25px;
     color: lightcyan;
 }
 

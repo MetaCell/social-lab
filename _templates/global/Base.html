@@ -45,10 +45,11 @@
 
         </div>
         <div class="playerContainer self">
-            <div id="youContainer">
-                This is you
+            <div class="player self" data-toggle="popover" data-html="true" data-placement="right" data-content='{% block selfballoon %}{% endblock %}'>
+                <div id="youContainer">
+                    This is you
+                </div>
             </div>
-            <div class="player self" data-toggle="popover" data-html="true" data-placement="right" data-content='{% block selfballoon %}{% endblock %}'></div>
         </div>
 
 
