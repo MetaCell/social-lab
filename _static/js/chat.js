@@ -44,6 +44,7 @@ $(document).ready(function () {
 
     $(".typing").css("padding", "5px");
     $(".hiders").remove();
+    clearInterval(window.shake);
 
     $(".playerContainer.self").on("keypress", "#selfMessage", function (e) {
 

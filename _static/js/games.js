@@ -26,7 +26,7 @@ $(document).ready(function () {
         }
     }, 5000);
 
-    window.setInterval(function () {
+    window.shake = window.setInterval(function () {
         var other = $('.self .popover');
         other.addClass("shake");
         window.setTimeout(function () {

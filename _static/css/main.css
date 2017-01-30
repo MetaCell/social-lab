@@ -25,7 +25,7 @@ body {
 .homeLeads{
     height: 140px;
     font-family: "Minecraft Regular";
-    font-size: 25px;
+    font-size: 20px;
     color: #ffcb00;
     font-smooth: never;
     -webkit-font-smoothing: none;
@@ -557,6 +557,7 @@ main {
 
 .chattext {
     text-align: left;
+    margin-left: 35px;
 }
 
 #chatHistory {
