@@ -22,6 +22,10 @@ $(document).ready(function () {
 
                 // ignore other message types for now
                 if (message.status === 'SESSION_CREATED') {
+                    if (pollingInterval != undefined){
+                        clearInterval(pollingInterval);
+                    }
+
                     // grab url and redirect
                     var participantUrl = message.url;
                     if (participantUrl != undefined) {
@@ -31,13 +35,18 @@ $(document).ready(function () {
             };
 
             socket.onopen = function () {
-                socket.send("a new user wants to play " + game);
+                // nothing for now on open
             };
 
             // Call onopen directly if socket is already open
             if (socket.readyState == WebSocket.OPEN) {
                 socket.onopen();
             }
+
+            /*var pollingInterval = setInterval(function(){
+                var payload = { 'status': 'POLLING', 'message': ''};
+                socket.send(JSON.stringify(payload));
+            }, 10000);*/
         } else {
             console.log('Error: no game selected!');
         }
