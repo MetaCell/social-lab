@@ -21,8 +21,7 @@ body {
     font-family: "Minecraft Regular";
 }
 
-
-.homeLeads{
+.homeLeads {
     height: 140px;
     font-family: "Minecraft Regular";
     font-size: 20px;
@@ -33,6 +32,7 @@ body {
     margin-bottom: 20px;
 
 }
+
 .nav {
     font-family: 'aileronsregular';
 }
@@ -44,6 +44,7 @@ nav.navbar {
 
 footer.page-footer {
     background-color: transparent;
+    font-size: 14px;
 }
 
 footer {
@@ -154,12 +155,17 @@ p.lead {
     background-color: rgb(105, 202, 182);
 }
 
+.card-block p {
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
 .card {
     background-color: rgb(105, 202, 182);
     display: inline-block;
     font-family: "Minecraft Regular";
     position: relative;
-    height: 230px;
+    height: 280px;
 }
 
 .card-title {
@@ -183,7 +189,7 @@ p.lead {
 .card::before, .card::after {
     content: "";
     position: absolute;
-    height: 220px;
+    height: 270px;
     width: 5px;
     top: 5px;
 
