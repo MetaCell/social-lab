@@ -4,7 +4,7 @@
 {% block current %}
 
         {% if my_decision == other_player_decision %}
-            You both want {{ my_intention }}, you earn {{ player.payoff }}.
+            You both want {{ my_decision }}, you earn {{ player.payoff }}.
         {% else %}
             You declared {{ my_decision }} and the other participant declared {{ other_player_decision }}, you earn {{ player.payoff }}.
         {% endif %}
