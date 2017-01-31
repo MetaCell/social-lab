@@ -1,12 +1,6 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from . import models
 from .models import Constants
-
-
-class Introduction(Page):
-    timeout_seconds = 6000
-
 
 class Offer(Page):
     form_model = models.Group
@@ -15,7 +9,7 @@ class Offer(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1
 
-    timeout_seconds = 6000
+    timeout_seconds = 300
 
 
 class WaitForProposer(WaitPage):
@@ -29,7 +23,7 @@ class Accept(Page):
     def is_displayed(self):
         return self.player.id_in_group == 2 and not self.group.strategy
 
-    timeout_seconds = 6000
+    timeout_seconds = 300
 
 
 class AcceptStrategy(Page):
@@ -40,6 +34,7 @@ class AcceptStrategy(Page):
     def is_displayed(self):
         return self.player.id_in_group == 2 and self.group.strategy
 
+    timeout_seconds = 300
 
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):

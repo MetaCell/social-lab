@@ -1,21 +1,15 @@
 from . import models
 from ._builtin import Page, WaitPage
-from otree.api import Currency as c, currency_range
-from .models import Constants
-
-
-class Introduction(Page):
-    timeout_seconds = 100
 
 
 class Intention(Page):
-    timeout_seconds = 6000
+    timeout_seconds = 300
     form_model = models.Player
     form_fields = ['intention']
 
 
 class Decision(Page):
-    timeout_seconds = 6000
+    timeout_seconds = 300
     form_model = models.Player
     form_fields = ['decision']
 

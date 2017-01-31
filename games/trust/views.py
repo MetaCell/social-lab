@@ -1,12 +1,6 @@
-from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from . import models
 from .models import Constants
-
-
-class Introduction(Page):
-    pass
-
 
 class Send(Page):
     """This page is only for P1
@@ -19,6 +13,8 @@ class Send(Page):
 
     def is_displayed(self):
         return self.player.id_in_group == 1
+
+    timeout_seconds = 300
 
 
 class SendBack(Page):
@@ -41,6 +37,8 @@ class SendBack(Page):
 
     def sent_back_amount_max(self):
         return self.group.sent_amount * Constants.multiplication_factor
+
+    timeout_seconds = 300
 
 
 class ResultsWaitPage(WaitPage):
