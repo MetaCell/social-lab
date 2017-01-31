@@ -13,7 +13,7 @@ $(document).ready(function () {
         if (game != undefined && game != null) {
             var pollingInterval = undefined;
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-            socket = new WebSocket(ws_scheme + "://" + window.location.host + "/matchmaking/" + game + "/");
+            window.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/matchmaking/" + game + "/");
 
             socket.onmessage = function (e) {
                 var message = JSON.parse(e.data);
@@ -23,7 +23,7 @@ $(document).ready(function () {
 
                 // ignore other message types for now
                 if (message.status === 'SESSION_CREATED') {
-                    if (pollingInterval != undefined){
+                    if (pollingInterval != undefined) {
                         clearInterval(pollingInterval);
                     }
 
@@ -52,9 +52,9 @@ $(document).ready(function () {
 });
 
 function startPolling(w_socket, interval) {
-    return setInterval(function(){
-                var payload = { 'status': 'POLLING', 'message': ''};
-                w_socket.send(JSON.stringify(payload));
+    return setInterval(function () {
+        var payload = {'status': 'POLLING', 'message': ''};
+        w_socket.send(JSON.stringify(payload));
     }, interval);
 }
 
