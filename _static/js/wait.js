@@ -44,7 +44,8 @@ $(document).ready(function () {
                 socket.onopen();
             }
 
-            /*pollingInterval = startPolling(socket, 10000);*/
+            var pollingInterval = Math.round(Math.random() * (13500 - 3500)) + 3500;
+            pollingInterval = startPolling(socket, pollingInterval);
         } else {
             console.log('Error: no game selected!');
         }
