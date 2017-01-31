@@ -7,9 +7,8 @@ import random
 
 class PlayerBot(Bot):
     def play_round(self):
-        choice = random.choice(['Peace', 'War'])
-        yield (views.Intention, {'intention': choice})
-        yield (views.Decision, {"decision": choice})
+        yield (views.Intention, {'intention': random.choice(['Peace', 'War'])})
+        yield (views.Decision, {"decision": random.choice(['Peace', 'War'])})
         #assert 'Both of you chose to go to peace' in self.html
         #assert self.player.payoff == Constants.both_cooperate_payoff
         yield (views.Results)
