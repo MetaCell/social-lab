@@ -17,6 +17,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView
 from otree.default_urls import urlpatterns
 from core.views import *
 
@@ -29,3 +30,4 @@ urlpatterns.append(url(r'^register/success/$', register_success, name='register_
 urlpatterns.append(url(r'^update/$', update, name='update'))
 urlpatterns.append(url(r'^update/success/$', index, name='index'))
 urlpatterns.append(url(r'^wait/$', wait, name='wait'))
+urlpatterns.append(url(r'^about/$', TemplateView.as_view(template_name="about.html"), name='about'))
