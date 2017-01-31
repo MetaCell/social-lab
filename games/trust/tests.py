@@ -7,8 +7,6 @@ class PlayerBot(Bot):
 
     def play_round(self):
 
-        yield (views.Introduction)
-
         if self.player.id_in_group == 1:
             yield (views.Send, {"sent_amount": 4})
 

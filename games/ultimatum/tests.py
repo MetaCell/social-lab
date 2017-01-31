@@ -6,7 +6,7 @@ from .models import Constants
 class PlayerBot(Bot):
 
     def play_round(self):
-        yield (views.Introduction)
+
         if self.player.id_in_group == 1:
             yield (views.Offer, {'amount_offered': c(10)})
         else:
