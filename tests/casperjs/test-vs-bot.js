@@ -7,6 +7,19 @@ casper.test.begin('Social Lab - Basic Test', 6, function suite(test) {
         height: 768
     };
 
+    // show unhandled js errors
+    casper.on("page.error", function(msg, trace) {
+        this.echo("Error: " + msg, "ERROR");
+    });
+
+    // show page level errors
+    casper.on('resource.received', function (resource) {
+        var status = resource.status;
+        if (status >= 400) {
+            this.echo('URL: ' + resource.url + ' Status: ' + resource.status);
+        }
+    });
+
     casper.start("http://127.0.0.1:8000/", function() {
       this.waitForSelector('div[id="socialLablogo"]', function() {
         this.echo("I've waited for 10 seconds.");
