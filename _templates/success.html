@@ -3,7 +3,11 @@
 {% block title %}Registration Successful{% endblock %}
 
 {% block content %}
-    <h2> Registration Completed Successfully</h2>
-    <p>Thank you for registering.</p>
-    <a href="{% url 'login' %}">Login</a>
+    <div class="signPage">
+        <h2> Registration Completed Successfully</h2>
+        <p>Thank you for registering.</p>
+        <div class="login-center">
+            <button type="button" class="btn socialblue" onclick="window.location='{% url 'login' %}'">Login</button>
+        </div>
+    </div>
 {% endblock %}

@@ -7355,8 +7355,8 @@ input[type=number]:focus:not([readonly]),
 input[type=search-md]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.md-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #4285F4;
-  box-shadow: 0 1px 0 0 #4285F4;
+  border-bottom: 1px solid #7ff4db;
+  box-shadow: 0 1px 0 0 #7ff4db;
 }
 
 input[type=text]:focus:not([readonly]) + label,
@@ -7371,7 +7371,7 @@ input[type=number]:focus:not([readonly]) + label,
 input[type=search-md]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
 textarea.md-textarea:focus:not([readonly]) + label {
-  color: #4285F4;
+  color: #7ff4db;
 }
 
 input[type=text].valid, input[type=text]:focus.valid,

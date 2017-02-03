@@ -282,6 +282,7 @@ SESSION_CONFIGS = [
         'name': 'ultimatum',
         'display_name': "Ultimatum",
         'num_demo_participants': 2,
+        'treatment': "no strategy",
         'app_sequence': ['games.ultimatum', 'games.human_test'],
     },
     {

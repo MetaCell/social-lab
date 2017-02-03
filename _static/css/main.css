@@ -263,11 +263,7 @@ h4 {
     margin-bottom: 45px;
 }
 
-input :focus:not([readonly]),
-textarea.md-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #7ff4db;
-    box-shadow: 0 1px 0 0 #7ff4db;
-}
+
 
 .control-label {
     float: left;
@@ -390,12 +386,11 @@ textarea.md-textarea:focus:not([readonly]) {
 }
 
 .popover-content select.form-control {
-    width: 100%;
+    width: 180px;
 }
 
 .controls {
     float: left;
-    width: 240px;
 }
 
 .situation {
