@@ -3,12 +3,16 @@
 {% block title %}User Registration{% endblock %}
 
 {% block content %}
-    <h2>User Registration</h2>
-    <form method="post" action=".">{% csrf_token %}
-        <table border="0">
-            {{ form.as_table }}
-        </table>
-        <input type="submit" value="Register" />
-    </form>
-    <a href="{% url 'login' %}">Login</a>
+    <div class="signPage">
+        <h2>User Registration</h2>
+        <form method="post" action=".">{% csrf_token %}
+            <table border="0">
+                {{ form.as_p }}
+            </table>
+            <div class="login-center"><input type="submit" class="btn socialblue" value="Register"/></div>
+        </form>
+        <div class="login-center">Already have an account?
+            <button type="button" class="btn socialblue" onclick="window.location='{% url 'login' %}'">Login</button>
+        </div>
+    </div>
 {% endblock %}
