@@ -7,35 +7,41 @@
 
     <p>
         In this study, you will be randomly and anonymously paired with another
-        participant.
+        participant or a bot.
+    </p>
+    <p>
         You will be first asked to let your opponent know if you intend to declare peace or war,
         then each of you simultaneously and privately chooses whether you actually declare peace or war.
         Your payoffs will be determined by the choices of both as below:
     </p>
-    <p><i>In each cell, the amount (in points) to the left is the payoff for
-        you and to the right for the other participant.</i></p>
-
-    <table class='table table-bordered text-center'
-           style='width: auto; margin: auto'>
-        <tr>
-            <th colspan=2 rowspan=2></th>
-            <th colspan=2>The Other Participant</th>
-        </tr>
-        <tr>
-            <th>Peace</th>
-            <th>War</th>
-        </tr>
-        <tr>
-            <th rowspan=2><span class="rotate90">You</span></th>
-            <th>Peace</th>
-            <td>{{ Constants.both_cooperate_payoff }}, {{ Constants.both_cooperate_payoff }}</td>
-            <td>0 point, {{ Constants.betray_payoff }}</td>
-        </tr>
-        <tr>
-            <th>War</th>
-            <td>{{ Constants.betray_payoff }}, 0 point</td>
-            <td>{{ Constants.both_defect_payoff }}, {{ Constants.both_defect_payoff }}</td>
-        </tr>
-    </table>
+    <p>
+        <table class='table table-bordered text-center'
+               style='width: auto; margin: auto'>
+            <tr>
+                <th colspan=2 rowspan=2></th>
+                <th colspan=2>The Other Participant</th>
+            </tr>
+            <tr>
+                <th>Peace</th>
+                <th>War</th>
+            </tr>
+            <tr>
+                <th rowspan=2><span class="rotate90">You</span></th>
+                <th>Peace</th>
+                <td>{{ Constants.both_cooperate_payoff }}, {{ Constants.both_cooperate_payoff }}</td>
+                <td>0 point, {{ Constants.betray_payoff }}</td>
+            </tr>
+            <tr>
+                <th>War</th>
+                <td>{{ Constants.betray_payoff }}, 0 point</td>
+                <td>{{ Constants.both_defect_payoff }}, {{ Constants.both_defect_payoff }}</td>
+            </tr>
+        </table>
+    </p>
+    <p>In each cell, the amount (in points) to the left is the payoff for
+    you and to the right for the other participant.</p>
+    <p>
+        At the end you will be asked to guess if  you played against a human or a bot opponent.
+    </p>
 
 </div>
