@@ -25,7 +25,7 @@ body {
     height: 140px;
     font-family: "Minecraft Regular";
     font-size: 20px;
-    color: #ffcb00;
+    color: #ffd700;
     font-smooth: never;
     -webkit-font-smoothing: none;
     margin-top: 50px;
@@ -102,17 +102,6 @@ body.ingame {
     background: none;
     background-image: url("../img/8bitlondon.png");
     background-size: 100% 100%;
-}
-
-.situation-portrait {
-    background-image: url("../img/vaughan8bit.png");
-    background-size: 100% 100%;
-    width: 150px;
-    height: 113px;
-    position: absolute;
-    top: 80px;
-    left: 700px;
-    display: none;
 }
 
 .home {
@@ -203,7 +192,49 @@ p.lead {
 /* pull the right 'line' out to the right */
 .card::after {
     right: -5px;
+}
 
+h2 {
+    color: #ffd700;
+}
+
+h4 {
+    color: #ffd700;
+}
+
+/* ABOUT */
+
+#aboutContent {
+
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+#ucl8bit {
+    height: 360px;
+    width: 500px;
+    background-image: url("../img/ucl8bit.png");
+    background-size: 500px 360px;
+    margin: 0 auto;
+}
+
+#portrait {
+    background-image: url("../img/vaughan8bit.png");
+    background-size: 100% 100%;
+    width: 150px;
+    height: 113px;
+    position: absolute;
+    display: none;
+}
+
+#wt {
+    background-image: url("../img/wtlogo.png");
+    background-size: 100% 100%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 50px;
 }
 
 .control-label {
@@ -414,14 +445,6 @@ p.lead {
 
 .instructionsContainer {
     display: none;
-}
-
-#game-instructions h4 {
-    color: white;
-}
-
-#instructionsModal h4 {
-    color: #e05b00;
 }
 
 #instructionsModal .modal-content {
