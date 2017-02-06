@@ -1,0 +1,24 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block global_scripts %}
+    <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+{% endblock %}
+
+{% block current %}
+    <div id="chatHistory">Send a message!</div>
+{% endblock %}
+
+
+{% block otherballoon %}
+    <div id="otherPlayerMessage">...</div>
+{% endblock %}
+
+{% block selfballoon %}
+    <input type="text" id="selfMessage" maxlength="140"></input>
+    <button class="btn socialblue" id="sendButton" type="button">Send</button>
+{% endblock %}
+
+
+
+

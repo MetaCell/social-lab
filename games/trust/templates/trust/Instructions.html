@@ -1,0 +1,24 @@
+{% load otree_tags staticfiles %}
+
+<div>
+
+    <p>
+        You will be randomly and anonymously paired with another participant or a bot.
+    </p>
+    <p>
+        One of you will be selected at random to be participant A; the other will be participant B.
+        You will learn whether you are participant A or B prior to making any decision.
+    </p>
+    <p>
+        To start, participant A receives {{ Constants.amount_allocated }};
+        participant B receives nothing.
+        Participant A can send some or all of
+        his {{ Constants.amount_allocated }} to participant B.
+        Before B receives these points they will be multiplied
+        by {{ Constants.multiplication_factor }}. Once B receives
+        the tripled points he can decide to send some or all of his points to A, or to keep them all for himself.
+    </p>
+    <p>
+        At the very end of the game you will be asked to guess if  you played against a human or a bot opponent.
+    </p>
+</div>

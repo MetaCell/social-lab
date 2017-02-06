@@ -1,8 +1,4 @@
-[submodule "oTree-core"]
-	path = oTree-core
-	url = https://github.com/MetaCell/otree-core.git
-	branch = development
-[submodule "otree-core"]
-	path = otree-core
+[submodule "otree"]
+	path = otree
 	url = https://github.com/MetaCell/otree-core.git
 	branch = development

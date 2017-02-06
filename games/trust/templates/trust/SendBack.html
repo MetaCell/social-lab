@@ -1,0 +1,31 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block current %}
+    <p>
+         The points you were given tripled, now you have {{tripled_amount}}.
+        </br> How many points will you give back?
+    </p>
+{% endblock %}
+
+
+{% block otherballoon %}
+
+    I am happy to give you {{group.sent_amount}}
+
+{% endblock %}
+
+{% block selfballoon %}
+
+
+    {% formfield group.sent_back_amount with label="I will give back" %}
+        {% next_button %}
+        <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
+
+{% endblock %}
+
+
+
+
+
