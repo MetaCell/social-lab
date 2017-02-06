@@ -48,7 +48,7 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
             test.assertEquals(true, casper.getCurrentUrl().endsWith('/peacewar/Intention/1/'), "Casper is correctly on Intention page for peace/war game");
             test.assertExists('button[value="Peace"]', "Peace intention button found");
             test.assertExists('button[value="War"]', "War intention button found");
-        }, null, 15000);
+        }, null, 20000);
     });
 
     casper.then(function () {
