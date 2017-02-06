@@ -132,6 +132,14 @@
 .btn.socialblue span, .btn.socialblue:after {
   background: #69ceb9;
 }
+
+
+.btn.help {
+  background: #ff8000;
+}
+.btn.help span, .btn.help:after {
+  background: #ff9b0c;
+}
 @media (min-width: 48em) {
   .btn {
     padding: 18px 30px;

@@ -263,8 +263,6 @@ h4 {
     margin-bottom: 45px;
 }
 
-
-
 .control-label {
     float: left;
     margin-top: 12px;
@@ -280,7 +278,7 @@ h4 {
 
 .self .popover {
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
-    width: 700px;
+    width: 750px;
 
 }
 
@@ -324,16 +322,16 @@ h4 {
     position: absolute;
     right: 100px;
     top: 80px;
-    outline: solid 8px #101f1c;
+    border: solid 8px #101f1c;
     background-color: #24403c;
 }
 
 .player.self {
     position: absolute;
     left: 100px;
-    bottom: 100px;
+    bottom: 80px;
     background-image: url("../img/human.png");
-    outline: solid 8px #3e8273;
+    border: solid 8px #3e8273;
     background-color: #69ceb9;
 }
 
@@ -346,11 +344,11 @@ h4 {
 }
 
 .otherplayer .popover {
-    outline: solid 6px #101f1c;
+    border: solid 6px #101f1c;
 }
 
 .self .popover {
-    outline: solid 6px #3e8273;
+    border: solid 6px #3e8273;
 }
 
 .popover {
@@ -483,6 +481,10 @@ h4 {
 #instructionsModal .panel-body {
     height: 450px;
     overflow: scroll;
+}
+
+.modal-title {
+    color: white;
 }
 
 .instructionsContainer h4 {
