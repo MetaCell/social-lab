@@ -11,11 +11,14 @@ import re
 class PlayerBot(Bot):
 
 
+    def __init__(self, player, participant_bot):
+        self.mitsuku = Mitsuku()
+        super(PlayerBot, self).__init__(player, participant_bot)
+
     def on_message(self, message):
         return self.mitsuku.send(message)
 
     def play_round(self):
-        self.mitsuku = Mitsuku()
         yield (views.Chat,{"sent_text":"I am a bot"})
 
 
@@ -23,7 +26,7 @@ class PlayerBot(Bot):
 class Mitsuku():
 
     ENDPOINT_CHAT_MITSUKU = "https://kakko.pandorabots.com/pandora/talk?botid=f326d0be8e345a13&skin=chat"
-    MESSAGE_REGEX = "/(Mitsuku:(.*))/"
+    MESSAGE_REGEX = "(Mitsuku:(.*))"
     MESSAGE_REJECT_REGEX = "/(x(.*)x[^\s]+)|(\|)|(BYESPLIT X1234)/ig"
     MESSAGE_SENDER_TAG = "You:"
 
@@ -32,21 +35,21 @@ class Mitsuku():
         self.conn = requests.Session()
 
     def get_raw_html_for_message(self, message):
-            resp = self.conn.post("POST", self.ENDPOINT_CHAT_MITSUKU, { "message": message }, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+            resp = self.conn.post(self.ENDPOINT_CHAT_MITSUKU, { "message": message }, headers={'Content-Type': 'application/x-www-form-urlencoded'})
             return resp.text
 
     def parse_message_from_html(self, html):
         conv = pq(html)
-        conv = conv('body').find('p').text().trim()
+        conv = conv('body').find('p').text().strip()
         match = re.search(self.MESSAGE_REGEX, conv)
 
-        if match and match.length > 0:
-            message = match[match.length - 1]
-            prevMessageStart = message.indexOf(self.MESSAGE_SENDER_TAG)
-            if prevMessageStart != -1:
-                message = message.substr(0, prevMessageStart)
+        if match:
+            message = match.group(0)
+            # prevMessageStart = message.index(self.MESSAGE_SENDER_TAG)
+            # if prevMessageStart != -1:
+            #     message = message.substr(0, prevMessageStart)
 
-            return message.replace(self.MESSAGE_REJECT_REGEX, '').trim()
+            return message.strip()
         else:
             raise "Could not parse Mitsuku response";
 
