@@ -8,7 +8,6 @@ $(document).ready(function () {
     var playerIdInSession = $("#playerIdInSession").html();
     var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/chat/" + sessionId + "," + playerIdInSession + "/");
 
-
     socket.onmessage = function (e) {
         var message = JSON.parse(e.data);
         if ($("#chatHistory").children().length == 0) {
@@ -36,7 +35,6 @@ $(document).ready(function () {
         }
     };
 
-
     // Call onopen directly if socket is already open
     if (socket.readyState == WebSocket.OPEN) {
         socket.onopen();
@@ -47,13 +45,11 @@ $(document).ready(function () {
     clearInterval(window.shake);
 
     $(".playerContainer.self").on("keypress", "#selfMessage", function (e) {
-
         if (e.which == 13) {
             e.preventDefault();
             if ($("#selfMessage").val().trim() != "") {
                 $("#sendButton").click();
             }
-
         }
     });
 
@@ -62,6 +58,5 @@ $(document).ready(function () {
         socket.send(message);
         $(".self #selfMessage").val("").focus();
     });
-
 });
 
