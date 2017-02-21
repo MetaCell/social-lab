@@ -6,7 +6,6 @@ import random
 from urlparse import urlparse
 import requests
 from pyquery import PyQuery as pq
-import re
 
 class PlayerBot(Bot):
 
@@ -26,9 +25,7 @@ class PlayerBot(Bot):
 class Mitsuku():
 
     ENDPOINT_CHAT_MITSUKU = "https://kakko.pandorabots.com/pandora/talk?botid=f326d0be8e345a13&skin=chat"
-    MESSAGE_REGEX = "(Mitsuku:(.*))"
-    MESSAGE_REJECT_REGEX = "/(x(.*)x[^\s]+)|(\|)|(BYESPLIT X1234)/ig"
-    MESSAGE_SENDER_TAG = "You:"
+
 
     def __init__(self):
         self.tag = 'Anonymous'
@@ -41,17 +38,10 @@ class Mitsuku():
     def parse_message_from_html(self, html):
         conv = pq(html)
         conv = conv('body').find('p').text().strip()
-        match = re.search(self.MESSAGE_REGEX, conv)
-
-        if match:
-            message = match.group(0)
-            # prevMessageStart = message.index(self.MESSAGE_SENDER_TAG)
-            # if prevMessageStart != -1:
-            #     message = message.substr(0, prevMessageStart)
-
-            return message.strip()
-        else:
-            raise "Could not parse Mitsuku response";
+        message = conv[conv.index("itsuku:")+7:conv.index("Mitsuku:")]
+        if message.find("You:") != -1:
+            message = message[:message.index("You:")]
+        return message.strip()
 
     def send(self, message):
         return self.parse_message_from_html(self.get_raw_html_for_message(message))
