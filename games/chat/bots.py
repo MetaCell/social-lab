@@ -36,7 +36,9 @@ class Mitsuku():
     def parse_message_from_html(self, html):
         conv = pq(html)
         conv = conv('body').find('p').text().strip()
-        message = conv[conv.index("itsuku:")+7:conv.index("Mitsuku:")]
+        message = conv[conv.index(":")+ 1:]
+        message = message[message.index(":")+1:]
+        message = message[:conv.index("Mitsuku:")]
         if message.find("You:") != -1:
             message = message[:message.index("You:")]
         return message.strip()
