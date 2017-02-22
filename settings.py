@@ -297,5 +297,8 @@ SESSION_CONFIGS = [
 # oTree's default settings. Use with caution.
 otree.settings.augment_settings(globals())
 
-# global matchmaking variable
+# global matchmaking variable to keep track of queued up users
 MATCH_MAKING_QUEUE = []
+
+# global map to keep track of session bots
+SESSION_BOTS_MAP = {}
