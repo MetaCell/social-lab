@@ -2,7 +2,8 @@ from otree.api import Currency as c, currency_range
 from . import views
 from ._builtin import Bot
 from .models import Constants
-import random
+import time
+from random import randint
 from urlparse import urlparse
 import requests
 from pyquery import PyQuery as pq
@@ -14,6 +15,9 @@ class PlayerBot(Bot):
         super(PlayerBot, self).__init__(player, participant_bot)
 
     def on_message(self, message):
+        # make the chat bot sleep a random number of seconds (1-5) to make it feel 'more human'
+        interval = randint(1, 5)
+        time.sleep(interval)
         return self.mitsuku.send(message)
 
     def play_round(self):
