@@ -9,7 +9,6 @@ from pyquery import PyQuery as pq
 
 
 class PlayerBot(Bot):
-
     def __init__(self, player, participant_bot):
         self.mitsuku = Mitsuku()
         super(PlayerBot, self).__init__(player, participant_bot)
@@ -18,27 +17,24 @@ class PlayerBot(Bot):
         return self.mitsuku.send(message)
 
     def play_round(self):
-        yield (views.Chat,{"sent_text":"I am a bot"})
+        yield (views.Chat, {"sent_text": "I am a bot"})
 
 
 class Mitsuku():
-
-    ENDPOINT_CHAT_MITSUKU = "https://kakko.pandorabots.com/pandora/talk?botid=f326d0be8e345a13&skin=chat"
+    ENDPOINT_CHAT_MITSUKU = "https://kakko.pandorabots.com/pandora/talk?botid=c51abb983e345a1d&skin=ucl"
 
     def __init__(self):
-        self.tag = 'Anonymous'
         self.conn = requests.Session()
 
     def get_raw_html_for_message(self, message):
-            resp = self.conn.post(self.ENDPOINT_CHAT_MITSUKU, { "message": message }, headers={'Content-Type': 'application/x-www-form-urlencoded'})
-            return resp.text
+        resp = self.conn.post(self.ENDPOINT_CHAT_MITSUKU, {"message": message},
+                              headers={'Content-Type': 'application/x-www-form-urlencoded'})
+        return resp.text
 
     def parse_message_from_html(self, html):
         conv = pq(html)
         conv = conv('body').find('p').text().strip()
-        message = conv[conv.index(":")+ 1:]
-        message = message[message.index(":")+1:]
-        message = message[:message.index("Mitsuku:")]
+        message = conv[conv.index("Entity:") + 7:]
         if message.find("You:") != -1:
             message = message[:message.index("You:")]
         return message.strip()
