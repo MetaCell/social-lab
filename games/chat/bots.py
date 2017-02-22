@@ -38,7 +38,7 @@ class Mitsuku():
         conv = conv('body').find('p').text().strip()
         message = conv[conv.index(":")+ 1:]
         message = message[message.index(":")+1:]
-        message = message[:conv.index("Mitsuku:")]
+        message = message[:message.index("Mitsuku:")]
         if message.find("You:") != -1:
             message = message[:message.index("You:")]
         return message.strip()
