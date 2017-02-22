@@ -20,7 +20,9 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
         }
     });
 
-    casper.start("http://127.0.0.1:8000/", function () {
+    // var base_url = 'https://calm-brook-43303.herokuapp.com/';
+    var base_url =  'http://127.0.0.1:8000/';
+    casper.start(base_url, function () {
         this.waitForSelector('div[id="socialLablogo"]', function () {
             test.assertTitle("Social Lab", "Homepage title is the one expected");
             test.assertExists('div[id="socialLablogo"]', "Social lab logo found");
@@ -36,7 +38,7 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
         this.mouseEvent('click', 'a[id="peacewar-game-link"]', "Clicking peace/war play button");
         // wait for page to load
         casper.waitForSelector('button[id="ready-button"]', function () {
-            test.assertEquals('http://127.0.0.1:8000/wait/?game=peacewar', casper.getCurrentUrl(), "Wait page url for peace/war game is correct");
+            test.assertEquals(base_url + 'wait/?game=peacewar', casper.getCurrentUrl(), "Wait page url for peace/war game is correct");
         }, null, 3000);
     });
 
@@ -59,7 +61,7 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
             test.assertEquals(true, casper.getCurrentUrl().endsWith('/peacewar/Decision/3/'), "Casper is correctly on Decision page for peace/war game");
             test.assertExists('button[value="Peace"]', "Peace decision button found");
             test.assertExists('button[value="War"]', "War decision button found");
-        }, null, 8000);
+        }, null, 20000);
     });
 
     casper.then(function () {
@@ -69,7 +71,7 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
         casper.waitForSelector('input[value="Next"]', function () {
             test.assertEquals(true, casper.getCurrentUrl().endsWith('/peacewar/Results/5/'), "Casper is correctly on peace/war game results screen");
             test.assertExists('input[value="Next"]', "Next button found");
-        }, null, 8000);
+        }, null, 20000);
     });
 
     casper.then(function () {
@@ -80,7 +82,7 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
             test.assertEquals(true, casper.getCurrentUrl().endsWith('/humantest/HumanTest/6/'), "Casper is correctly on peace/war game results screen");
             test.assertExists('button[value="Human"]', "Human guess button found");
             test.assertExists('button[value="Robot"]', "Robot guess button found");
-        }, null, 8000);
+        }, null, 10000);
     });
 
     casper.then(function () {
@@ -98,7 +100,7 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
         this.mouseEvent('click', 'button[name="leave"]', "Clicking leave button");
         // wait game to start up to 15 seconds (give time to bot to kick in)
         casper.waitForSelector('a[id="chat-game-link"]', function () {
-            test.assertEquals('http://127.0.0.1:8000/', casper.getCurrentUrl(), "Correctly back to home page");
+            test.assertEquals(base_url, casper.getCurrentUrl(), "Correctly back to home page");
         }, null, 3000);
     });
 
