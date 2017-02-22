@@ -7,8 +7,8 @@ from urlparse import urlparse
 import requests
 from pyquery import PyQuery as pq
 
-class PlayerBot(Bot):
 
+class PlayerBot(Bot):
 
     def __init__(self, player, participant_bot):
         self.mitsuku = Mitsuku()
@@ -21,11 +21,9 @@ class PlayerBot(Bot):
         yield (views.Chat,{"sent_text":"I am a bot"})
 
 
-
 class Mitsuku():
 
     ENDPOINT_CHAT_MITSUKU = "https://kakko.pandorabots.com/pandora/talk?botid=f326d0be8e345a13&skin=chat"
-
 
     def __init__(self):
         self.tag = 'Anonymous'
@@ -45,7 +43,3 @@ class Mitsuku():
 
     def send(self, message):
         return self.parse_message_from_html(self.get_raw_html_for_message(message))
-
-
-
-
