@@ -16,7 +16,7 @@ class PlayerBot(Bot):
 
     def on_message(self, message):
         # make the chat bot sleep a random number of seconds (1-5) to make it feel 'more human'
-        interval = randint(1, 5)
+        interval = randint(3, 6)
         time.sleep(interval)
         return self.mitsuku.send(message)
 
