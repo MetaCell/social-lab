@@ -15,7 +15,10 @@ class Chat(Page):
 
     form_model = models.Player
     form_fields = ['sent_text']
-    timeout_seconds = 300
+    timeout_seconds = 40
+
+    def before_next_page(self):
+        pass
 
     def vars_for_template(self):
 

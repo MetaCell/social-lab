@@ -7,6 +7,8 @@ $(document).ready(function () {
     var sessionId = $("#sessionId").html();
     var playerIdInSession = $("#playerIdInSession").html();
     var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/chat/" + sessionId + "," + playerIdInSession + "/");
+    var plainHistory = $("#plainHistory");
+    var chatHistory = $("#chatHistory");
 
     socket.onmessage = function (e) {
         var message = JSON.parse(e.data);
@@ -14,16 +16,17 @@ $(document).ready(function () {
             $("#chatHistory").html("");
         }
 
-
         if (playerIdInSession != message.sender) {
-            $("#chatHistory").append("<div><div class='otherPlayerName'>Participant:</div><div class='chattext'>" + message.message + "</div></div>");
+            chatHistory.append("<div><div class='otherPlayerName'>Participant:</div><div class='chattext'>" + message.message + "</div></div>");
+            plainHistory.val( plainHistory.val() + "\nOther:\n"+message.message);
             $("#otherPlayerMessage").html(message.message);
         }
         else {
-            $("#chatHistory").append("<div><div class='playerName'>You:</div><div class='chattext'>" + message.message + "</div></div>");
+            chatHistory.append("<div><div class='playerName'>You:</div><div class='chattext'>" + message.message + "</div></div>");
+            plainHistory.val( plainHistory.val() + "\nSelf:\n"+message.message);
         }
 
-        $("#chatHistory").animate({scrollTop: $('#chatHistory').prop("scrollHeight")}, 1000);
+        chatHistory.animate({scrollTop: chatHistory.prop("scrollHeight")}, 1000);
 
         // ignore other message types for now
         if (message.status === 'SESSION_CREATED') {
