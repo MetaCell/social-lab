@@ -18,12 +18,12 @@ $(document).ready(function () {
 
         if (playerIdInSession != message.sender) {
             chatHistory.append("<div><div class='otherPlayerName'>Participant:</div><div class='chattext'>" + message.message + "</div></div>");
-            plainHistory.val( plainHistory.val() + "\nOther:\n"+message.message);
+            plainHistory.val( plainHistory.val() + " \nOther:\n"+message.message);
             $("#otherPlayerMessage").html(message.message);
         }
         else {
             chatHistory.append("<div><div class='playerName'>You:</div><div class='chattext'>" + message.message + "</div></div>");
-            plainHistory.val( plainHistory.val() + "\nSelf:\n"+message.message);
+            plainHistory.val( plainHistory.val() + " \nSelf:\n"+message.message);
         }
 
         chatHistory.animate({scrollTop: chatHistory.prop("scrollHeight")}, 1000);

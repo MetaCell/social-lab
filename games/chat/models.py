@@ -29,4 +29,8 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    sent_text = models.TextField()
+    sent_text = models.TextField(
+        doc="""The log of the chat""",
+        widget=widgets.TextInput()
+    )
+
