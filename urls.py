@@ -30,4 +30,4 @@ urlpatterns.append(url(r'^register/success/$', register_success, name='register_
 urlpatterns.append(url(r'^update/$', update, name='update'))
 urlpatterns.append(url(r'^update/success/$', index, name='index'))
 urlpatterns.append(url(r'^wait/$', wait, name='wait'))
-urlpatterns.append(url(r'^about/$', TemplateView.as_view(template_name="about.html"), name='about'))
+urlpatterns.append(url(r'^about/$', about, name='about'))

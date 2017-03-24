@@ -15,9 +15,14 @@
     <!-- Material Design Bootstrap -->
     <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/ailerons.css' %}" rel="stylesheet">
-    <link href="{% static 'css/minecraft.css' %}" rel="stylesheet">
-    <link href="{% static 'css/btn8bit.css' %}" rel="stylesheet">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    {% if CLINICAL %}
+        <link href="{% static 'css/mainsober.css' %}" rel="stylesheet">
+    {%  else %}
+        <link href="{% static 'css/minecraft.css' %}" rel="stylesheet">
+        <link href="{% static 'css/btn8bit.css' %}" rel="stylesheet">
+        <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    {% endif %}
     <link rel="icon" type="image/png"  href="{% static 'img/favicon.png' %}">
     <script type="text/javascript" src="{% static 'js/jquery-2.2.3.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>

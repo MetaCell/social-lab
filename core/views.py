@@ -10,13 +10,14 @@ from django.contrib.auth import update_session_auth_hash
 from django.utils.dateformat import DateFormat
 from django.template.backends.django import Template
 from django.template.backends.django import Context
+from django.conf import settings
 from core.forms import *
 
 
 
 def index(request):
     template = loader.get_template('core/index.html')
-    context = {}
+    context = {'CLINICAL': settings.CLINICAL}
     return HttpResponse(template.render(context, request))
 
 
@@ -38,7 +39,7 @@ def register(request):
             return HttpResponseRedirect('/register/success/')
     else:
         form = RegistrationForm()
-    variables = RequestContext(request, {'form': form})
+    variables = RequestContext(request, {'form': form, 'CLINICAL': settings.CLINICAL})
 
     return render_to_response(
         'register.html',
@@ -71,12 +72,20 @@ def update(request):
     else:
         form = UpdateProfileForm(initial={'email': user.email,
                                           'birth_date': DateFormat(user.profile.birth_date).format('d/m/Y'),
-                                          'gender': user.profile.gender})
+                                          'gender': user.profile.gender,
+                                          'CLINICAL': settings.CLINICAL})
     variables = RequestContext(request, {'form': form})
 
     return render_to_response(
         'update.html',
         variables,
+    )
+
+def about(request):
+
+    return render_to_response(
+        'about.html',
+        {'CLINICAL': settings.CLINICAL}
     )
 
 
@@ -100,7 +109,9 @@ def wait(request):
         elif x == 'chat':
             from games.chat.models import Constants
         t = loader.get_template(Constants.instructions_template)
-        c = Context({"Constants": Constants.__dict__})
+        c = Context({"Constants": Constants.__dict__,
+                     'CLINICAL': settings.CLINICAL})
+
         return t.render(c)
 
     game = request.GET.get('game')
@@ -109,5 +120,5 @@ def wait(request):
 
     return render_to_response(
         'wait.html',
-        {'game': game, 'game_label': game_label, 'instructions': instructions}
+        {'game': game, 'game_label': game_label, 'instructions': instructions, 'CLINICAL': settings.CLINICAL}
     )

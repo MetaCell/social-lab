@@ -302,3 +302,9 @@ MATCH_MAKING_QUEUE = []
 
 # global map to keep track of session bots
 SESSION_BOTS_MAP = {}
+
+
+if environ.get('CLINICAL') not in {None, '', '0'}:
+    CLINICAL = True
+else:
+    CLINICAL = False
