@@ -6,7 +6,7 @@
         {% if my_decision == other_player_decision %}
             You both want {{ my_decision }}, you earn {{ player.payoff }}.
         {% else %}
-            You declared {{ my_decision }} and the other participant declared {{ other_player_decision }}, you earn {{ player.payoff }}.
+            You declared {{ my_decision }} and your opponent declared {{ other_player_decision }}, you earn {{ player.payoff }}.
         {% endif %}
 
 {% endblock %}
