@@ -24,7 +24,9 @@ class Chat(Page):
     def vars_for_template(self):
         return {
             'playerIdInSession': self.player.id_in_subsession,
-            'sessionId': self.session.id
+            'sessionId': self.session.id,
+            'round': self.round_number,
+            'game': 'chat'
         }
 
 

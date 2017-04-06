@@ -16,7 +16,9 @@
         <link href="{% static 'css/main.css' %}" rel="stylesheet">
     {% endif %}
     <link rel="icon" type="image/png"  href="{% static 'img/favicon.png' %}">
+    <script type="text/javascript" src="{% static 'js/questions_controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/games.js' %}"></script>
+
 
 {%  endblock %}
 
@@ -29,6 +31,8 @@
 {% block content %}
     <div id="sessionId" style ="display:none;">{{  sessionId }}</div>
     <div id="playerIdInSession" style ="display:none;">{{  playerIdInSession }}</div>
+    <div id="game" style ="display:none;">{{  game }}</div>
+    <div id="round" style ="display:none;">{{  round }}</div>
     <div class="#gameArea">
     <div class="gameContainer">
         <div class="playerContainer otherplayer">
