@@ -3,10 +3,43 @@
  */
 $(document).ready(function () {
     var game = getParameterByName('game');
+    // external platform parameters
+    var platform = getParameterByName('platform');
+    var workerId = getParameterByName('workerId');
+    var completionUrl = getParameterByName('completionUrl');
 
-    // TODO: grab platform (mturk/prolific) and options params
+    var WORKER_ID_MIN_LENGTH = 5;
 
-    // TODO: if platform is found, show worker id input field (if present in query string fill it out from there)
+    // deal with external platform stuff
+    if(platform != undefined && platform != ""){
+        // pre-populate worker id if any
+        if(workerId != undefined && workerId != ""){
+            $('#worker-id').val(workerId);
+        } else {
+            // hookup even thandler for submit
+            $('#worker-id-submit').click(function(){
+                // check value
+                var value = $('#worker-id').val();
+
+                // TODO: check that worker id is only made up of allowed chars with a regex
+                if(value != "" && value.length > WORKER_ID_MIN_LENGTH){
+                    // store id, hide dialog
+                    workerId = value;
+                    $('#worker-id-dialog').hide();
+                } else {
+                    // worker-id-feedback
+                    $("#worker-id-feedback").css({ 'color': 'red'});
+                }
+            });
+
+            // set text
+            var platformDisplay = (platform == 'mturk') ? 'Mechanical Turk' : 'Prolific';
+            $("#worker-id-feedback").html("Please submit your " + platformDisplay + " worker-id to continue");
+
+            // bring up dialog asking for worker id
+            $('#worker-id-dialog').show();
+        }
+    }
 
     $('#ready-button').click(function () {
 
