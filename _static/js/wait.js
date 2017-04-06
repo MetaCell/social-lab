@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     var WORKER_ID_MIN_LENGTH = 5;
 
-    // deal with external platform stuff
+    // if platform field is detected let the user queue only if they filled out the worker id field
     if(platform != undefined && platform != ""){
         // pre-populate worker id if any
         if(workerId != undefined && workerId != ""){
@@ -42,9 +42,6 @@ $(document).ready(function () {
     }
 
     $('#ready-button').click(function () {
-
-        // TODO: if platform field is detected let the user queue only if they filled out the worker id field
-
         $('#ready-button').hide();
         $('#instructions_label').hide();
         $("#loader").show();
@@ -54,8 +51,9 @@ $(document).ready(function () {
             var pollingInterval = undefined;
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
-            // TODO: concat platform (mturk/prolific), worker id and options params (url redirect on completion) if any
-            window.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/matchmaking/" + game + "/");
+            // concat platform (mturk/prolific), worker id and options params (url redirect on completion) if any
+            var paramsString = getParametersString(game, platform, workerId, completionUrl);
+            window.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/matchmaking/" + paramsString + "/");
 
             socket.onmessage = function (e) {
                 var message = JSON.parse(e.data);
@@ -104,5 +102,23 @@ function startPolling(w_socket, interval) {
 function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function getParametersString(game, platform, workerId, completion_url){
+    var paramsString = game;
+
+    if(platform != '' && platform != undefined){
+        paramsString+= ","+platform;
+
+        if(workerId != '' && workerId != undefined) {
+            paramsString += "," + workerId;
+        }
+
+        if(completion_url != '' && completion_url != undefined) {
+            paramsString += "," + completion_url;
+        }
+    }
+
+    return paramsString;
 }
 
