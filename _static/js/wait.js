@@ -4,7 +4,14 @@
 $(document).ready(function () {
     var game = getParameterByName('game');
 
+    // TODO: grab platform (mturk/prolific) and options params
+
+    // TODO: if platform is found, show worker id input field (if present in query string fill it out from there)
+
     $('#ready-button').click(function () {
+
+        // TODO: if platform field is detected let the user queue only if they filled out the worker id field
+
         $('#ready-button').hide();
         $('#instructions_label').hide();
         $("#loader").show();
@@ -13,6 +20,8 @@ $(document).ready(function () {
         if (game != undefined && game != null) {
             var pollingInterval = undefined;
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+
+            // TODO: concat platform (mturk/prolific), worker id and options params (url redirect on completion) if any
             window.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/matchmaking/" + game + "/");
 
             socket.onmessage = function (e) {
