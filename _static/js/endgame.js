@@ -1,8 +1,6 @@
 $(document).ready(function () {
-    var MTURK_DESCRIPTION = "Thanks for completing the task! Copy-paste the session code below into the survey " +
-        "on mturk and close this page.";
-    var PROLIFIC_DESCRIPTION = "Thanks for completing the task! Copy-paste the session code below into the survey " +
-        "on prolific and then click on the completion link then close this page.";
+    var MTURK_DESCRIPTION = "Task Completed! Copy-paste the session code below into the mturk survey.<br/>";
+    var PROLIFIC_DESCRIPTION = "Task Completed! Copy-paste the session code below into the prolific survey.<br/>";
 
     var platform = $('#platform').html();
     var worker_id = $('#worker_id').html();
@@ -15,11 +13,11 @@ $(document).ready(function () {
         $('#content').html(contentText);
 
         // show session id
-        $('#display-items-container').append("<p style='margin-top:5px;'><b>Session Code:</b>" + session_id + "</p>");
+        $('#display-items-container').append("<p><b>Session Code:</b>" + session_id + "</p>");
 
         // show completion url if any as clickable
         if(completion_url!=''){
-             $('#display-items-container').append("<p style='margin-top:5px;'><a href='" + completion_url + "' target='_blank'>Click here to complete the task</p>");
+             $('#display-items-container').append("<p><a href='" + completion_url + "' target='_blank'>Click here to complete the task</p>");
         }
 
         // hide leave button, no way out if coming from external platform
