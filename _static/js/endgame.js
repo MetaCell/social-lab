@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    var MTURK_DESCRIPTION = "Task Completed! Copy-paste the session code below into the mturk survey.<br/>";
-    var PROLIFIC_DESCRIPTION = "Task Completed! Copy-paste the session code below into the prolific survey.<br/>";
+    var MTURK_DESCRIPTION = "mTurk Task Completed!<br/> Please copy-paste the session code below into the survey.";
+    var PROLIFIC_DESCRIPTION = "Prolific Task Completed!<br/> Please copy-paste the session code below into the survey.";
 
     var platform = $('#platform').html();
     var worker_id = $('#worker_id').html();
@@ -13,7 +13,7 @@ $(document).ready(function () {
         $('#content').html(contentText);
 
         // show session id
-        $('#display-items-container').append("<p><b>Session Code:</b>" + session_id + "</p>");
+        $('#display-items-container').append("<p>Session Code: <b style='color:red'>" + session_id + "</b></p>");
 
         // show completion url if any as clickable
         if(completion_url!=''){

@@ -9,8 +9,7 @@ class Introduction(Page):
 class Chat(Page):
     form_model = models.Player
     form_fields = ['sent_text']
-    timeout_seconds = 15
-    #timeout_seconds = 300
+    timeout_seconds = 300
 
     def before_next_page(self):
         if self.timeout_happened:

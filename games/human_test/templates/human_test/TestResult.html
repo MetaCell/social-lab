@@ -25,5 +25,7 @@
 
 {% block selfballoon %}
     See you!
-    <a id="leave-btn" href="/"><button name="leave" type="button" class="btn socialblue ">Leave</button></a>
+    {% if participant_platform == "" %}
+        <a id="leave-btn" href="/"><button name="leave" type="button" class="btn socialblue ">Leave</button></a>
+    {% endif %}
 {% endblock %}
