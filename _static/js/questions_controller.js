@@ -46,14 +46,69 @@ QuestionsController =
         showQuestions: function (round) {
             var questions = QuestionsController.getQuestions(round);
             for(var questionId in questions){
-                var answer = this.showQuestion(questions[questionId]);
-                this.submitAnswer(questionId, round, answer);
+                this.showQuestion(round, questionId, questions[questionId]);
             }
         },
 
-        showQuestion: function(question){
-            //TODO Replace with proper UI
-            return prompt(question.question, "type here");
+        showQuestion: function(round, questionId, question){
+            switch(question.type){
+                case "text":{
+                    $("#question-text-field").val("");
+                    $("#textQuestion").show();
+                    $("#booleanQuestion").hide();
+                    $("#rangeQuestion").hide();
+                    break;
+                }
+                case "range":{
+                    $("#question-range-field").slider({min:question.min,max:question.max});
+                    $("#rangeQuestion").show();
+                    $("#booleanQuestion").hide();
+                    $("#textQuestion").hide();
+                    break;
+                }
+                case "choice":{
+                    //let's clean the choices
+                    $("#choiceQuestion").html("");
+                    $("#choiceQuestion").append("<select id='question-choice-field' class='selectpicker'></select>");
+                    for(var c in question.choices){
+                        $("#question-choice-field").append("<option>"+question.choices[c]+"</option>");
+                    }
+                    $("#question-choice-field").selectpicker();
+                    $("#choiceQuestion .btn").removeClass("btn-default");
+                    $("#choiceQuestion").show();
+                    $("#rangeQuestion").hide();
+                    $("#textQuestion").hide();
+                    break;
+                }
+            };
+
+            $("#question-dialog .question").html(question.question);
+            $("#question-submit").off('click');
+
+            var that=this;
+
+            $("#question-submit").click(function() {
+                var val = "";
+                switch (question.type) {
+                    case "text": {
+                        val = $("#question-text-field").val();
+                        break;
+                    }
+                    case "range": {
+                        val = $("#question-range-field").data().value;
+
+                        break;
+                    }
+                    case "choice": {
+                        val = $("#choiceQuestion span.filter-option").html()
+                        break;
+                    }
+                };
+                that.submitAnswer(questionId, round, val);
+                $("#question-dialog").modal('hide');
+            });
+
+            $("#question-dialog").modal({backdrop: 'static', keyboard: false});
         },
 
         submitAnswer : function(questionId, round, answer){

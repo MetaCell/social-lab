@@ -982,9 +982,42 @@ main {
     color: lightcyan;
 }
 
+.modal-backdrop {
+    opacity: 0.8 !important;
+}
 
+#question-text-field {
+    color: white !important;
+    font-size: 24px;
+}
 
+#question-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    height: 300px;
+    box-shadow: none;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 25px;
+}
 
+#choiceQuestion .btn {
+    color: black !important;
+}
 
+.popover {
+    z-index: 10;
+}
+
+#question-dialog .question {
+    color: white;
+}
+
+.dropdown-toggle::after {
+    content: none !important;
+}
+
+[data-id="question-choice-field"] {
+    height: 35px;
 
 

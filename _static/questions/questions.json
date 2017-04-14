@@ -1,6 +1,6 @@
 {
   "humanRobot":{
-      "question": "Do you think your opponent is a human or a robot?",
+      "question": "Does your opponent seem a human or a robot? How confident are you? [0 Robot - 100 Human]",
       "type": "range",
       "min": 0,
       "max": 100
@@ -11,6 +11,7 @@
   },
   "fear":{
       "question": "Are you afraid to loose?",
-      "type": "boolean"
+      "type": "choice",
+      "choices":["Yes","No"]
   }
 }
