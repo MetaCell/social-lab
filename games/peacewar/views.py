@@ -7,6 +7,15 @@ class Intention(Page):
     form_model = models.Player
     form_fields = ['intention']
 
+    def vars_for_template(self):
+
+        return {
+            'playerIdInSession': self.player.id_in_subsession,
+            'sessionId': self.session.id,
+            'round': self.round_number,
+            'game': 'peacewar'
+        }
+
 
 class Decision(Page):
     timeout_seconds = 300
@@ -17,6 +26,10 @@ class Decision(Page):
 
         return {
             'other_player_intention': self.player.other_player().intention,
+            'playerIdInSession': self.player.id_in_subsession,
+            'sessionId': self.session.id,
+            'round': self.round_number,
+            'game': 'peacewar'
         }
 
 
@@ -40,6 +53,10 @@ class Results(Page):
             'my_decision': self.player.decision.lower(),
             'other_player_decision': self.player.other_player().decision.lower(),
             'same_choice': self.player.decision == self.player.other_player().decision,
+            'playerIdInSession': self.player.id_in_subsession,
+            'sessionId': self.session.id,
+            'round': self.round_number,
+            'game': 'peacewar'
         }
 
 
