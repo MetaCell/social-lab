@@ -2,6 +2,7 @@
 {% load staticfiles otree_tags %}
 
 {% block internal_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/waitmodaldialog.css' %}">
     <script src="{% static 'otree/js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/wait.js' %}"></script>
 {% endblock %}
@@ -20,5 +21,17 @@
     </p>
     <div id="game-instructions">
         {{ instructions |safe }}
+    </div>
+
+    <div class="modal" id="worker-id-dialog" style="display:none">
+        <div class="dialog-backdrop">
+            <div class="dialog-content">
+                <input id="worker-id" type="text" name="worker-id" />
+                <br/>
+                <input id="worker-id-submit" type="button" value="Submit" />
+                <br/>
+                <p id="worker-id-feedback"></p>
+            </div>
+        </div>
     </div>
 {% endblock %}
