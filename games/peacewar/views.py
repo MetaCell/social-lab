@@ -16,7 +16,8 @@ class Decision(Page):
     def vars_for_template(self):
 
         return {
-            'other_player_intention': self.player.other_player().intention,
+            'my_intention': self.player.intention.lower(),
+            'other_player_intention': self.player.other_player().intention.lower(),
         }
 
 
