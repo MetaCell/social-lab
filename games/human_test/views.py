@@ -17,4 +17,4 @@ class TestResult(Page):
             'sessionId': self.session.id
         }
 
-page_sequence = [HumanTest, TestResult]
+page_sequence = [TestResult]

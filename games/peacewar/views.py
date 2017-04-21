@@ -12,7 +12,6 @@ class Intention(Page):
         return {
             'playerIdInSession': self.player.id_in_subsession,
             'sessionId': self.session.id,
-            'round': self.round_number,
             'game': 'peacewar'
         }
 
@@ -29,7 +28,6 @@ class Decision(Page):
             'other_player_intention': self.player.other_player().intention.lower(),
             'playerIdInSession': self.player.id_in_subsession,
             'sessionId': self.session.id,
-            'round': self.round_number,
             'game': 'peacewar'
         }
 

@@ -20,7 +20,6 @@ class Send(Page):
         return {
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
-                'round': self.round_number,
                 'game': 'trust'
         }
 
@@ -45,7 +44,6 @@ class SendBack(Page):
                 'prompt': 'Please enter a number from 0 to %s:' % tripled_amount,
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
-                'round': self.round_number,
                 'game': 'trust'
         }
 

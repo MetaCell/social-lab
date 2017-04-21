@@ -1,10 +1,10 @@
 [
   {
-    "questionId":"age",
-    "frequency": 1
+    "questionId":"fear",
+    "round": 1
   },
   {
-    "questionId":"age",
-    "round": 4
+    "questionId":"humanRobot",
+    "frequency": 1
   }
 ]

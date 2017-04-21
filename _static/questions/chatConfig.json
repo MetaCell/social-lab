@@ -2,9 +2,5 @@
   {
     "questionId":"humanRobot",
     "frequency": 2
-  },
-  {
-    "questionId":"age",
-    "round": 4
   }
 ]

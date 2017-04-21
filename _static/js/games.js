@@ -3,7 +3,6 @@
  */
 $(document).ready(function () {
 
-
     window.setTimeout(function () {
         $('.otherplayer').popover('show');
         adjustPopovers('other');
@@ -11,9 +10,14 @@ $(document).ready(function () {
 
     window.setTimeout(function () {
         $('.self').popover('show');
-
         adjustPopovers('self');
-    }, 2000);
+    }, 5000);
+
+    // ask mid-round question after giving some time to read what happened
+    window.setTimeout(function () {
+        //for round based games, we show questions at the beginning
+        QuestionsController.showQuestions($("#round").html());
+    }, 5000);
 
     window.setInterval(function () {
         var other = $('.player.otherplayer');
@@ -38,13 +42,6 @@ $(document).ready(function () {
     window.addEventListener('orientationchange', resizeGame, false);
 
     QuestionsController.init($("#game").html());
-
-    window.setTimeout(function () {
-        //for round based games, we show questions at the beginning
-        QuestionsController.showQuestions($("#round").html());
-    }, 2000);
-
-
 });
 
 function showInstructions() {
