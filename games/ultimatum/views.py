@@ -9,6 +9,16 @@ class Offer(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1
 
+
+    def vars_for_template(self):
+
+        return {
+                'playerIdInSession': self.player.id_in_subsession,
+                'sessionId': self.session.id,
+                'round': self.round_number,
+                'game': 'ultimatum'
+        }
+
     timeout_seconds = 300
 
 
@@ -23,6 +33,15 @@ class Accept(Page):
     def is_displayed(self):
         return self.player.id_in_group == 2 and not self.group.strategy
 
+    def vars_for_template(self):
+
+        return {
+                'playerIdInSession': self.player.id_in_subsession,
+                'sessionId': self.session.id,
+                'round': self.round_number,
+                'game': 'ultimatum'
+        }
+
     timeout_seconds = 300
 
 
@@ -33,6 +52,16 @@ class AcceptStrategy(Page):
 
     def is_displayed(self):
         return self.player.id_in_group == 2 and self.group.strategy
+
+
+    def vars_for_template(self):
+
+        return {
+                'playerIdInSession': self.player.id_in_subsession,
+                'sessionId': self.session.id,
+                'round': self.round_number,
+                'game': 'ultimatum'
+        }
 
     timeout_seconds = 300
 

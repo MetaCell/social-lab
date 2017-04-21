@@ -3,12 +3,17 @@
  */
 $(document).ready(function () {
 
+    //This constant determines how many messages are in a round
+    const ROUND_MSG_FREQUENCY = 4;
+
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
     var sessionId = $("#sessionId").html();
     var playerIdInSession = $("#playerIdInSession").html();
     var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/chat/" + sessionId + "," + playerIdInSession + "/");
     var plainHistory = $("#plainHistory");
     var chatHistory = $("#chatHistory");
+    var round = 0;
+    var msgCounter = 0;
 
     socket.onmessage = function (e) {
         var message = JSON.parse(e.data);
@@ -35,6 +40,17 @@ $(document).ready(function () {
             if (participantUrl != undefined) {
                 window.location.href = participantUrl;
             }
+        }
+
+        //Question time
+        msgCounter++;
+        if(msgCounter==ROUND_MSG_FREQUENCY){
+            round++;
+            msgCounter=0;
+
+            $("#round").html(round);
+            //we check if there are questions every ROUND_MSG_FREQUENCY messages
+            QuestionsController.showQuestions(round);
         }
     };
 

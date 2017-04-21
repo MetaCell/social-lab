@@ -1,5 +1,5 @@
 /**
- * Author: giovanniidili 23/01/2017
+ * Author: giovanniidili
  */
 $(document).ready(function () {
     var game = getParameterByName('game');

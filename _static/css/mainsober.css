@@ -1,16 +1,15 @@
 /* SOBER SPECIFIC */
-#youContainer{
+#youContainer {
     margin-top: -30px;
 }
 
 .btn.socialblue {
-  background: #5d9f8e;
+    background: #5d9f8e;
 }
+
 .btn.socialblue span, .btn.socialblue:after {
-  background: #69ceb9;
+    background: #69ceb9;
 }
-
-
 
 /* END */
 
@@ -212,7 +211,6 @@ h4 {
     margin-top: 20px;
     text-align: center;
 }
-
 
 #wt {
     background-image: url("../img/wtlogo.png");
@@ -956,4 +954,41 @@ main {
     }
 }
 
+.modal-backdrop {
+    opacity: 0.8 !important;
+}
 
+#question-text-field {
+    color: white !important;
+    font-size: 24px;
+}
+
+#question-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    height: 300px;
+    box-shadow: none;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 25px;
+}
+
+#choiceQuestion .btn {
+    color: black !important;
+}
+
+.popover {
+    z-index: 10;
+}
+
+#question-dialog .question {
+    color: white;
+}
+
+.dropdown-toggle::after {
+    content: none !important;
+}
+
+[data-id="question-choice-field"] {
+    height: 35px;
+}
