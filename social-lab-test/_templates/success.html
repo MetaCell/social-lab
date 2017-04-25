@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration Successful{% endblock %}
+
+{% block content %}
+    <div class="signPage">
+        <h2> Registration Completed Successfully</h2>
+        <p>Thank you for registering.</p>
+        <div class="login-center">
+            <button type="button" class="btn socialblue" onclick="window.location='{% url 'login' %}'">Login</button>
+        </div>
+    </div>
+{% endblock %}

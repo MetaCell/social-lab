@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="signPage">
+        <h2>Login</h2>
+        <iv id="login-form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="login-center">
+                    <button type="submit" class="btn socialblue">Login</button>
+                </div>
+
+            </form>
+            <div class="login-center">
+                Don't have an account yet?
+                <button type="button" class="btn socialblue" onclick="window.location='{% url 'register' %}'">Register</button>
+            </div>
+    </div>
+
+    </div>
+{% endblock %}

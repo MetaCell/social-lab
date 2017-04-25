@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile Update{% endblock %}
+
+{% block content %}
+    <div class="signPage">
+        <h2>Profile Update</h2>
+        <form method="post" action=".">{% csrf_token %}
+            <table border="0">
+                {{ form.as_p }}
+            </table>
+            <div class="login-center">
+                <input type="submit" class="btn socialblue" value="Update"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}
