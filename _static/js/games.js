@@ -3,6 +3,9 @@
  */
 $(document).ready(function () {
 
+    var round = $("#roundCount").html();
+    $(".roundLabel").html("Round "+round);
+
     window.setTimeout(function () {
         $('.otherplayer').popover('show');
         adjustPopovers('other');

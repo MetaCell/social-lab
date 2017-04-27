@@ -15,7 +15,7 @@ class Offer(Page):
         return {
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
-                'round': self.round_number,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'game': 'ultimatum'
         }
 
@@ -38,7 +38,7 @@ class Accept(Page):
         return {
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
-                'round': self.round_number,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'game': 'ultimatum'
         }
 
@@ -59,7 +59,7 @@ class AcceptStrategy(Page):
         return {
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
-                'round': self.round_number,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'game': 'ultimatum'
         }
 
@@ -69,9 +69,26 @@ class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
 
+    def vars_for_template(self):
+
+        return {
+                'playerIdInSession': self.player.id_in_subsession,
+                'sessionId': self.session.id,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'game': 'ultimatum'
+        }
+
 
 class Results(Page):
-    pass
+    def vars_for_template(self):
+
+        return {
+                'playerIdInSession': self.player.id_in_subsession,
+                'sessionId': self.session.id,
+                'round': self.round_number,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'game': 'ultimatum'
+        }
 
 
 page_sequence = [Offer,
