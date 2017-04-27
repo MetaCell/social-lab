@@ -107,15 +107,16 @@ QuestionsController = {
                         break;
                     }
                     case "range": {
-                        val = $("#question-range-field").data().value;
+                        val = $("#question-range-field").val();
 
                         break;
                     }
                     case "choice": {
-                        val = $("#choiceQuestion span.filter-option").html()
+                        val = $("#choiceQuestion span.filter-option").html();
                         break;
                     }
-                };
+                }
+
                 that.submitAnswer(questionId, round, val);
                 $("#question-dialog").modal('hide');
                 $(".modal-backdrop").remove();
