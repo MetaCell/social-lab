@@ -4,7 +4,13 @@
 $(document).ready(function () {
 
     var round = $("#roundCount").html();
-    $(".roundLabel").html("Round "+round);
+    if(round!=""){
+        $(".roundLabel").html("Round "+round);
+    }
+    else{
+        $(".roundLabel").hide();
+    }
+
 
     window.setTimeout(function () {
         $('.otherplayer').popover('show');
