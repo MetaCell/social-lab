@@ -1,16 +1,15 @@
 /* SOBER SPECIFIC */
-#youContainer{
+#youContainer {
     margin-top: -30px;
 }
 
 .btn.socialblue {
-  background: #5d9f8e;
+    background: #5d9f8e;
 }
+
 .btn.socialblue span, .btn.socialblue:after {
-  background: #69ceb9;
+    background: #69ceb9;
 }
-
-
 
 /* END */
 
@@ -212,7 +211,6 @@ h4 {
     margin-top: 20px;
     text-align: center;
 }
-
 
 #wt {
     background-image: url("../img/wtlogo.png");
@@ -504,7 +502,7 @@ h4 {
 }
 
 #time-limit {
-    top: 40px;
+    bottom: 25px;
     right: 40px;
     position: absolute;
     color: lightcyan;
@@ -956,4 +954,70 @@ main {
     }
 }
 
+.modal-backdrop {
+    opacity: 0.8 !important;
+}
+
+#question-text-field {
+    color: white !important;
+    font-size: 24px;
+}
+
+#question-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    height: 300px;
+    box-shadow: none;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 25px;
+}
+
+#choiceQuestion .btn {
+    color: black !important;
+}
+
+.popover {
+    z-index: 10;
+}
+
+#question-dialog .question {
+    color: white;
+}
+
+.dropdown-toggle::after {
+    content: none !important;
+}
+
+[data-id="question-choice-field"] {
+    height: 35px;
+}
+
+.roundLabel{
+    width: 160px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top:-60px;
+    background: #519f8f;
+    color: #c5f4ff;
+    border: solid #78ead2 4px;
+    padding: 10px;
+}
+
+
+.points{
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    width: 140px;
+    color: white;
+    font-size: 12px;
+    text-align: right;
+}
+
+.pointsLabel{
+    color: #ffe400;
+    font-size: 22px;
+
+}
 

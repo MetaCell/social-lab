@@ -1,0 +1,10 @@
+[
+  {
+    "questionId":"fear",
+    "round": 1
+  },
+  {
+    "questionId":"humanRobot",
+    "frequency": 1
+  }
+]

@@ -14,6 +14,18 @@ class Send(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1
 
+
+    def vars_for_template(self):
+
+        return {
+                'playerIdInSession': self.player.id_in_subsession,
+                'participantIdInSession': self.participant.id_in_session,
+                'sessionId': self.session.id,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
+                'game': 'trust'
+        }
+
     timeout_seconds = 300
 
 
@@ -32,8 +44,14 @@ class SendBack(Page):
 
         return {
                 'tripled_amount': tripled_amount,
-                'prompt':
-                    'Please enter a number from 0 to %s:' % tripled_amount}
+                'prompt': 'Please enter a number from 0 to %s:' % tripled_amount,
+                'playerIdInSession': self.player.id_in_subsession,
+                'participantIdInSession': self.participant.id_in_session,
+                'sessionId': self.session.id,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
+                'game': 'trust'
+        }
 
     def sent_back_amount_max(self):
         return self.group.sent_amount * Constants.multiplication_factor
@@ -51,7 +69,14 @@ class Results(Page):
 
     def vars_for_template(self):
         return {
-            'tripled_amount': self.group.sent_amount * Constants.multiplication_factor
+            'tripled_amount': self.group.sent_amount * Constants.multiplication_factor,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantIdInSession': self.participant.id_in_session,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'round': self.round_number,
+            'points': self.player.participant.payoff,
+            'game': 'trust'
         }
 
 

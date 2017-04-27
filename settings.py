@@ -263,6 +263,7 @@ SESSION_CONFIG_DEFAULTS = {
     'participation_fee': 1.00,
     'doc': "",
     'mturk_hit_settings': mturk_hit_settings,
+    'random_start_order': True
 }
 
 SESSION_CONFIGS = [
@@ -270,6 +271,7 @@ SESSION_CONFIGS = [
         'name': 'trust',
         'display_name': "Trust",
         'num_demo_participants': 2,
+        'random_start_order': True,
         'app_sequence': ['games.trust', 'games.human_test'],
     },
     {
@@ -283,6 +285,7 @@ SESSION_CONFIGS = [
         'display_name': "Ultimatum",
         'num_demo_participants': 2,
         'treatment': "no strategy",
+        'random_start_order': True,
         'app_sequence': ['games.ultimatum', 'games.human_test'],
     },
     {

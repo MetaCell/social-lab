@@ -1,6 +1,5 @@
 from . import models
 from ._builtin import Page, WaitPage
-from otree.api import Currency as c, currency_range
 from .models import Constants
 
 
@@ -10,6 +9,12 @@ class HumanTest(Page):
 
 
 class TestResult(Page):
-    pass
+    def vars_for_template(self):
+        return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'sessionId': self.session.id
+        }
 
-page_sequence = [HumanTest, TestResult]
+page_sequence = [TestResult]

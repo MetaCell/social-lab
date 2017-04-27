@@ -5,11 +5,25 @@
     Goodbye!
 {% endblock %}
 
+{% block global_scripts %}
+    <script type="text/javascript" src="{% static 'js/endgame.js' %}"></script>
+{% endblock %}
+
 {% block current %}
-    Thanks for playing with Social Lab
+    <div id="content">
+        Thanks for playing with Social Lab!
+    </div>
+    <div style="display: none">
+        <div id="platform">{{ participant_platform }}</div>
+        <div id="worker_id">{{ participant_worker_id }}</div>
+        <div id="completion_url">{{ participant_completion_url }}</div>
+        <div id="session_id">{{ sessionId }}</div>
+    </div>
 {% endblock %}
 
 {% block selfballoon %}
     See you!
-    <a href="/"><button name="leave" type="button" class="btn socialblue ">Leave</button></a>
+    {% if participant_platform == "" %}
+        <a id="leave-btn" href="/"><button name="leave" type="button" class="btn socialblue ">Leave</button></a>
+    {% endif %}
 {% endblock %}

@@ -7,6 +7,17 @@ class Intention(Page):
     form_model = models.Player
     form_fields = ['intention']
 
+    def vars_for_template(self):
+
+        return {
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantIdInSession': self.participant.id_in_session,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'points': self.player.participant.payoff,
+            'game': 'peacewar'
+        }
+
 
 class Decision(Page):
     timeout_seconds = 300
@@ -16,18 +27,45 @@ class Decision(Page):
     def vars_for_template(self):
 
         return {
-            'other_player_intention': self.player.other_player().intention,
+            'my_intention': self.player.intention.lower(),
+            'other_player_intention': self.player.other_player().intention.lower(),
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantIdInSession': self.participant.id_in_session,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'sessionId': self.session.id,
+            'points': self.player.participant.payoff,
+            'game': 'peacewar'
         }
 
 
 class WaitForOther(WaitPage):
-    pass
+    def vars_for_template(self):
+
+        return {
+            'playerIdInSession': self.player.id_in_subsession,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'sessionId': self.session.id,
+            'points': self.player.participant.payoff,
+            'game': 'peacewar'
+        }
+
 
 
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         for p in self.group.get_players():
             p.set_payoff()
+
+    def vars_for_template(self):
+
+        return {
+            'playerIdInSession': self.player.id_in_subsession,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'sessionId': self.session.id,
+            'points': self.player.participant.payoff,
+            'game': 'peacewar'
+        }
+
 
 
 class Results(Page):
@@ -40,6 +78,13 @@ class Results(Page):
             'my_decision': self.player.decision.lower(),
             'other_player_decision': self.player.other_player().decision.lower(),
             'same_choice': self.player.decision == self.player.other_player().decision,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantIdInSession': self.participant.id_in_session,
+            'sessionId': self.session.id,
+            'points': self.player.participant.payoff,
+            'round': self.round_number,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'game': 'peacewar'
         }
 
 
