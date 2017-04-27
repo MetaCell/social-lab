@@ -14,7 +14,7 @@ class Offer(Page):
 
         return {
                 'playerIdInSession': self.player.id_in_subsession,
-                'participantIdInSession': self.participant.id_in_session,
+                'participantCode': self.participant.code,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
@@ -39,7 +39,7 @@ class Accept(Page):
 
         return {
                 'playerIdInSession': self.player.id_in_subsession,
-                'participantIdInSession': self.participant.id_in_session,
+                'participantCode': self.participant.code,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
@@ -62,7 +62,7 @@ class AcceptStrategy(Page):
 
         return {
                 'playerIdInSession': self.player.id_in_subsession,
-                'participantIdInSession': self.participant.id_in_session,
+                'participantCode': self.participant.code,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
@@ -79,7 +79,7 @@ class ResultsWaitPage(WaitPage):
 
         return {
                 'playerIdInSession': self.player.id_in_subsession,
-                'participantIdInSession': self.participant.id_in_session,
+                'participantCode': self.participant.code,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
@@ -92,7 +92,7 @@ class Results(Page):
 
         return {
                 'playerIdInSession': self.player.id_in_subsession,
-                'participantIdInSession': self.participant.id_in_session,
+                'participantCode': self.participant.code,
                 'sessionId': self.session.id,
                 'round': self.round_number,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),

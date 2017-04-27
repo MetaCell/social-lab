@@ -38,8 +38,8 @@ QuestionsController = {
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
             var sessionId = $("#sessionId").html();
             var playerIdInSession = $("#playerIdInSession").html();
-            var participantId = $("#participantId").html();
-            this.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/question/" + sessionId + "," + playerIdInSession + "," + participantId + "/");
+            var participantCode = $("#participantCode").html();
+            this.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/question/" + sessionId + "," + playerIdInSession + "," + participantCode + "/");
             //load the questions
             var that = this;
             $.getJSON("/_static/questions/questions.json", function (json) {
@@ -121,7 +121,7 @@ QuestionsController = {
                 $(".modal-backdrop").remove();
                 that.currentQuestion++;
                 //show the next question (the check to evaluate whether there's a next question or not is inside showQuestion)
-                that.showQuestion(round, questions);
+                setTimeout(function(){ that.showQuestion(round, questions); }, 50);
             });
 
             $("#question-dialog").modal({backdrop: 'static', keyboard: false});
