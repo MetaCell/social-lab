@@ -108,7 +108,6 @@ QuestionsController = {
                     }
                     case "range": {
                         val = $("#question-range-field").val();
-
                         break;
                     }
                     case "choice": {
