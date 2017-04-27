@@ -12,7 +12,7 @@ $(document).ready(function () {
     }
 
     var points = $("#points").html();
-    if(points!="None"){
+    if(points!="None" && points!=""){
         $(".pointsLabel").html(points);
     }
     else{
