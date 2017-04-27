@@ -992,3 +992,14 @@ main {
 [data-id="question-choice-field"] {
     height: 35px;
 }
+
+.roundLabel{
+    width: 160px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top:-60px;
+    background: #519f8f;
+    color: #c5f4ff;
+    border: solid #78ead2 4px;
+    padding: 10px;
+}

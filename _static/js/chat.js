@@ -12,6 +12,9 @@ $(document).ready(function () {
     var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/chat/" + sessionId + "," + playerIdInSession + "/");
     var plainHistory = $("#plainHistory");
     var chatHistory = $("#chatHistory");
+
+    $(".roundLabel").hide();
+
     var round = 0;
     var msgCounter = 0;
 

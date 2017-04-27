@@ -3,6 +3,15 @@
  */
 $(document).ready(function () {
 
+    var round = $("#roundCount").html();
+    if(round!=""){
+        $(".roundLabel").html("Round "+round);
+    }
+    else{
+        $(".roundLabel").hide();
+    }
+
+
     window.setTimeout(function () {
         $('.otherplayer').popover('show');
         adjustPopovers('other');
