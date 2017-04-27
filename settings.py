@@ -271,6 +271,7 @@ SESSION_CONFIGS = [
         'name': 'trust',
         'display_name': "Trust",
         'num_demo_participants': 2,
+        'random_start_order': True,
         'app_sequence': ['games.trust', 'games.human_test'],
     },
     {
@@ -284,6 +285,7 @@ SESSION_CONFIGS = [
         'display_name': "Ultimatum",
         'num_demo_participants': 2,
         'treatment': "no strategy",
+        'random_start_order': True,
         'app_sequence': ['games.ultimatum', 'games.human_test'],
     },
     {
