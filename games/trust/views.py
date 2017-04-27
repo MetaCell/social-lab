@@ -19,6 +19,7 @@ class Send(Page):
 
         return {
                 'playerIdInSession': self.player.id_in_subsession,
+                'participantIdInSession': self.participant.id_in_session,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
@@ -45,6 +46,7 @@ class SendBack(Page):
                 'tripled_amount': tripled_amount,
                 'prompt': 'Please enter a number from 0 to %s:' % tripled_amount,
                 'playerIdInSession': self.player.id_in_subsession,
+                'participantIdInSession': self.participant.id_in_session,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
@@ -69,6 +71,7 @@ class Results(Page):
         return {
             'tripled_amount': self.group.sent_amount * Constants.multiplication_factor,
             'playerIdInSession': self.player.id_in_subsession,
+            'participantIdInSession': self.participant.id_in_session,
             'sessionId': self.session.id,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'round': self.round_number,
