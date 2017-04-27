@@ -3,7 +3,6 @@ from otree.api import (
 )
 
 
-
 doc = """
 Chat game
 """
@@ -14,9 +13,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 1
 
-
     instructions_template = 'chat/Instructions.html'
-
 
 
 class Subsession(BaseSubsession):
@@ -25,7 +22,6 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     pass
-
 
 
 class Player(BasePlayer):
