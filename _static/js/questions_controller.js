@@ -6,6 +6,7 @@ QuestionsController = {
     questions: undefined,
     gameConfig: undefined,
     socket: undefined,
+    currentQuestion:0,
 
     getQuestions: function (round) {
         var gameQuestions = {};
@@ -52,71 +53,78 @@ QuestionsController = {
     showQuestions: function (round) {
         if(game != undefined) {
             var questions = QuestionsController.getQuestions(round);
-            for (var questionId in questions) {
-                this.showQuestion(round, questionId, questions[questionId]);
-            }
+            this.currentQuestion=0;
+            this.showQuestion(round, questions);
         }
     },
 
-    showQuestion: function(round, questionId, question){
-        switch(question.type){
-            case "text":{
-                $("#question-text-field").val("");
-                $("#textQuestion").show();
-                $("#booleanQuestion").hide();
-                $("#rangeQuestion").hide();
-                break;
-            }
-            case "range":{
-                $("#question-range-field").slider({min:question.min,max:question.max});
-                $("#rangeQuestion").show();
-                $("#booleanQuestion").hide();
-                $("#textQuestion").hide();
-                break;
-            }
-            case "choice":{
-                //let's clean the choices
-                $("#choiceQuestion").html("");
-                $("#choiceQuestion").append("<select id='question-choice-field' class='selectpicker'></select>");
-                for(var c in question.choices){
-                    $("#question-choice-field").append("<option>"+question.choices[c]+"</option>");
-                }
-                $("#question-choice-field").selectpicker();
-                $("#choiceQuestion .btn").removeClass("btn-default");
-                $("#choiceQuestion").show();
-                $("#rangeQuestion").hide();
-                $("#textQuestion").hide();
-                break;
-            }
-        };
-
-        $("#question-dialog .question").html(question.question);
-        $("#question-submit").off('click');
-
-        var that=this;
-
-        $("#question-submit").click(function() {
-            var val = "";
-            switch (question.type) {
-                case "text": {
-                    val = $("#question-text-field").val();
+    showQuestion: function(round, questions){
+        var questionId=Object.keys(questions)[this.currentQuestion];
+        if(questionId!=undefined){
+            var question=questions[questionId];
+            switch(question.type){
+                case "text":{
+                    $("#question-text-field").val("");
+                    $("#textQuestion").show();
+                    $("#choiceQuestion").hide();
+                    $("#rangeQuestion").hide();
                     break;
                 }
-                case "range": {
-                    val = $("#question-range-field").data().value;
-
+                case "range":{
+                    $("#question-range-field").slider({min:question.min,max:question.max});
+                    $("#rangeQuestion").show();
+                    $("#choiceQuestion").hide();
+                    $("#textQuestion").hide();
                     break;
                 }
-                case "choice": {
-                    val = $("#choiceQuestion span.filter-option").html()
+                case "choice":{
+                    //let's clean the choices
+                    $("#choiceQuestion").html("");
+                    $("#choiceQuestion").append("<select id='question-choice-field' class='selectpicker'></select>");
+                    for(var c in question.choices){
+                        $("#question-choice-field").append("<option>"+question.choices[c]+"</option>");
+                    }
+                    $("#question-choice-field").selectpicker();
+                    $("#choiceQuestion .btn").removeClass("btn-default");
+                    $("#choiceQuestion").show();
+                    $("#rangeQuestion").hide();
+                    $("#textQuestion").hide();
                     break;
                 }
             };
-            that.submitAnswer(questionId, round, val);
-            $("#question-dialog").modal('hide');
-        });
 
-        $("#question-dialog").modal({backdrop: 'static', keyboard: false});
+            $("#question-dialog .question").html(question.question);
+            $("#question-submit").off('click');
+
+            var that=this;
+
+            $("#question-submit").click(function() {
+                var val = "";
+                switch (question.type) {
+                    case "text": {
+                        val = $("#question-text-field").val();
+                        break;
+                    }
+                    case "range": {
+                        val = $("#question-range-field").data().value;
+
+                        break;
+                    }
+                    case "choice": {
+                        val = $("#choiceQuestion span.filter-option").html()
+                        break;
+                    }
+                };
+                that.submitAnswer(questionId, round, val);
+                $("#question-dialog").modal('hide');
+                $(".modal-backdrop").remove();
+                that.currentQuestion++;
+                //show the next question (the check to evaluate whether there's a next question or not is inside showQuestion)
+                that.showQuestion(round, questions);
+            });
+
+            $("#question-dialog").modal({backdrop: 'static', keyboard: false});
+        }
     },
 
     submitAnswer : function(questionId, round, answer){
