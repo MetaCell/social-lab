@@ -11,7 +11,7 @@ class Intention(Page):
 
         return {
             'playerIdInSession': self.player.id_in_subsession,
-            'participantIdInSession': self.participant.id_in_session,
+            'participantCode': self.participant.code,
             'sessionId': self.session.id,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'points': self.player.participant.payoff,
@@ -30,7 +30,7 @@ class Decision(Page):
             'my_intention': self.player.intention.lower(),
             'other_player_intention': self.player.other_player().intention.lower(),
             'playerIdInSession': self.player.id_in_subsession,
-            'participantIdInSession': self.participant.id_in_session,
+            'participantCode': self.participant.code,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'sessionId': self.session.id,
             'points': self.player.participant.payoff,
@@ -79,7 +79,7 @@ class Results(Page):
             'other_player_decision': self.player.other_player().decision.lower(),
             'same_choice': self.player.decision == self.player.other_player().decision,
             'playerIdInSession': self.player.id_in_subsession,
-            'participantIdInSession': self.participant.id_in_session,
+            'participantCode': self.participant.code,
             'sessionId': self.session.id,
             'points': self.player.participant.payoff,
             'round': self.round_number,

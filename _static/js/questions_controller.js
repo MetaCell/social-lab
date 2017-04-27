@@ -38,8 +38,8 @@ QuestionsController = {
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
             var sessionId = $("#sessionId").html();
             var playerIdInSession = $("#playerIdInSession").html();
-            var participantId = $("#participantId").html();
-            this.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/question/" + sessionId + "," + playerIdInSession + "," + participantId + "/");
+            var participantCode = $("#participantCode").html();
+            this.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/question/" + sessionId + "," + playerIdInSession + "," + participantCode + "/");
             //load the questions
             var that = this;
             $.getJSON("/_static/questions/questions.json", function (json) {
