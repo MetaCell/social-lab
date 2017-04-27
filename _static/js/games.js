@@ -11,6 +11,14 @@ $(document).ready(function () {
         $(".roundLabel").hide();
     }
 
+    var points = $("#points").html();
+    if(points!="None"){
+        $(".pointsLabel").html(points);
+    }
+    else{
+        $(".points").hide();
+    }
+
 
     window.setTimeout(function () {
         $('.otherplayer').popover('show');

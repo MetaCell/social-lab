@@ -13,6 +13,7 @@ class Intention(Page):
             'playerIdInSession': self.player.id_in_subsession,
             'sessionId': self.session.id,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'points': self.player.participant.payoff,
             'game': 'peacewar'
         }
 
@@ -30,18 +31,39 @@ class Decision(Page):
             'playerIdInSession': self.player.id_in_subsession,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'sessionId': self.session.id,
+            'points': self.player.participant.payoff,
             'game': 'peacewar'
         }
 
 
 class WaitForOther(WaitPage):
-    pass
+    def vars_for_template(self):
+
+        return {
+            'playerIdInSession': self.player.id_in_subsession,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'sessionId': self.session.id,
+            'points': self.player.participant.payoff,
+            'game': 'peacewar'
+        }
+
 
 
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         for p in self.group.get_players():
             p.set_payoff()
+
+    def vars_for_template(self):
+
+        return {
+            'playerIdInSession': self.player.id_in_subsession,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'sessionId': self.session.id,
+            'points': self.player.participant.payoff,
+            'game': 'peacewar'
+        }
+
 
 
 class Results(Page):
@@ -56,6 +78,7 @@ class Results(Page):
             'same_choice': self.player.decision == self.player.other_player().decision,
             'playerIdInSession': self.player.id_in_subsession,
             'sessionId': self.session.id,
+            'points': self.player.participant.payoff,
             'round': self.round_number,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'game': 'peacewar'

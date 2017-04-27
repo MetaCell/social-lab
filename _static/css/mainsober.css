@@ -502,7 +502,7 @@ h4 {
 }
 
 #time-limit {
-    top: 40px;
+    bottom: 25px;
     right: 40px;
     position: absolute;
     color: lightcyan;
@@ -1003,3 +1003,21 @@ main {
     border: solid #78ead2 4px;
     padding: 10px;
 }
+
+
+.points{
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    width: 140px;
+    color: white;
+    font-size: 12px;
+    text-align: right;
+}
+
+.pointsLabel{
+    color: #ffe400;
+    font-size: 22px;
+
+}
+

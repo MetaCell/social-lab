@@ -16,6 +16,7 @@ class Offer(Page):
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
                 'game': 'ultimatum'
         }
 
@@ -39,6 +40,7 @@ class Accept(Page):
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
                 'game': 'ultimatum'
         }
 
@@ -60,6 +62,7 @@ class AcceptStrategy(Page):
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
                 'game': 'ultimatum'
         }
 
@@ -75,6 +78,7 @@ class ResultsWaitPage(WaitPage):
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
                 'game': 'ultimatum'
         }
 
@@ -87,6 +91,7 @@ class Results(Page):
                 'sessionId': self.session.id,
                 'round': self.round_number,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
                 'game': 'ultimatum'
         }
 

@@ -21,6 +21,7 @@ class Send(Page):
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
                 'game': 'trust'
         }
 
@@ -46,6 +47,7 @@ class SendBack(Page):
                 'playerIdInSession': self.player.id_in_subsession,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'points': self.player.participant.payoff,
                 'game': 'trust'
         }
 
@@ -70,6 +72,7 @@ class Results(Page):
             'sessionId': self.session.id,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'round': self.round_number,
+            'points': self.player.participant.payoff,
             'game': 'trust'
         }
 

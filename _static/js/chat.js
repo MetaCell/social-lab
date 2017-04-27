@@ -14,6 +14,7 @@ $(document).ready(function () {
     var chatHistory = $("#chatHistory");
 
     $(".roundLabel").hide();
+    $(".points").hide();
 
     var round = 0;
     var msgCounter = 0;
