@@ -6,7 +6,7 @@ $(document).ready(function () {
     // external platform parameters
     var platform = getParameterByName('platform');
     var workerId = getParameterByName('workerId');
-    var completionUrl = getParameterByName('completionUrl');
+    var completionUrl = getParameterByName('completion_url');
 
     var WORKER_ID_MIN_LENGTH = 5;
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
             // concat platform (mturk/prolific), worker id and options params (url redirect on completion) if any
-            var paramsString = getParametersString(game, platform, workerId, completionUrl);
+            var paramsString = getParametersString(game, platform, workerId);
             window.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/matchmaking/" + paramsString + "/");
 
             socket.onmessage = function (e) {
@@ -76,7 +76,11 @@ $(document).ready(function () {
             };
 
             socket.onopen = function () {
-                // nothing for now on open
+                // if we have a completion url, send it as message once the socket is open for business
+                if(completionUrl != '' && completionUrl != undefined) {
+                    // NOTE: cannot be sent as url param, breaking characters
+                    sendSocketMessage(socket, 'SET_COMPLETION_URL', completionUrl);
+                }
             };
 
             // Call onopen directly if socket is already open
@@ -92,10 +96,14 @@ $(document).ready(function () {
     });
 });
 
+function sendSocketMessage(w_socket, status, value){
+    var payload = {'status': status, 'message': value};
+    w_socket.send(JSON.stringify(payload));
+}
+
 function startPolling(w_socket, interval) {
     return setInterval(function () {
-        var payload = {'status': 'POLLING', 'message': ''};
-        w_socket.send(JSON.stringify(payload));
+        sendSocketMessage(w_socket, 'POLLING', '');
     }, interval);
 }
 
@@ -115,7 +123,7 @@ function getParametersString(game, platform, workerId, completion_url){
         }
 
         if(completion_url != '' && completion_url != undefined) {
-            paramsString += "," + completion_url;
+            paramsString += "," + encodeURIComponent(completion_url);
         }
     }
 
