@@ -72,7 +72,10 @@ QuestionsController = {
                     break;
                 }
                 case "range":{
+                    $("#question-range-min").html(question.minLabel != undefined ? question.minLabel : question.min);
+                    $("#question-range-max").html(question.maxLabel != undefined ? question.maxLabel : question.max);
                     $("#question-range-field").slider({min:question.min,max:question.max});
+                    $("#question-range-field").slider('setValue', 0);
                     $("#rangeQuestion").show();
                     $("#choiceQuestion").hide();
                     $("#textQuestion").hide();
