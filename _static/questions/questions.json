@@ -1,9 +1,11 @@
 {
   "humanRobot":{
-      "question": "Are you interacting with a human or a computer?<br/>[Robot          Human]",
+      "question": "Is your opponent a robot or a human?",
       "type": "range",
       "min": -100,
-      "max": 100
+      "max": 100,
+      "minLabel": "Robot",
+      "maxLabel": "Human"
   },
   "feel":{
       "question": "How do you feel?",
