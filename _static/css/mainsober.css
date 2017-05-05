@@ -985,6 +985,10 @@ main {
     color: white;
 }
 
+#question-dialog .question-range-label {
+    color: white;
+}
+
 .dropdown-toggle::after {
     content: none !important;
 }
