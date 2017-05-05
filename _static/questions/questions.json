@@ -2,7 +2,7 @@
   "humanRobot":{
       "question": "Is your opponent a robot or a human?",
       "type": "range",
-      "min": 0,
+      "min": -100,
       "max": 100,
       "minLabel": "Robot",
       "maxLabel": "Human"
