@@ -3,15 +3,15 @@
  * Author: giovanniidili
  */
 $(document).ready(function () {
-    // player id - populated dynamically
-    var playerID = '';
-
     // This object defines how many messages per player make up a round
     // NOTE: the first to send a message is considered to be P1
     var ROUND_DEFINITION = {
-        P1: 1,
-        P2: 2
+        P1: 4,
+        P2: 4
     };
+
+    // player id - populated dynamically based on who messages first
+    var playerID = '';
 
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
     var sessionId = $("#sessionId").html();
