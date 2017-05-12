@@ -1,10 +1,17 @@
 /**
- * Author: matteocantarelli 23/01/2017
+ * Author: matteocantarelli
+ * Author: giovanniidili
  */
 $(document).ready(function () {
+    // player id - populated dynamically
+    var playerID = '';
 
-    //This constant determines how many messages are in a round
-    const ROUND_MSG_FREQUENCY = 4;
+    // This object defines how many messages per player make up a round
+    // NOTE: the first to send a message is considered to be P1
+    var ROUND_DEFINITION = {
+        P1: 1,
+        P2: 2
+    };
 
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
     var sessionId = $("#sessionId").html();
@@ -17,6 +24,8 @@ $(document).ready(function () {
     $(".points").hide();
 
     var round = 0;
+    var roundMsgSentCounter = 0;
+    var roundMsgReceivedCounter = 0;
     var msgCounter = 0;
 
     socket.onmessage = function (e) {
@@ -26,31 +35,40 @@ $(document).ready(function () {
         }
 
         if (playerIdInSession != message.sender) {
+            if(msgCounter == 0){
+                playerID = 'P2';
+            }
+
+            roundMsgReceivedCounter++;
+
             chatHistory.append("<div><div class='otherPlayerName'>Participant:</div><div class='chattext'>" + message.message + "</div></div>");
             plainHistory.val( plainHistory.val() + " \nOther:\n"+message.message);
             $("#otherPlayerMessage").html(message.message);
         }
         else {
+            if(msgCounter == 0){
+                playerID = 'P1';
+            }
+
+            roundMsgSentCounter++;
+
             chatHistory.append("<div><div class='playerName'>You:</div><div class='chattext'>" + message.message + "</div></div>");
             plainHistory.val( plainHistory.val() + " \nSelf:\n"+message.message);
         }
 
         chatHistory.animate({scrollTop: chatHistory.prop("scrollHeight")}, 1000);
 
-        // ignore other message types for now
-        if (message.status === 'SESSION_CREATED') {
-            // grab url and redirect
-            var participantUrl = message.url;
-            if (participantUrl != undefined) {
-                window.location.href = participantUrl;
-            }
-        }
-
-        //Question time
+        // Question time
         msgCounter++;
-        if(msgCounter==ROUND_MSG_FREQUENCY){
+        if(
+            roundMsgSentCounter >= ROUND_DEFINITION[playerID == 'P1'? 'P1' : 'P2'] &&
+            roundMsgReceivedCounter >= ROUND_DEFINITION[playerID == 'P1'? 'P2' : 'P1']
+        ){
+            // round completed - reset message counts
             round++;
             msgCounter=0;
+            roundMsgSentCounter = 0;
+            roundMsgReceivedCounter = 0;
 
             $("#round").html(round);
             //we check if there are questions every ROUND_MSG_FREQUENCY messages
