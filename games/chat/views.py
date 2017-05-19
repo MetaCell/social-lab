@@ -22,6 +22,7 @@ class Chat(Page):
             'participantCode': self.participant.code,
             'sessionId': self.session.id,
             'round': self.round_number,
+            'mystery': self.session.has_bots,
             'game': 'chat'
         }
 

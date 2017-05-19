@@ -973,6 +973,17 @@ main {
     font-size: 25px;
 }
 
+#question-blocking-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    height: 300px;
+    box-shadow: none;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 25px;
+    color: white;
+}
+
 #choiceQuestion .btn {
     color: black !important;
 }
