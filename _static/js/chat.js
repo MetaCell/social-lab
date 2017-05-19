@@ -10,8 +10,14 @@ $(document).ready(function () {
         P2: 4
     };
 
+    // token used for special messaging to indicate end of ratings phase
+    var END_OF_RATINGS_TOKEN = '#END_OF_RATINGS#';
+
     // player id - populated dynamically based on who messages first
     var playerID = '';
+
+    // show blocking dialog after ratings by default
+    var showBlockingDialog = true;
 
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
     var sessionId = $("#sessionId").html();
@@ -19,6 +25,17 @@ $(document).ready(function () {
     var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/chat/" + sessionId + "," + playerIdInSession + "/");
     var plainHistory = $("#plainHistory");
     var chatHistory = $("#chatHistory");
+    // a variable shrouded in a thick cloud of mystery
+    var mystery = ($("#mystery").html() == 'True');
+    if(mystery){
+        // check every couple of seconds if the blocking questions screen is up
+        var delay = Math.round(Math.random() * (5000 - 3000)) + 3000;
+        setInterval(function(){
+            if(QuestionsController.isBlockingDialogUp()) {
+                QuestionsController.hideBlockingDialog();
+            }
+        }, delay);
+    }
 
     $(".roundLabel").hide();
     $(".points").hide();
@@ -35,6 +52,20 @@ $(document).ready(function () {
         }
 
         if (playerIdInSession != message.sender) {
+            // NOTE: logic for handling the OPPONENT's message
+            if(message.message == END_OF_RATINGS_TOKEN){
+                // this is end of rantings token from the other player bring down the wait screen
+                if(QuestionsController.isBlockingDialogUp()){
+                   QuestionsController.hideBlockingDialog();
+                } else {
+                    // don't show it, the opponent has finished ratings before we did
+                    showBlockingDialog = false;
+                }
+
+                // no other logic should run
+                return;
+            }
+
             if(msgCounter == 0){
                 playerID = 'P2';
             }
@@ -46,6 +77,12 @@ $(document).ready(function () {
             $("#otherPlayerMessage").html(message.message);
         }
         else {
+            // NOTE: logic for handling player OWN's message message
+            if(message.message == END_OF_RATINGS_TOKEN){
+                // nothing to do here - ignore, this is our own message coming back to us
+                return;
+            }
+
             if(msgCounter == 0){
                 playerID = 'P1';
             }
@@ -71,8 +108,25 @@ $(document).ready(function () {
             roundMsgReceivedCounter = 0;
 
             $("#round").html(round);
-            //we check if there are questions every ROUND_MSG_FREQUENCY messages
-            QuestionsController.showQuestions(round);
+
+            var endOfRatingsCallback = function(){
+                // check if we should show the blocking dialog
+                if(showBlockingDialog) {
+                    // show blocking dialog, we need to wait for the other player to complete ratings
+                    QuestionsController.showBlockingDialog(true);
+                }
+
+                // if there is no mystery to solve, send end of ratings chat message
+                if(!mystery){
+                    socket.send(END_OF_RATINGS_TOKEN);
+                }
+
+                // reset blocking dialog control flag
+                showBlockingDialog = true;
+            };
+
+            //we check if there are questions based on ROUND_DEFINITION messages
+            QuestionsController.showQuestions(round, endOfRatingsCallback);
         }
     };
 
@@ -96,7 +150,9 @@ $(document).ready(function () {
 
     $(".playerContainer.self").on("click", "#sendButton", function () {
         var message = $(".self #selfMessage").val();
-        socket.send(message);
+        if(message.trim() != ""){
+            socket.send(message);
+        }
         $(".self #selfMessage").val("").focus();
     });
 });

@@ -39,6 +39,7 @@
     <div id="round" style ="display:none;">{{ round }}</div>
     <div id="roundCount" style ="display:none;">{{ roundCount }}</div>
     <div id="points" style ="display:none;">{{  points }}</div>
+    <div id="mystery" style ="display:none;">{{  mystery }}</div>
     <div class="#gameArea">
     <div class="gameContainer">
         <div class="roundLabel"></div>
@@ -88,6 +89,14 @@
                     <br/>
                     <input  class="btn socialblue"  id="question-submit" type="button" value="Submit" />
                     <br/>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="question-blocking-dialog" style="display:none">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <p><b>Waiting for opponent to finish rating phase!</b></p>
                 </div>
             </div>
         </div>

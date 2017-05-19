@@ -7,6 +7,7 @@ QuestionsController = {
     gameConfig: undefined,
     socket: undefined,
     currentQuestion:0,
+    blockingDialogUp: false,
 
     getQuestions: function (round) {
         var gameQuestions = {};
@@ -51,15 +52,15 @@ QuestionsController = {
         }
     },
 
-    showQuestions: function (round) {
+    showQuestions: function (round, callback) {
         if(game != undefined) {
             var questions = QuestionsController.getQuestions(round);
             this.currentQuestion=0;
-            this.showQuestion(round, questions);
+            this.showQuestion(round, questions, callback);
         }
     },
 
-    showQuestion: function(round, questions){
+    showQuestion: function(round, questions, cb){
         var questionId=Object.keys(questions)[this.currentQuestion];
         if(questionId!=undefined){
             var question=questions[questionId];
@@ -124,11 +125,37 @@ QuestionsController = {
                 $(".modal-backdrop").remove();
                 that.currentQuestion++;
                 //show the next question (the check to evaluate whether there's a next question or not is inside showQuestion)
-                setTimeout(function(){ that.showQuestion(round, questions); }, 50);
+                setTimeout(function(){ that.showQuestion(round, questions, cb); }, 50);
             });
 
             $("#question-dialog").modal({backdrop: 'static', keyboard: false});
         }
+        else {
+            // check that counter exceeds number of questions
+            if(cb != undefined && Object.keys(questions).length >= this.currentQuestion){
+                // invoke optional callback once rating phase has concluded
+                cb();
+            }
+        }
+    },
+
+    showBlockingDialog: function(){
+        // show blocking dialog
+        $("#question-blocking-dialog").modal({backdrop: 'static', keyboard: false});
+
+        this.blockingDialogUp = true;
+    },
+
+    hideBlockingDialog: function(){
+        // hide blocking dialog
+        $("#question-blocking-dialog").modal('hide');
+        $(".modal-backdrop").remove();
+
+        this.blockingDialogUp = false;
+    },
+
+    isBlockingDialogUp: function(){
+        return this.blockingDialogUp;
     },
 
     submitAnswer : function(questionId, round, answer){

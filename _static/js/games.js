@@ -3,19 +3,21 @@
  */
 $(document).ready(function () {
 
+    var game = $("#game").html();
     var round = $("#roundCount").html();
-    if(round!=""){
-        $(".roundLabel").html("Round "+round);
+
+    if (round != "") {
+        $(".roundLabel").html("Round " + round);
     }
-    else{
+    else {
         $(".roundLabel").hide();
     }
 
     var points = $("#points").html();
-    if(points!="None" && points!=""){
+    if (points != "None" && points != "") {
         $(".pointsLabel").html(points);
     }
-    else{
+    else {
         $(".points").hide();
     }
 
@@ -30,11 +32,14 @@ $(document).ready(function () {
         adjustPopovers('self');
     }, 5000);
 
-    // ask mid-round question after giving some time to read what happened
-    window.setTimeout(function () {
-        //for round based games, we show questions at the beginning
-        QuestionsController.showQuestions($("#round").html());
-    }, 5000);
+    if (game != 'chat'){
+        // ask mid-round question after giving some time to read what happened
+        // NOTE: this does not apply to chat game that controls when questions are shown
+        window.setTimeout(function () {
+            //for round based games, we show questions at the beginning
+            QuestionsController.showQuestions($("#round").html());
+        }, 5000);
+    }
 
     window.setInterval(function () {
         var other = $('.player.otherplayer');
@@ -58,7 +63,7 @@ $(document).ready(function () {
     window.addEventListener('resize', resizeGame, false);
     window.addEventListener('orientationchange', resizeGame, false);
 
-    QuestionsController.init($("#game").html());
+    QuestionsController.init(game);
 });
 
 function showInstructions() {
