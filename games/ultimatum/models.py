@@ -40,6 +40,13 @@ class Subsession(BaseSubsession):
             else:
                 g.strategy = random.choice([True, False])
 
+        # swap roles for even numbered rounds
+        if self.round_number % 2 == 0:
+            for group in self.get_groups():
+                players = group.get_players()
+                players.reverse()
+                group.set_players(players)
+
 
 class Group(BaseGroup):
     strategy = models.BooleanField(
