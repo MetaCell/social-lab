@@ -125,7 +125,7 @@ QuestionsController = {
                 $(".modal-backdrop").remove();
                 that.currentQuestion++;
                 //show the next question (the check to evaluate whether there's a next question or not is inside showQuestion)
-                setTimeout(function(){ that.showQuestion(round, questions, cb); }, 50);
+                setTimeout(function(){ that.showQuestion(round, questions, cb); }, 500);
             });
 
             $("#question-dialog").modal({backdrop: 'static', keyboard: false});
