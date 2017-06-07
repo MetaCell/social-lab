@@ -13,7 +13,10 @@ class PlayerBot(Bot):
             yield (views.Send, {"sent_amount": value})
 
         else:
-            value = random.randint(1, 100)
+            value = random.randint(1, self.sent_back_amount_max())
             yield (views.SendBack, {'sent_back_amount': value})
 
         yield (views.Results)
+
+    def sent_back_amount_max(self):
+        return self.group.sent_amount * Constants.multiplication_factor
