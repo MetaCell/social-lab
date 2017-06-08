@@ -306,6 +306,11 @@ MATCH_MAKING_QUEUE = []
 # global map to keep track of session bots
 SESSION_BOTS_MAP = {}
 
+RANDOMISATION_STATUS_MAP = {
+    'DEFAULT_TO_BOT': 'default_to_bot',
+    'RANDOMISED_TO_BOT': 'randomised_to_bot',
+    'RANDOMISED_TO_HUMAN': 'randomised_to_human'
+}
 
 if environ.get('CLINICAL') not in {None, '', '0'}:
     CLINICAL = True
