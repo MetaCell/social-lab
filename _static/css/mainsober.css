@@ -1004,6 +1004,17 @@ main {
     height: 35px;
 }
 
+#external-platform-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    height: 300px;
+    box-shadow: none;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 25px;
+    color: white;
+}
+
 .roundLabel{
     width: 160px;
     text-align: center;
@@ -1014,7 +1025,6 @@ main {
     border: solid #78ead2 4px;
     padding: 10px;
 }
-
 
 .points{
     position: absolute;
