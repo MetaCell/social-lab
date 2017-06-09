@@ -5,6 +5,10 @@
   },
   {
     "questionId":"humanRobot",
+    "frequency": 1
+  },
+  {
+    "questionId":"humanRobot",
     "round": "final"
   }
 ]

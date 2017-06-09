@@ -38,7 +38,7 @@ $(document).ready(function () {
     }
 
     setTimeout(function(){
-        QuestionsController.showQuestions(0, "initial", endOfRatingsCallback);
+        QuestionsController.showQuestions(undefined, "initial", endOfRatingsCallback);
     },3000);
 
     $(".roundLabel").hide();

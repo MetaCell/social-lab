@@ -15,21 +15,19 @@ QuestionsController = {
             for (var i = 0; i < this.gameConfig.length; i++) {
                 var addQuestion = false;
                 if (this.gameConfig[i].round != undefined) {
-                    if(this.gameConfig[i].round=="initial"){
-                        addQuestion = page=="initial";
+                    if(this.gameConfig[i].round == "initial"){
+                        addQuestion = (page == "initial");
                     }
-                    else if(this.gameConfig[i].round=="final"){
-                        addQuestion = page=="final";
+                    else if(this.gameConfig[i].round == "final"){
+                        addQuestion = (page == "final");
                     }
-                    else{
-                        addQuestion = this.gameConfig[i].round == round;
+                    else {
+                        addQuestion = (this.gameConfig[i].round == round);
                     }
-
                 }
                 else if (this.gameConfig[i].frequency != undefined) {
                     if(!isNaN(parseInt(round))) {
-
-                        addQuestion = round % this.gameConfig[i].frequency == 0;
+                        addQuestion = ((round % this.gameConfig[i].frequency) == 0);
                     }
                 }
                 if (addQuestion) {
