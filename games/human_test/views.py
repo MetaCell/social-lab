@@ -14,6 +14,8 @@ class TestResult(Page):
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
             'participant_completion_url': self.player.participant.completion_url,
+            'page': "final",
+            'game': self.session.game,
             'sessionId': self.session.id
         }
 

@@ -4,6 +4,7 @@
 $(document).ready(function () {
 
     var game = $("#game").html();
+    var page = $("#page").html();
     var round = $("#roundCount").html();
 
     if (round != "") {
@@ -32,12 +33,12 @@ $(document).ready(function () {
         adjustPopovers('self');
     }, 5000);
 
-    if (game != 'chat'){
+    if (game != 'chat' || page=='final'){
         // ask mid-round question after giving some time to read what happened
         // NOTE: this does not apply to chat game that controls when questions are shown
         window.setTimeout(function () {
             //for round based games, we show questions at the beginning
-            QuestionsController.showQuestions($("#round").html());
+            QuestionsController.showQuestions($("#round").html(), $("#page").html());
         }, 5000);
     }
 

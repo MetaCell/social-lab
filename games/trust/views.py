@@ -22,6 +22,7 @@ class Send(Page):
                 'participantCode': self.participant.code,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'page': "initial" if self.round_number == 1 else "",
                 'points': self.player.participant.payoff,
                 'game': 'trust'
         }
@@ -49,6 +50,7 @@ class SendBack(Page):
                 'participantCode': self.participant.code,
                 'sessionId': self.session.id,
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'page': "initial" if self.round_number == 1 else "",
                 'points': self.player.participant.payoff,
                 'game': 'trust'
         }

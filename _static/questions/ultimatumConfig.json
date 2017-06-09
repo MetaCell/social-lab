@@ -1,10 +1,15 @@
 [
   {
     "questionId":"fear",
-    "round": 1
+    "round": "initial"
   },
   {
     "questionId":"humanRobot",
+    "round": "final"
+  },
+  {
+    "questionId":"feel",
     "frequency": 1
   }
 ]
+
