@@ -8,6 +8,9 @@
 {% endblock %}
 
 {% block content %}
+    <div id="game-instructions">
+        {{ instructions |safe }}
+    </div>
     <div class="gameIntroPage">
         <h1 class="gameIntroTitle"><b>{{ game_label }}</b></h1>
         <div id="loader" style="display:none;"></div>
@@ -19,9 +22,6 @@
         Click the ready button to queue up for a game! </br>
         You will be able to access instructions in game too.
     </p>
-    <div id="game-instructions">
-        {{ instructions |safe }}
-    </div>
 
     <div class="modal" id="worker-id-dialog" style="display:none">
         <div class="dialog-backdrop">
