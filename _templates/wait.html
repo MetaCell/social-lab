@@ -8,19 +8,20 @@
 {% endblock %}
 
 {% block content %}
-    <div id="game-instructions">
-        {{ instructions |safe }}
-    </div>
     <div class="gameIntroPage">
         <h1 class="gameIntroTitle"><b>{{ game_label }}</b></h1>
         <div id="loader" style="display:none;"></div>
         <div id="message-panel"></div>
-        <button class="btn socialblue" id="ready-button" type="button">Ready</button>
-
     </div>
-    <p id="instructions_label">
-        Click the ready button to queue up for a game! </br>
-        You will be able to access instructions in game too.
+
+	<div id="game-instructions">
+        {{ instructions |safe }}
+    </div>
+
+	<p id="instructions_label">
+        Click the ready button to queue up for a game! <br>
+		You will be able to access instructions in game too. <br>
+        <button class="btn socialblue" id="ready-button" type="button">Ready</button>
     </p>
 
     <div class="modal" id="worker-id-dialog" style="display:none">
