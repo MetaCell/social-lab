@@ -546,9 +546,10 @@ main {
 
 #instructions_label {
     text-align: center;
-    margin-top: 35px;
+    margin-top: 5px;
     font-weight: 400;
     color: white;
+	font-size: 1.2rem;
 }
 
 .gameIntroPage {
@@ -565,8 +566,10 @@ main {
     letter-spacing: 0.001em;
     padding-left: 120px;
     padding-right: 120px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+	text-align: center;
+    font-size: 1.2rem;
 }
 
 /*CHAT*/
