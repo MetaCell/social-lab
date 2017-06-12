@@ -64,6 +64,11 @@ QuestionsController = {
         if(game != undefined) {
             var questions = QuestionsController.getQuestions(round, page);
             this.currentQuestion=0;
+
+            if(page == "initial" || page == "final"){
+                round = page;
+            }
+
             this.showQuestion(round, questions, callback);
         }
     },
