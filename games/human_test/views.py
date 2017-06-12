@@ -16,6 +16,8 @@ class TestResult(Page):
             'participant_completion_url': self.player.participant.completion_url,
             'page': "final",
             'game': self.session.game,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
             'sessionId': self.session.id
         }
 
