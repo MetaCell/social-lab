@@ -9,23 +9,31 @@ QuestionsController = {
     currentQuestion:0,
     blockingDialogUp: false,
 
-    getQuestions: function (round) {
+    getQuestions: function (round, page) {
         var gameQuestions = {};
 
-        if(!isNaN(parseInt(round))) {
             for (var i = 0; i < this.gameConfig.length; i++) {
                 var addQuestion = false;
                 if (this.gameConfig[i].round != undefined) {
-                    addQuestion = this.gameConfig[i].round == round;
+                    if(this.gameConfig[i].round == "initial"){
+                        addQuestion = (page == "initial");
+                    }
+                    else if(this.gameConfig[i].round == "final"){
+                        addQuestion = (page == "final");
+                    }
+                    else {
+                        addQuestion = (this.gameConfig[i].round == round);
+                    }
                 }
                 else if (this.gameConfig[i].frequency != undefined) {
-                    addQuestion = round % this.gameConfig[i].frequency == 0;
+                    if(!isNaN(parseInt(round))) {
+                        addQuestion = ((round % this.gameConfig[i].frequency) == 0);
+                    }
                 }
                 if (addQuestion) {
                     var id = this.gameConfig[i].questionId;
                     gameQuestions[id] = this.questions[id];
                 }
-            }
         }
 
         return gameQuestions;
@@ -52,10 +60,15 @@ QuestionsController = {
         }
     },
 
-    showQuestions: function (round, callback) {
+    showQuestions: function (round, page, callback) {
         if(game != undefined) {
-            var questions = QuestionsController.getQuestions(round);
+            var questions = QuestionsController.getQuestions(round, page);
             this.currentQuestion=0;
+
+            if(page == "initial" || page == "final"){
+                round = page;
+            }
+
             this.showQuestion(round, questions, callback);
         }
     },
@@ -125,7 +138,7 @@ QuestionsController = {
                 $(".modal-backdrop").remove();
                 that.currentQuestion++;
                 //show the next question (the check to evaluate whether there's a next question or not is inside showQuestion)
-                setTimeout(function(){ that.showQuestion(round, questions, cb); }, 50);
+                setTimeout(function(){ that.showQuestion(round, questions, cb); }, 500);
             });
 
             $("#question-dialog").modal({backdrop: 'static', keyboard: false});

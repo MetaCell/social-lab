@@ -15,6 +15,7 @@ class Intention(Page):
             'sessionId': self.session.id,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'points': self.player.participant.payoff,
+            'page': "initial" if self.round_number == 1 else "",
             'game': 'peacewar'
         }
 

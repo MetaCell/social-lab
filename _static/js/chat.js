@@ -37,6 +37,10 @@ $(document).ready(function () {
         }, delay);
     }
 
+    setTimeout(function(){
+        QuestionsController.showQuestions(undefined, "initial", endOfRatingsCallback);
+    },3000);
+
     $(".roundLabel").hide();
     $(".points").hide();
 
@@ -44,6 +48,23 @@ $(document).ready(function () {
     var roundMsgSentCounter = 0;
     var roundMsgReceivedCounter = 0;
     var msgCounter = 0;
+
+    var endOfRatingsCallback = function(){
+        // check if we should show the blocking dialog
+        if(showBlockingDialog) {
+            // show blocking dialog, we need to wait for the other player to complete ratings
+            QuestionsController.showBlockingDialog(true);
+        }
+
+        // if there is no mystery to solve, send end of ratings chat message
+        if(!mystery){
+            socket.send(END_OF_RATINGS_TOKEN);
+        }
+
+        // reset blocking dialog control flag
+        showBlockingDialog = true;
+    };
+
 
     socket.onmessage = function (e) {
         var message = JSON.parse(e.data);
@@ -109,26 +130,12 @@ $(document).ready(function () {
 
             $("#round").html(round);
 
-            var endOfRatingsCallback = function(){
-                // check if we should show the blocking dialog
-                if(showBlockingDialog) {
-                    // show blocking dialog, we need to wait for the other player to complete ratings
-                    QuestionsController.showBlockingDialog(true);
-                }
-
-                // if there is no mystery to solve, send end of ratings chat message
-                if(!mystery){
-                    socket.send(END_OF_RATINGS_TOKEN);
-                }
-
-                // reset blocking dialog control flag
-                showBlockingDialog = true;
-            };
-
             //we check if there are questions based on ROUND_DEFINITION messages
-            QuestionsController.showQuestions(round, endOfRatingsCallback);
+            QuestionsController.showQuestions(round, "", endOfRatingsCallback);
         }
     };
+
+
 
     // Call onopen directly if socket is already open
     if (socket.readyState == WebSocket.OPEN) {

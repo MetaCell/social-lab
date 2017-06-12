@@ -16,6 +16,7 @@ class Offer(Page):
                 'playerIdInSession': self.player.id_in_subsession,
                 'participantCode': self.participant.code,
                 'sessionId': self.session.id,
+                'page': "initial" if self.round_number == 1 else "",
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
                 'game': 'ultimatum'
@@ -41,6 +42,7 @@ class Accept(Page):
                 'playerIdInSession': self.player.id_in_subsession,
                 'participantCode': self.participant.code,
                 'sessionId': self.session.id,
+                'page': "initial" if self.round_number == 1 else "",
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
                 'game': 'ultimatum'
@@ -64,6 +66,7 @@ class AcceptStrategy(Page):
                 'playerIdInSession': self.player.id_in_subsession,
                 'participantCode': self.participant.code,
                 'sessionId': self.session.id,
+                'page': "initial" if self.round_number == 1 else "",
                 'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
                 'points': self.player.participant.payoff,
                 'game': 'ultimatum'
