@@ -65,7 +65,6 @@ $(document).ready(function () {
         showBlockingDialog = true;
     };
 
-
     socket.onmessage = function (e) {
         var message = JSON.parse(e.data);
         if ($("#chatHistory").children().length == 0) {
@@ -134,8 +133,6 @@ $(document).ready(function () {
             QuestionsController.showQuestions(round, "", endOfRatingsCallback);
         }
     };
-
-
 
     // Call onopen directly if socket is already open
     if (socket.readyState == WebSocket.OPEN) {
