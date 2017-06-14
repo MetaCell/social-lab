@@ -2,7 +2,6 @@
  * Created by matteocantarelli on 02/12/2016.
  */
 $(document).ready(function () {
-
     var game = $("#game").html();
     var page = $("#page").html();
     var round = $("#roundCount").html();
@@ -65,7 +64,54 @@ $(document).ready(function () {
     window.addEventListener('orientationchange', resizeGame, false);
 
     QuestionsController.init(game);
+
+    window.disconnectionPollingCounter = 0;
+    window.disconnectionPollingInterval = undefined;
+    var disconnectionPollingSocket = setupDisconnectionPollingSocket();
+    disconnectionPollingSocket.onmessage = function (e) {
+                var message = JSON.parse(e.data);
+
+                // log message for debugging
+                console.log('Message received: ' + message.status + ' / ' + message.message);
+
+                // ignore other message types for now
+                if (message.status === 'DISCONNECTION_STATUS') {
+                    // increase or reset disconnection counter
+                    if(message.player_disconnected == true){
+                        window.disconnectionPollingCounter+=1;
+                    } else {
+                        window.disconnectionPollingCounter = 0;
+                    }
+                }
+            };
+    setupDisconnectionPollingMessages(disconnectionPollingSocket);
 });
+
+function setupDisconnectionPollingSocket() {
+    //connect to the socket
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    var sessionId = $("#sessionId").html();
+    var playerIdInSession = $("#playerIdInSession").html();
+    var participantCode = $("#participantCode").html();
+    var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/disconnection/" + sessionId + "," + playerIdInSession + "," + participantCode + "/");
+    return socket;
+}
+
+function setupDisconnectionPollingMessages(pollingSocket) {
+    var sendPollingMessage = function(){
+        if(window.disconnectionPollingCounter < 4) {
+            var message = '{"type":"DISCONNECTION_POLLING"}';
+            pollingSocket.send(message);
+        } else {
+            // kill disconnection polling loop
+            window.clearInterval(window.disconnectionPollingInterval);
+            // raise disconnection message
+            alert('Your opponent has disconnected!');
+        }
+    };
+
+    window.disconnectionPollingInterval = window.setInterval(sendPollingMessage, 2000);
+}
 
 function showInstructions() {
     $(".instructionsContainer").show();
@@ -91,5 +137,4 @@ function resizeGame() {
     $('.self').popover('show');
     $('.otherplayer').popover('show');
     adjustPopovers();
-
 }
