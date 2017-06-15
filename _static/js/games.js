@@ -110,7 +110,7 @@ function setupDisconnectionPollingMessages(pollingSocket) {
         }
     };
 
-    window.disconnectionPollingInterval = window.setInterval(sendPollingMessage, 2000);
+    window.disconnectionPollingInterval = window.setInterval(sendPollingMessage, 5000);
 }
 
 function showInstructions() {
