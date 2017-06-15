@@ -68,7 +68,8 @@ $(document).ready(function () {
     window.disconnectionPollingCounter = 0;
     window.disconnectionPollingInterval = undefined;
     var disconnectionPollingSocket = setupDisconnectionPollingSocket();
-    disconnectionPollingSocket.onmessage = function (e) {
+    if(disconnectionPollingSocket != undefined){
+        disconnectionPollingSocket.onmessage = function (e) {
                 var message = JSON.parse(e.data);
 
                 // log message for debugging
@@ -84,7 +85,8 @@ $(document).ready(function () {
                     }
                 }
             };
-    setupDisconnectionPollingMessages(disconnectionPollingSocket);
+        setupDisconnectionPollingMessages(disconnectionPollingSocket);
+    }
 });
 
 function setupDisconnectionPollingSocket() {
@@ -93,7 +95,12 @@ function setupDisconnectionPollingSocket() {
     var sessionId = $("#sessionId").html();
     var playerIdInSession = $("#playerIdInSession").html();
     var participantCode = $("#participantCode").html();
-    var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/disconnection/" + sessionId + "," + playerIdInSession + "," + participantCode + "/");
+
+    var socket = undefined;
+    if(sessionId != '' && sessionId != undefined){
+        var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/disconnection/" + sessionId + "," + playerIdInSession + "," + participantCode + "/");
+    }
+
     return socket;
 }
 
