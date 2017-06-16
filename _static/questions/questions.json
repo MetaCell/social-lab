@@ -15,7 +15,7 @@
       "question": "Are you afraid to lose?",
       "type": "choice",
       "choices":["Yes","No"]
-  }
+  },
   "finalchatq":{
       "question": "Final decision: have you been playing against a human or a robot?",
       "type": "choice",
