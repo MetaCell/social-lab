@@ -5,14 +5,17 @@
 {% block current %}
 
         {% if player.role == 'A' %}
-            You were initially endowed with <strong>100 points</strong>,
-            chose to send <strong>{{ group.sent_amount }}</strong>,
-            received <strong>{{ group.sent_back_amount }}</strong> thus you
-            now have <strong>(100
-            points)-{{ group.sent_amount }}+{{ group.sent_back_amount }}={{ player.payoff }}</strong>.
+            For this round, you were given <strong>100 points</strong> and
+            you chose to send <strong>{{ group.sent_amount }}</strong>. You
+            just received <strong>{{ group.sent_back_amount }}</strong> back from
+            the other player. So you now have (100 points) - {{ group.sent_amount }} +
+            {{ group.sent_back_amount }} = <strong>{{ player.payoff }} in total
+            to bank from this round.</strong>.
         {% else %}
-            You were initially endowed with <strong>0 points</strong>, received <strong>{{ tripled_amount }}</strong>, chose to return
-            <strong>{{ group.sent_back_amount }}</strong> thus you now have <strong>{{ player.payoff }}</strong>
+            For this round, you started with <strong>0 points</strong> and
+            you received <strong>{{ tripled_amount }}</strong> from the
+            other player. You chose to return <strong>{{ group.sent_back_amount }}</strong>.
+            So you now have <strong>{{ player.payoff }} to bank from this round.</strong>
         {% endif %}
 
 {% endblock %}
