@@ -11,6 +11,11 @@
       "question": "How do you feel?",
       "type": "text"
   },
+  "testQuestion":{
+      "question": "This is a test question. Yes or no?",
+      "type": "choice",
+      "choices":["Yes","No"]
+  },
   "harmfulIntent":{
       "question": "Is your opponent trying to harm or help you?",
       "type": "range",
@@ -22,7 +27,7 @@
   "selfInterest":{
       "question": "Is your opponent trying to earn as much for themselves as possible?",
       "type": "range",
-      "min": 0,
+      "min": -100,
       "max": 100,
       "minLabel": "Not at all",
       "maxLabel": "Definitely"
