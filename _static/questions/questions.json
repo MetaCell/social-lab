@@ -1,24 +1,35 @@
 {
   "humanRobot":{
-      "question": "Is your opponent a robot or a human?",
+      "question": "Is your opponent a computer or a human?",
       "type": "range",
       "min": -100,
       "max": 100,
-      "minLabel": "Robot",
+      "minLabel": "Computer",
       "maxLabel": "Human"
   },
   "feel":{
       "question": "How do you feel?",
       "type": "text"
   },
-  "fear":{
-      "question": "Are you afraid to lose?",
-      "type": "choice",
-      "choices":["Yes","No"]
+  "harmfulIntent":{
+      "question": "Is your opponent trying to harm or help you?",
+      "type": "range",
+      "min": -100,
+      "max": 100,
+      "minLabel": "Harm",
+      "maxLabel": "Help"
+  },
+  "selfInterest":{
+      "question": "Is your opponent trying to earn as much for themselves as possible?",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "minLabel": "Not at all",
+      "maxLabel": "Definitely"
   },
   "finalchatq":{
-      "question": "Final decision: have you been playing against a human or a robot?",
+      "question": "Final decision: have you been playing against a human or a computer?",
       "type": "choice",
-      "choices":["Human","Robot"]
+      "choices":["Human","Computer"]
   }
 }
