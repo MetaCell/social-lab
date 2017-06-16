@@ -1,14 +1,10 @@
 [
   {
-    "questionId":"feel",
-    "round": "initial"
-  },
-  {
     "questionId":"humanRobot",
     "frequency": 1
   },
   {
-    "questionId":"humanRobot",
+    "questionId":"finalchatq",
     "round": "final"
   }
 ]
