@@ -6,8 +6,8 @@ $(document).ready(function () {
     // This object defines how many messages per player make up a round
     // NOTE: the first to send a message is considered to be P1
     var ROUND_DEFINITION = {
-        P1: 4,
-        P2: 4
+        P1: 2,
+        P2: 2
     };
 
     // token used for special messaging to indicate end of ratings phase

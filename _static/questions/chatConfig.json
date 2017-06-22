@@ -1,9 +1,5 @@
 [
   {
-    "questionId":"feel",
-    "round": "initial"
-  },
-  {
     "questionId":"humanRobot",
     "frequency": 1
   },
