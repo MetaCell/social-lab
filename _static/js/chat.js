@@ -7,7 +7,7 @@ $(document).ready(function () {
     // NOTE: the first to send a message is considered to be P1
     var ROUND_DEFINITION = {
         P1: 2,
-        P2: 2,
+        P2: 2
     };
 
     // token used for special messaging to indicate end of ratings phase
@@ -38,8 +38,8 @@ $(document).ready(function () {
     }
 
     setTimeout(function(){
-        QuestionsController.showQuestions(undefined, "initial", endOfRatingsCallback);
-    },3000);
+        QuestionsController.showQuestions(undefined, "initial", undefined);
+    },0);
 
     $(".roundLabel").hide();
     $(".points").hide();
@@ -64,7 +64,6 @@ $(document).ready(function () {
         // reset blocking dialog control flag
         showBlockingDialog = true;
     };
-
 
     socket.onmessage = function (e) {
         var message = JSON.parse(e.data);
@@ -135,13 +134,12 @@ $(document).ready(function () {
         }
     };
 
-
-
     // Call onopen directly if socket is already open
     if (socket.readyState == WebSocket.OPEN) {
         socket.onopen();
     }
 
+    $(".situation").css("padding", "0px");
     $(".typing").css("padding", "5px");
     $(".hiders").remove();
     clearInterval(window.shake);

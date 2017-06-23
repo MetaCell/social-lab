@@ -13,7 +13,7 @@ class PlayerBot(Bot):
             yield (views.Send, {"sent_amount": value})
 
         else:
-            value = random.randint(1, self.sent_back_amount_max())
+            value = random.randint(0, self.sent_back_amount_max())
             yield (views.SendBack, {'sent_back_amount': value})
 
         yield (views.Results)

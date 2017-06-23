@@ -2,7 +2,6 @@
  * Created by matteocantarelli on 02/12/2016.
  */
 $(document).ready(function () {
-
     var game = $("#game").html();
     var page = $("#page").html();
     var round = $("#roundCount").html();
@@ -36,10 +35,14 @@ $(document).ready(function () {
     if (game != 'chat' || page == 'final'){
         // ask mid-round question after giving some time to read what happened
         // NOTE: this does not apply to chat game that controls when questions are shown based on internal round definition
+        var questionTimeout=5000;
+        if(page=="initial"){
+            questionTimeout=0;
+        }
         window.setTimeout(function () {
             //for round based games, we show questions at the beginning
-            QuestionsController.showQuestions($("#round").html(), $("#page").html());
-        }, 5000);
+            QuestionsController.showQuestions($("#round").html(), page);
+        }, questionTimeout);
     }
 
     window.setInterval(function () {
@@ -65,7 +68,65 @@ $(document).ready(function () {
     window.addEventListener('orientationchange', resizeGame, false);
 
     QuestionsController.init(game);
+
+    window.disconnectionPollingCounter = 0;
+    window.disconnectionPollingInterval = undefined;
+    var disconnectionPollingSocket = setupDisconnectionPollingSocket();
+    if(disconnectionPollingSocket != undefined){
+        disconnectionPollingSocket.onmessage = function (e) {
+                var message = JSON.parse(e.data);
+
+                // log message for debugging
+                console.log('Message received: ' + message.status + ' / ' + message.player_disconnected);
+
+                // ignore other message types for now
+                if (message.status === 'DISCONNECTION_STATUS') {
+                    // increase or reset disconnection counter
+                    if(message.player_disconnected == true){
+                        window.disconnectionPollingCounter+=1;
+                    } else {
+                        window.disconnectionPollingCounter = 0;
+                    }
+                }
+            };
+        setupDisconnectionPollingMessages(disconnectionPollingSocket);
+    }
 });
+
+function setupDisconnectionPollingSocket() {
+    //connect to the socket
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    var sessionId = $("#sessionId").html();
+    var playerIdInSession = $("#playerIdInSession").html();
+    var participantCode = $("#participantCode").html();
+
+    var socket = undefined;
+    if(sessionId != '' && sessionId != undefined){
+        var socket = new WebSocket(ws_scheme + "://" + window.location.host + "/disconnection/" + sessionId + "," + playerIdInSession + "," + participantCode + "/");
+    }
+
+    return socket;
+}
+
+function setupDisconnectionPollingMessages(pollingSocket) {
+    var sendPollingMessage = function(){
+        if(window.disconnectionPollingCounter < 4) {
+            var message = '{"type":"DISCONNECTION_POLLING"}';
+            pollingSocket.send(message);
+        } else {
+            // kill disconnection polling loop
+            window.clearInterval(window.disconnectionPollingInterval);
+            // raise disconnection message
+            // TODO: make sure the user is not at the end already in that case disconnection is normal
+            // TODO: extend to show different message in case of external platform
+            var disconnectionMsg = 'Your opponent has disconnected!';
+            $('#disconnection-notification-dialog .modal-content').append("<p>" + disconnectionMsg + "</p>");
+            $("#disconnection-notification-dialog").modal({backdrop: 'static', keyboard: false});
+        }
+    };
+
+    window.disconnectionPollingInterval = window.setInterval(sendPollingMessage, 5000);
+}
 
 function showInstructions() {
     $(".instructionsContainer").show();
@@ -91,5 +152,4 @@ function resizeGame() {
     $('.self').popover('show');
     $('.otherplayer').popover('show');
     adjustPopovers();
-
 }

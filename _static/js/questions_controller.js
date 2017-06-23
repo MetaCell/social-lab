@@ -12,6 +12,7 @@ QuestionsController = {
     getQuestions: function (round, page) {
         var gameQuestions = {};
 
+        if(this.gameConfig != undefined){
             for (var i = 0; i < this.gameConfig.length; i++) {
                 var addQuestion = false;
                 if (this.gameConfig[i].round != undefined) {
@@ -34,6 +35,7 @@ QuestionsController = {
                     var id = this.gameConfig[i].questionId;
                     gameQuestions[id] = this.questions[id];
                 }
+        }
         }
 
         return gameQuestions;
@@ -142,6 +144,11 @@ QuestionsController = {
             });
 
             $("#question-dialog").modal({backdrop: 'static', keyboard: false});
+            if(round=="initial"){
+                $(".modal-backdrop").each(function () {
+                    this.style.setProperty('opacity', '1', 'important');
+                });
+            }
         }
         else {
             // check that counter exceeds number of questions
