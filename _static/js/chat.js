@@ -37,13 +37,9 @@ $(document).ready(function () {
         }, delay);
     }
 
-    var questionTimeout=3000;
-    if(page=="initial"){
-        questionTimeout=0;
-    }
     setTimeout(function(){
         QuestionsController.showQuestions(undefined, "initial", undefined);
-    },questionTimeout);
+    },0);
 
     $(".roundLabel").hide();
     $(".points").hide();
