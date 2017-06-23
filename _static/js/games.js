@@ -117,7 +117,11 @@ function setupDisconnectionPollingMessages(pollingSocket) {
             // kill disconnection polling loop
             window.clearInterval(window.disconnectionPollingInterval);
             // raise disconnection message
-            alert('Your opponent has disconnected!');
+            // TODO: make sure the user is not at the end already in that case disconnection is normal
+            // TODO: extend to show different message in case of external platform
+            var disconnectionMsg = 'Your opponent has disconnected!';
+            $('#disconnection-notification-dialog .modal-content').append("<p>" + disconnectionMsg + "</p>");
+            $("#disconnection-notification-dialog").modal({backdrop: 'static', keyboard: false});
         }
     };
 

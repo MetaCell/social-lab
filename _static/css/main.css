@@ -1050,6 +1050,17 @@ main {
     color: white;
 }
 
+#disconnection-notification-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    height: 300px;
+    box-shadow: none;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 25px;
+    color: white;
+}
+
 .roundLabel{
     width: 160px;
     text-align: center;
