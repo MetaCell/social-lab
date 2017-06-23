@@ -392,6 +392,7 @@ h4 {
 }
 
 .situation {
+    padding: 0px 25px 0px 25px;
     text-align: center;
     font-size: 18px;
     height: 200px;
@@ -399,8 +400,8 @@ h4 {
     background: #582710; /* same as page background */
     letter-spacing: .15em;
     position: absolute;
-    left: 15%;
     top: 37%;
+    left: 17%;
     width: 70%;
     font-family: "Minecraft Regular";
     z-index: 0;
@@ -432,11 +433,11 @@ h4 {
 }
 
 .hiders {
-    padding: 25px;
+    padding: 25px 0px 25px 0px;
     margin: 0;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 93%;
     background: transparent;
     z-index: 2;
 }
