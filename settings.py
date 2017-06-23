@@ -293,6 +293,30 @@ SESSION_CONFIGS = [
         'display_name': "Chat",
         'num_demo_participants': 2,
         'app_sequence': ['games.chat', 'games.human_test'],
+    },
+    {
+        'name': 'dictator',
+        'display_name': "Dictator Game",
+        'num_demo_participants': 2,
+        'app_sequence': ['games.dictator', 'games.human_test'],
+    },
+    {
+        'name': 'bargaining',
+        'display_name': "Bargaining Game",
+        'num_demo_participants': 2,
+        'app_sequence': ['games.bargaining', 'games.human_test'],
+    },
+    {
+        'name': 'prisoner',
+        'display_name': "Prisoner's Dilemma",
+        'num_demo_participants': 2,
+        'app_sequence': ['games.prisoner', 'games.human_test'],
+    },
+    {
+        'name': 'public_goods',
+        'display_name': "Public Goods",
+        'num_demo_participants': 3,
+        'app_sequence': ['games.public_goods', 'games.human_test'],
     }
 ]
 

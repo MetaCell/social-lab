@@ -96,7 +96,11 @@ def wait(request):
             'trust': "Trust",
             'ultimatum': 'Ultimatum',
             'peacewar': 'Peace War',
-            'chat': 'Chat'
+            'chat': 'Chat',
+            'prisoner': "Prisoner Dilemma",
+            'bargaining': "Bargaining",
+            'public_goods': "Public Goods",
+            'dictator': "Dictator"
         }[x]
 
     def get_instructions(x):
@@ -108,6 +112,14 @@ def wait(request):
             from games.ultimatum.models import Constants
         elif x == 'chat':
             from games.chat.models import Constants
+        elif x == 'dictator':
+            from games.dictator.models import Constants
+        elif x == 'public_goods':
+            from games.public_goods.models import Constants
+        elif x == 'bargaining':
+            from games.bargaining.models import Constants
+        elif x == 'prisoner':
+            from games.prisoner.models import Constants
         t = loader.get_template(Constants.instructions_template)
         c = Context({"Constants": Constants.__dict__,
                      'CLINICAL': settings.CLINICAL})
