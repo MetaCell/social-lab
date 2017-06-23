@@ -142,6 +142,11 @@ QuestionsController = {
             });
 
             $("#question-dialog").modal({backdrop: 'static', keyboard: false});
+            if(round=="initial"){
+                $(".modal-backdrop").each(function () {
+                    this.style.setProperty('opacity', '1', 'important');
+                });
+            }
         }
         else {
             // check that counter exceeds number of questions

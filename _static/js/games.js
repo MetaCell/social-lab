@@ -35,10 +35,14 @@ $(document).ready(function () {
     if (game != 'chat' || page == 'final'){
         // ask mid-round question after giving some time to read what happened
         // NOTE: this does not apply to chat game that controls when questions are shown based on internal round definition
+        var questionTimeout=5000;
+        if(page=="initial"){
+            questionTimeout=0;
+        }
         window.setTimeout(function () {
             //for round based games, we show questions at the beginning
-            QuestionsController.showQuestions($("#round").html(), $("#page").html());
-        }, 5000);
+            QuestionsController.showQuestions($("#round").html(), page);
+        }, questionTimeout);
     }
 
     window.setInterval(function () {
