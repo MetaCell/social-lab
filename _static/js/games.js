@@ -77,7 +77,7 @@ $(document).ready(function () {
                 var message = JSON.parse(e.data);
 
                 // log message for debugging
-                console.log('Message received: ' + message.status + ' / ' + message.message);
+                console.log('Message received: ' + message.status + ' / ' + message.player_disconnected);
 
                 // ignore other message types for now
                 if (message.status === 'DISCONNECTION_STATUS') {
