@@ -1,26 +1,24 @@
 {% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
-{% block title %}
-    Results
+{% block current %}
+
+    {% if my_decision == other_player_decision %}
+        You both decided to {{ my_decision }}, you earn {{ player.payoff }}.
+    {% else %}
+        You decided to {{ my_decision }} and your accomplice decided to {{ other_player_decision }}, you earn {{ player.payoff }}.
+    {% endif %}
+
 {% endblock %}
 
-{% block content %}
 
-    <p>
-        {% if same_choice %}
-            Both of you chose to {{ my_decision }}.
-        {% else %}
-            You chose to {{ my_decision }} and the other participant chose to {{ other_player_decision }}.
-        {% endif %}
-    </p>
+{% block otherballoon %}
+    I decide to {{ other_player_decision }}
+{% endblock %}
 
-    <p>
-        As a result, you earned {{ player.payoff }}.
-    </p>
-
+{% block selfballoon %}
+    I want to {{ my_decision }}
     {% next_button %}
-
-    {% include Constants.instructions_template %}
-
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
 {% endblock %}
+

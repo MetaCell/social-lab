@@ -1,21 +1,34 @@
-{% extends "global/Page.html" %}
+{% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
-{% block title %}
-    Results
+
+{% block current %}
+    {% if player.id_in_group == 1 %}
+        You decided to keep <strong>{{ group.kept }}</strong> for yourself.
+    {% else %}
+        Participant 1 decided to keep <strong>{{ group.kept }}</strong>, so
+        you got <strong>{{ offer }}</strong>.
+    {% endif %}
 {% endblock %}
 
-{% block content %}
-    <p>
 
-        {% if player.id_in_group == 1 %}
-            You decided to keep <strong>{{ group.kept }}</strong> for yourself.
-        {% else %}
-            Participant 1 decided to keep <strong>{{ group.kept }}</strong>, so
-            you got <strong>{{ offer }}</strong>.
-        {% endif %}
-
-        {% next_button %}
-    </p>
-    {% include Constants.instructions_template %}
+{% block otherballoon %}
+    {% if player.id_in_group == 1 %}
+        mmm... {{ offer }} thanks!
+    {% else %}
+        I kept {{ group.kept }}
+    {% endif %}
 {% endblock %}
+
+{% block selfballoon %}
+    {% if player.id_in_group == 1 %}
+        You are welcome :)
+    {% else %}
+        ...ehm...thanks!
+    {% endif %}
+    {% next_button %}
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
+{% endblock %}
+
+
+

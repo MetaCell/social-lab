@@ -1,17 +1,21 @@
-{% extends "global/Page.html" %}
+{% extends "global/Base.html" %}
 {% load otree_tags %}
 
-{% block title %}Your Decision{% endblock %}
 
-{% block content %}
-<p>
-You are <strong>Participant 1</strong>. Now please decide how many points you will keep for yourself.
-</p>
+{% block current %}
+    How many points will you keep for yourself?
+{% endblock %}
 
-{% formfield group.kept %}
+{% block otherballoon %}
+    ...mmm...how many points will I get?
+{% endblock %}
 
-{% next_button %}
+{% block selfballoon %}
 
-    {% include Constants.instructions_template %}
+    {% formfield group.kept with label="I will keep" %}
+    {% next_button %}
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
 
 {% endblock %}
+
+

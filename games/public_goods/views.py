@@ -35,7 +35,6 @@ class Results(Page):
 
 
 page_sequence = [
-    Introduction,
     Contribute,
     ResultsWaitPage,
     Results

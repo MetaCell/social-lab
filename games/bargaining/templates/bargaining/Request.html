@@ -1,18 +1,19 @@
-{% extends "global/Page.html" %}
+{% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
-{% block title %}
-    Request
+
+{% block current %}
+    You and the other participant
 {% endblock %}
 
-{% block content %}
+{% block otherballoon %}
+    ...mmm...how many points will I ask?
+{% endblock %}
 
-    <p>How many points will you demand for yourself?</p>
+{% block selfballoon %}
 
-    {% formfield player.request_amount with label="Please enter a number from 0 to 100" %}
+    {% formfield player.request_amount with label="I request" %}
+    {% next_button %}
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
 
-    <p>{% next_button %}</p>
-
-    {% include Constants.instructions_template %}
-    
 {% endblock %}

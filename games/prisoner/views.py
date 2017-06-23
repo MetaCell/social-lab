@@ -33,7 +33,6 @@ class Results(Page):
 
 
 page_sequence = [
-    Introduction,
     Decision,
     ResultsWaitPage,
     Results

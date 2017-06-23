@@ -5,13 +5,13 @@ from otree.api import (
 import random
 
 doc = """
-This is a one-period public goods game with 3 players.
+This is a one-period public goods game with 2 players.
 """
 
 
 class Constants(BaseConstants):
     name_in_url = 'public_goods'
-    players_per_group = 3
+    players_per_group = 2
     num_rounds = 1
 
     instructions_template = 'public_goods/Instructions.html'
