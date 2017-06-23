@@ -143,6 +143,7 @@ $(document).ready(function () {
         socket.onopen();
     }
 
+    $(".situation").css("padding", "0px");
     $(".typing").css("padding", "5px");
     $(".hiders").remove();
     clearInterval(window.shake);
