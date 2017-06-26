@@ -4,7 +4,11 @@
     "frequency": 1
   },
   {
-    "questionId":"fear",
+    "questionId":"harmfulIntent",
+    "frequency": 1
+  },
+  {
+    "questionId":"selfInterest",
     "frequency": 1
   }
 ]
