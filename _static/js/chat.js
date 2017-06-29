@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     setTimeout(function(){
         QuestionsController.showQuestions(undefined, "initial", undefined);
-    },0);
+    },250);
 
     $(".roundLabel").hide();
     $(".points").hide();

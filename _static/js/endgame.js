@@ -28,5 +28,5 @@ $(document).ready(function () {
 
     window.setTimeout(function () {
         QuestionsController.showQuestions($("#round").html(), 'final', endScreenCallback);
-    }, 0);
+    }, 250);
 });
