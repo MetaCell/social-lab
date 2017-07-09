@@ -24,7 +24,7 @@ class Constants(BaseConstants):
 
     # payoff if both players cooperate or both defect
     both_cooperate_payoff = c(0.10)
-    both_defect_payoff = c(0.5)
+    both_defect_payoff = c(0.05)
 
 
 class Subsession(BaseSubsession):
