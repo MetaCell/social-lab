@@ -1,5 +1,13 @@
 [
   {
+    "questionId":"harmfulIntent",
+    "frequency": 1
+  },
+  {
+    "questionId":"selfInterest",
+    "frequency": 1
+  },
+  {
     "questionId":"humanRobot",
     "frequency": 1
   },
