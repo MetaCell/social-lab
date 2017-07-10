@@ -429,24 +429,24 @@ h4 {
     float: right; /* makes animation go left-to-right */
     width: 0; /* graceful degradation: if animation doesn't work, these are invisible by default */
     background: #000000; /* same as page background */
-    animation: typing 2s steps(30, end);
+    animation: typing 1s steps(30, end);
     animation-fill-mode: both; /* load first keyframe on page load, leave on last frame at end */
 }
 
 .hiders p:nth-child(2) {
-    animation-delay: 2s;
+    animation-delay: 1s;
 }
 
 .hiders p:nth-child(3) {
-    animation-delay: 4s;
+    animation-delay: 2s;
 }
 
 .hiders p:nth-child(4) {
-    animation-delay: 6s;
+    animation-delay: 3s;
 }
 
 .hiders p:nth-child(5) {
-    animation-delay: 8s;
+    animation-delay: 4s;
 }
 
 .instructionsContainer {

@@ -115,7 +115,7 @@ $(document).ready(function () {
 
         chatHistory.animate({scrollTop: chatHistory.prop("scrollHeight")}, 1000);
 
-        // Question time
+        // Question time - we check if there are questions based on ROUND_DEFINITION messages
         msgCounter++;
         if(
             roundMsgSentCounter >= ROUND_DEFINITION[playerID == 'P1'? 'P1' : 'P2'] &&
@@ -129,8 +129,9 @@ $(document).ready(function () {
 
             $("#round").html(round);
 
-            //we check if there are questions based on ROUND_DEFINITION messages
-            QuestionsController.showQuestions(round, "", endOfRatingsCallback);
+            setTimeout(function(){
+                QuestionsController.showQuestions(round, "", endOfRatingsCallback);
+            },2000);
         }
     };
 

@@ -91,7 +91,11 @@ QuestionsController = {
                     $("#question-range-min").html(question.minLabel != undefined ? question.minLabel : question.min);
                     $("#question-range-max").html(question.maxLabel != undefined ? question.maxLabel : question.max);
                     $("#question-range-field").slider({min:question.min,max:question.max});
-                    $("#question-range-field").slider('setValue', 0);
+                    var centerVal = (question.max + question.min)/2;
+                    if(centerVal == undefined || isNaN(centerVal)){
+                        centerVal = 0;
+                    }
+                    $("#question-range-field").slider('setValue', centerVal);
                     $("#rangeQuestion").show();
                     $("#choiceQuestion").hide();
                     $("#textQuestion").hide();

@@ -32,7 +32,8 @@ $(document).ready(function () {
         adjustPopovers('self');
     }, 5000);
 
-    if (game != 'chat'){
+    // this code shouldn't run for chat and final page
+    if (game != 'chat' && page != 'final'){
         // ask mid-round question after giving some time to read what happened
         // NOTE: this does not apply to chat game that controls when questions are shown based on internal round definition
         var questionTimeout=5000;
