@@ -37,7 +37,7 @@ $(document).ready(function () {
         // NOTE: this does not apply to chat game that controls when questions are shown based on internal round definition
         var questionTimeout=5000;
         if(page=="initial"){
-            questionTimeout=0;
+            questionTimeout=250;
         }
         window.setTimeout(function () {
             //for round based games, we show questions at the beginning
