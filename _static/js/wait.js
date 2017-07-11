@@ -8,7 +8,7 @@ $(document).ready(function () {
     var workerId = getParameterByName('workerId');
     var completionUrl = getParameterByName('completion_url');
 
-    var MATCHMAKING_MAX_WAIT = 13500;
+    var MATCHMAKING_MAX_WAIT = 30000;
     var MATCHMAKING_MIN_WAIT = 3500;
     var WORKER_ID_MIN_LENGTH = 5;
 
