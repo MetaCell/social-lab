@@ -8,6 +8,8 @@ $(document).ready(function () {
     var workerId = getParameterByName('workerId');
     var completionUrl = getParameterByName('completion_url');
 
+    var MATCHMAKING_MAX_WAIT = 13500;
+    var MATCHMAKING_MIN_WAIT = 3500;
     var WORKER_ID_MIN_LENGTH = 5;
 
     // if platform field is detected let the user queue only if they filled out the worker id field
@@ -88,7 +90,7 @@ $(document).ready(function () {
                 socket.onopen();
             }
 
-            var pollingInterval = Math.round(Math.random() * (13500 - 3500)) + 3500;
+            var pollingInterval = Math.round(Math.random() * (MATCHMAKING_MAX_WAIT - MATCHMAKING_MIN_WAIT)) + MATCHMAKING_MIN_WAIT;
             pollingInterval = startPolling(socket, pollingInterval);
         } else {
             console.log('Error: no game selected!');
