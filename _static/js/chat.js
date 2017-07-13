@@ -10,6 +10,8 @@ $(document).ready(function () {
         P2: 2
     };
 
+    var MAX_ROUNDS = 10;
+
     // token used for special messaging to indicate end of ratings phase
     var END_OF_RATINGS_TOKEN = '#END_OF_RATINGS#';
 
@@ -49,20 +51,30 @@ $(document).ready(function () {
     var roundMsgReceivedCounter = 0;
     var msgCounter = 0;
 
-    var endOfRatingsCallback = function(){
+    var endOfRatingsCallback = function () {
         // check if we should show the blocking dialog
-        if(showBlockingDialog) {
+        if (showBlockingDialog) {
             // show blocking dialog, we need to wait for the other player to complete ratings
             QuestionsController.showBlockingDialog(true);
         }
 
         // if there is no mystery to solve, send end of ratings chat message
-        if(!mystery){
+        if (!mystery) {
             socket.send(END_OF_RATINGS_TOKEN);
         }
 
         // reset blocking dialog control flag
         showBlockingDialog = true;
+
+        if (round == MAX_ROUNDS) {
+            // trigger otree auto submission
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'auto_submit',
+                value: '1'
+            }).appendTo('form');
+            $('#form').submit();
+        }
     };
 
     socket.onmessage = function (e) {
