@@ -47,7 +47,7 @@ $(document).ready(function () {
         $('#ready-button').hide();
         $('#instructions_label').hide();
         $("#loader").show();
-        $('#message-panel').append('<p>Looking for an opponent...</p>');
+        $('#message-panel').append('<p>Looking for a partner...</p>');
 
         if (game != undefined && game != null) {
             var pollingInterval = undefined;
