@@ -36,7 +36,7 @@ $(document).ready(function () {
 
             // set text
             var platformDisplay = (platform == 'mturk') ? 'Mechanical Turk' : 'Prolific';
-            $("#worker-id-feedback").html("Please submit your " + platformDisplay + " worker-id to continue");
+            $("#worker-id-feedback").html("Please submit your " + platformDisplay + " worker-id to continue. Your Worker ID starts with the letter A and has 12-14 letters or numbers. It is not your email address. If we do not have your correct Worker ID we cannot pay you.");
 
             // bring up dialog asking for worker id
             $('#worker-id-dialog').show();
