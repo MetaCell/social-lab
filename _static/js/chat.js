@@ -10,6 +10,8 @@ $(document).ready(function () {
         P2: 2
     };
 
+    var MAX_ROUNDS = 10;
+
     // token used for special messaging to indicate end of ratings phase
     var END_OF_RATINGS_TOKEN = '#END_OF_RATINGS#';
 
@@ -37,13 +39,9 @@ $(document).ready(function () {
         }, delay);
     }
 
-    var questionTimeout=3000;
-    if(page=="initial"){
-        questionTimeout=0;
-    }
     setTimeout(function(){
         QuestionsController.showQuestions(undefined, "initial", undefined);
-    },questionTimeout);
+    },250);
 
     $(".roundLabel").hide();
     $(".points").hide();
@@ -53,20 +51,35 @@ $(document).ready(function () {
     var roundMsgReceivedCounter = 0;
     var msgCounter = 0;
 
-    var endOfRatingsCallback = function(){
+    var endOfRatingsCallback = function (questionsDictionary) {
+        // add marker to plain history with ids of questions
+        for(var key in questionsDictionary){
+            plainHistory.val( plainHistory.val() + " \n<question id='" + key +"'>");
+        }
+
         // check if we should show the blocking dialog
-        if(showBlockingDialog) {
+        if (showBlockingDialog) {
             // show blocking dialog, we need to wait for the other player to complete ratings
             QuestionsController.showBlockingDialog(true);
         }
 
         // if there is no mystery to solve, send end of ratings chat message
-        if(!mystery){
+        if (!mystery) {
             socket.send(END_OF_RATINGS_TOKEN);
         }
 
         // reset blocking dialog control flag
         showBlockingDialog = true;
+
+        if (round == MAX_ROUNDS) {
+            // trigger otree auto submission
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'auto_submit',
+                value: '1'
+            }).appendTo('form');
+            $('#form').submit();
+        }
     };
 
     socket.onmessage = function (e) {
@@ -119,7 +132,7 @@ $(document).ready(function () {
 
         chatHistory.animate({scrollTop: chatHistory.prop("scrollHeight")}, 1000);
 
-        // Question time
+        // Question time - we check if there are questions based on ROUND_DEFINITION messages
         msgCounter++;
         if(
             roundMsgSentCounter >= ROUND_DEFINITION[playerID == 'P1'? 'P1' : 'P2'] &&
@@ -133,8 +146,9 @@ $(document).ready(function () {
 
             $("#round").html(round);
 
-            //we check if there are questions based on ROUND_DEFINITION messages
-            QuestionsController.showQuestions(round, "", endOfRatingsCallback);
+            setTimeout(function(){
+                QuestionsController.showQuestions(round, "", endOfRatingsCallback);
+            },2000);
         }
     };
 
@@ -143,6 +157,7 @@ $(document).ready(function () {
         socket.onopen();
     }
 
+    $(".situation").css("padding", "0px");
     $(".typing").css("padding", "5px");
     $(".hiders").remove();
     clearInterval(window.shake);

@@ -8,6 +8,8 @@ $(document).ready(function () {
     var workerId = getParameterByName('workerId');
     var completionUrl = getParameterByName('completion_url');
 
+    var MATCHMAKING_MAX_WAIT = 30000;
+    var MATCHMAKING_MIN_WAIT = 3500;
     var WORKER_ID_MIN_LENGTH = 5;
 
     // if platform field is detected let the user queue only if they filled out the worker id field
@@ -34,7 +36,7 @@ $(document).ready(function () {
 
             // set text
             var platformDisplay = (platform == 'mturk') ? 'Mechanical Turk' : 'Prolific';
-            $("#worker-id-feedback").html("Please submit your " + platformDisplay + " worker-id to continue");
+            $("#worker-id-feedback").html("Please submit your " + platformDisplay + " worker-id to continue. Your Worker ID starts with the letter A and has 12-14 letters or numbers. It is not your email address. If we do not have your correct Worker ID we cannot pay you.");
 
             // bring up dialog asking for worker id
             $('#worker-id-dialog').show();
@@ -45,7 +47,7 @@ $(document).ready(function () {
         $('#ready-button').hide();
         $('#instructions_label').hide();
         $("#loader").show();
-        $('#message-panel').append('<p>Looking for an opponent...</p>');
+        $('#message-panel').append('<p>Looking for a partner...</p>');
 
         if (game != undefined && game != null) {
             var pollingInterval = undefined;
@@ -88,7 +90,7 @@ $(document).ready(function () {
                 socket.onopen();
             }
 
-            var pollingInterval = Math.round(Math.random() * (13500 - 3500)) + 3500;
+            var pollingInterval = Math.round(Math.random() * (MATCHMAKING_MAX_WAIT - MATCHMAKING_MIN_WAIT)) + MATCHMAKING_MIN_WAIT;
             pollingInterval = startPolling(socket, pollingInterval);
         } else {
             console.log('Error: no game selected!');

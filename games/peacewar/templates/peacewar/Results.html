@@ -6,7 +6,7 @@
         {% if my_decision == other_player_decision %}
             You both want {{ my_decision }}, you earn {{ player.payoff }}.
         {% else %}
-            You declared {{ my_decision }} and your opponent declared {{ other_player_decision }}, you earn {{ player.payoff }}.
+            You declared {{ my_decision }} and your partner declared {{ other_player_decision }}, you earn {{ player.payoff }}.
         {% endif %}
 
 {% endblock %}
@@ -21,14 +21,6 @@
 {% endblock %}
 
 {% block selfballoon %}
-
-    {% if my_intention == my_decision %}
-            My word is my bond, I declare {{ my_decision }}
-    {% else %}
-            I changed my mind, I declare {{ my_decision }}
-    {% endif %}
     {% next_button %}
     <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
-
-
 {% endblock %}

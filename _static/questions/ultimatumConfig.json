@@ -1,15 +1,15 @@
 [
   {
-    "questionId":"fear",
+    "questionId":"testQuestion",
     "round": "initial"
   },
   {
     "questionId":"humanRobot",
-    "round": "final"
+    "frequency": 1
   },
   {
-    "questionId":"feel",
-    "frequency": 1
+    "questionId":"finalchatq",
+    "round": "final"
   }
 ]
 

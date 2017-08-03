@@ -3,7 +3,7 @@ from ._builtin import Page, WaitPage
 
 
 class Intention(Page):
-    timeout_seconds = 300
+    timeout_seconds = 0
     form_model = models.Player
     form_fields = ['intention']
 
@@ -21,7 +21,7 @@ class Intention(Page):
 
 
 class Decision(Page):
-    timeout_seconds = 300
+    timeout_seconds = 0
     form_model = models.Player
     form_fields = ['decision']
 

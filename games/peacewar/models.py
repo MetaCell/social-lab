@@ -19,12 +19,12 @@ class Constants(BaseConstants):
     instructions_template = 'peacewar/Instructions.html'
 
     # payoff if 1 player defects and the other cooperates""",
-    betray_payoff = c(300)
+    betray_payoff = c(0.15)
     betrayed_payoff = c(0)
 
     # payoff if both players cooperate or both defect
-    both_cooperate_payoff = c(200)
-    both_defect_payoff = c(100)
+    both_cooperate_payoff = c(0.10)
+    both_defect_payoff = c(0.05)
 
 
 class Subsession(BaseSubsession):
