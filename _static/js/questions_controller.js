@@ -158,7 +158,7 @@ QuestionsController = {
             // check that counter exceeds number of questions
             if(cb != undefined && Object.keys(questions).length >= this.currentQuestion){
                 // invoke optional callback once rating phase has concluded
-                cb();
+                cb(questions);
             }
         }
     },
