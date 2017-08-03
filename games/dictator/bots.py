@@ -8,5 +8,8 @@ class PlayerBot(Bot):
     def play_round(self):
 
         value = random.randint(1, 100)
-        yield (views.Offer, {"group.kept": value})
+
+        if self.player.id_in_group == 1:
+            yield (views.Offer, {"kept": c(value)})
+
         yield (views.Results)
