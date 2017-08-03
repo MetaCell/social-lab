@@ -32,12 +32,13 @@ $(document).ready(function () {
         adjustPopovers('self');
     }, 5000);
 
-    if (game != 'chat' || page == 'final'){
+    // this code shouldn't run for chat and final page
+    if (game != 'chat' && page != 'final'){
         // ask mid-round question after giving some time to read what happened
         // NOTE: this does not apply to chat game that controls when questions are shown based on internal round definition
         var questionTimeout=5000;
         if(page=="initial"){
-            questionTimeout=0;
+            questionTimeout=250;
         }
         window.setTimeout(function () {
             //for round based games, we show questions at the beginning
@@ -69,27 +70,30 @@ $(document).ready(function () {
 
     QuestionsController.init(game);
 
-    window.disconnectionPollingCounter = 0;
-    window.disconnectionPollingInterval = undefined;
-    var disconnectionPollingSocket = setupDisconnectionPollingSocket();
-    if(disconnectionPollingSocket != undefined){
-        disconnectionPollingSocket.onmessage = function (e) {
+    // only apply disconnection logic if we are not at the final page where disconnection is normal
+    if(page != 'final') {
+        window.disconnectionPollingCounter = 0;
+        window.disconnectionPollingInterval = undefined;
+        var disconnectionPollingSocket = setupDisconnectionPollingSocket();
+        if (disconnectionPollingSocket != undefined) {
+            disconnectionPollingSocket.onmessage = function (e) {
                 var message = JSON.parse(e.data);
 
                 // log message for debugging
-                console.log('Message received: ' + message.status + ' / ' + message.message);
+                console.log('Message received: ' + message.status + ' / ' + message.player_disconnected);
 
                 // ignore other message types for now
                 if (message.status === 'DISCONNECTION_STATUS') {
                     // increase or reset disconnection counter
-                    if(message.player_disconnected == true){
-                        window.disconnectionPollingCounter+=1;
+                    if (message.player_disconnected == true) {
+                        window.disconnectionPollingCounter += 1;
                     } else {
                         window.disconnectionPollingCounter = 0;
                     }
                 }
             };
-        setupDisconnectionPollingMessages(disconnectionPollingSocket);
+            setupDisconnectionPollingMessages(disconnectionPollingSocket);
+        }
     }
 });
 
@@ -117,7 +121,11 @@ function setupDisconnectionPollingMessages(pollingSocket) {
             // kill disconnection polling loop
             window.clearInterval(window.disconnectionPollingInterval);
             // raise disconnection message
-            alert('Your opponent has disconnected!');
+            // TODO: make sure the user is not at the end already in that case disconnection is normal
+            // TODO: extend to show different message in case of external platform
+            var disconnectionMsg = 'Your opponent has disconnected!';
+            $('#disconnection-notification-dialog .modal-content').append("<p>" + disconnectionMsg + "</p>");
+            $("#disconnection-notification-dialog").modal({backdrop: 'static', keyboard: false});
         }
     };
 

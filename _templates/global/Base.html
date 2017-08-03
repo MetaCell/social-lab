@@ -44,7 +44,7 @@
     <div class="#gameArea">
     <div class="gameContainer">
         <div class="roundLabel"></div>
-        <div class="points">TOTAL SCORE<div class="pointsLabel"></div></div>
+        <div class="points">WINNINGS IN THE BANK<div class="pointsLabel"></div></div>
         <div class="playerContainer otherplayer">
             <div class="player otherplayer" data-toggle="popover" data-html="true" data-placement="left" data-content='{% block otherballoon %}{% endblock %}'></div>
         </div>
@@ -97,7 +97,7 @@
         <div class="modal fade" tabindex="-1" role="dialog" id="question-blocking-dialog" style="display:none">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <p><b>Waiting for opponent to finish rating phase!</b></p>
+                    <p><b>Waiting for partner to finish rating phase!</b></p>
                 </div>
             </div>
         </div>
@@ -121,6 +121,14 @@
         </div>
 
         <div id="external-platform-dialog" class="modal fade" tabindex="-1" role="dialog" style="display:none">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                <!-- injected content goes here -->
+                </div>
+            </div>
+        </div>
+
+        <div id="disconnection-notification-dialog" class="modal fade" tabindex="-1" role="dialog" style="display:none">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                 <!-- injected content goes here -->

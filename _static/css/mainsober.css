@@ -373,15 +373,16 @@ h4 {
 }
 
 .situation {
+    padding: 0px 25px 0px 25px;
     text-align: center;
     font-size: 18px;
     height: 200px;
-    font-weight: 200;
-    background: #582710; /* same as page background */
+    font-weight: 300;
+    background: #000000; /* same as page background */
     letter-spacing: .15em;
     position: absolute;
-    left: 15%;
     top: 37%;
+    left: 17%;
     width: 70%;
     z-index: 0;
     color: white;
@@ -404,7 +405,7 @@ h4 {
     text-align: center;
     padding: 25px;
 
-    background: #582710; /* same as page background */
+    background: #000000; /* same as page background */
     top: 0;
     margin: 0;
     z-index: 1;
@@ -412,11 +413,11 @@ h4 {
 }
 
 .hiders {
-    padding: 25px;
+    padding: 25px 0px 25px 0px;
     margin: 0;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 93%;
     background: transparent;
     z-index: 2;
 }
@@ -427,25 +428,25 @@ h4 {
     margin: 0;
     float: right; /* makes animation go left-to-right */
     width: 0; /* graceful degradation: if animation doesn't work, these are invisible by default */
-    background: #582710; /* same as page background */
-    animation: typing 2s steps(30, end);
+    background: #000000; /* same as page background */
+    animation: typing 1s steps(30, end);
     animation-fill-mode: both; /* load first keyframe on page load, leave on last frame at end */
 }
 
 .hiders p:nth-child(2) {
-    animation-delay: 2s;
+    animation-delay: 1s;
 }
 
 .hiders p:nth-child(3) {
-    animation-delay: 4s;
+    animation-delay: 2s;
 }
 
 .hiders p:nth-child(4) {
-    animation-delay: 6s;
+    animation-delay: 3s;
 }
 
 .hiders p:nth-child(5) {
-    animation-delay: 8s;
+    animation-delay: 4s;
 }
 
 .instructionsContainer {
@@ -605,6 +606,8 @@ main {
     height: 43px;
     margin-right: 10px;
     padding-left: 10px;
+	font-weight: 400;
+	font-size: 18px;
 }
 
 #selfMessage:focus {
@@ -1012,6 +1015,17 @@ main {
 }
 
 #external-platform-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    height: 300px;
+    box-shadow: none;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 25px;
+    color: white;
+}
+
+#disconnection-notification-dialog .modal-content {
     background: transparent;
     border: 0;
     height: 300px;

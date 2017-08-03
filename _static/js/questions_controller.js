@@ -12,6 +12,7 @@ QuestionsController = {
     getQuestions: function (round, page) {
         var gameQuestions = {};
 
+        if(this.gameConfig != undefined){
             for (var i = 0; i < this.gameConfig.length; i++) {
                 var addQuestion = false;
                 if (this.gameConfig[i].round != undefined) {
@@ -34,6 +35,7 @@ QuestionsController = {
                     var id = this.gameConfig[i].questionId;
                     gameQuestions[id] = this.questions[id];
                 }
+        }
         }
 
         return gameQuestions;
@@ -89,7 +91,11 @@ QuestionsController = {
                     $("#question-range-min").html(question.minLabel != undefined ? question.minLabel : question.min);
                     $("#question-range-max").html(question.maxLabel != undefined ? question.maxLabel : question.max);
                     $("#question-range-field").slider({min:question.min,max:question.max});
-                    $("#question-range-field").slider('setValue', 0);
+                    var centerVal = (question.max + question.min)/2;
+                    if(centerVal == undefined || isNaN(centerVal)){
+                        centerVal = 0;
+                    }
+                    $("#question-range-field").slider('setValue', centerVal);
                     $("#rangeQuestion").show();
                     $("#choiceQuestion").hide();
                     $("#textQuestion").hide();
@@ -152,7 +158,7 @@ QuestionsController = {
             // check that counter exceeds number of questions
             if(cb != undefined && Object.keys(questions).length >= this.currentQuestion){
                 // invoke optional callback once rating phase has concluded
-                cb();
+                cb(questions);
             }
         }
     },
