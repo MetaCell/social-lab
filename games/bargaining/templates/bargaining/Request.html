@@ -3,11 +3,12 @@
 
 
 {% block current %}
-    You and the other participant
+    You and your partner need to request an amount out of the total available of {{ Constants.amount_shared }}.
+    If the sum of what both of you ask combined is larger than {{ Constants.amount_shared }} you will get nothing.
 {% endblock %}
 
 {% block otherballoon %}
-    ...mmm...how many points will I ask?
+    Mmm... how much will I ask?
 {% endblock %}
 
 {% block selfballoon %}
