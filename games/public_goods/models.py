@@ -12,7 +12,7 @@ This is a one-period public goods game with 2 players.
 class Constants(BaseConstants):
     name_in_url = 'public_goods'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 4
 
     instructions_template = 'public_goods/Instructions.html'
 

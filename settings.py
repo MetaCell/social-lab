@@ -272,13 +272,13 @@ SESSION_CONFIGS = [
         'display_name': "Trust",
         'num_demo_participants': 2,
         'random_start_order': True,
-        'app_sequence': ['games.trust', 'games.human_test'],
+        'app_sequence': ['games.trust', 'games.end_game'],
     },
     {
         'name': 'peacewar',
         'display_name': "Peace War",
         'num_demo_participants': 2,
-        'app_sequence': ['games.peacewar', 'games.human_test'],
+        'app_sequence': ['games.peacewar', 'games.end_game'],
     },
     {
         'name': 'ultimatum',
@@ -286,37 +286,37 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'treatment': "no strategy",
         'random_start_order': True,
-        'app_sequence': ['games.ultimatum', 'games.human_test'],
+        'app_sequence': ['games.ultimatum', 'games.end_game'],
     },
     {
         'name': 'chat',
         'display_name': "Chat",
         'num_demo_participants': 2,
-        'app_sequence': ['games.chat', 'games.human_test'],
+        'app_sequence': ['games.chat', 'games.end_game'],
     },
     {
         'name': 'dictator',
         'display_name': "Dictator Game",
         'num_demo_participants': 2,
-        'app_sequence': ['games.dictator', 'games.human_test'],
+        'app_sequence': ['games.dictator', 'games.end_game'],
     },
     {
         'name': 'bargaining',
         'display_name': "Bargaining Game",
         'num_demo_participants': 2,
-        'app_sequence': ['games.bargaining', 'games.human_test'],
+        'app_sequence': ['games.bargaining', 'games.end_game'],
     },
     {
         'name': 'prisoner',
         'display_name': "Prisoner's Dilemma",
         'num_demo_participants': 2,
-        'app_sequence': ['games.prisoner', 'games.human_test'],
+        'app_sequence': ['games.prisoner', 'games.end_game'],
     },
     {
         'name': 'public_goods',
         'display_name': "Public Goods",
         'num_demo_participants': 3,
-        'app_sequence': ['games.public_goods', 'games.human_test'],
+        'app_sequence': ['games.public_goods', 'games.end_game'],
     }
 ]
 

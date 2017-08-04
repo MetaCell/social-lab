@@ -14,7 +14,7 @@ amount, both players get demanded portions. Otherwise, both get nothing.
 class Constants(BaseConstants):
     name_in_url = 'bargaining'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 4
 
     instructions_template = 'bargaining/Instructions.html'
 
