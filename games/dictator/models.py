@@ -26,10 +26,14 @@ class Constants(BaseConstants):
     # Initial amount allocated to the dictator
     endowment = c(100)
 
-
 class Subsession(BaseSubsession):
-    pass
-
+    def before_session_starts(self):
+        # swap roles for even numbered rounds
+        if self.round_number % 2 == 0:
+            for group in self.get_groups():
+                players = group.get_players()
+                players.reverse()
+                group.set_players(players)
 
 class Group(BaseGroup):
     kept = models.CurrencyField(
