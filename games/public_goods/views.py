@@ -17,6 +17,18 @@ class Contribute(Page):
 
     timeout_submission = {'contribution': c(Constants.endowment / 2)}
 
+    def vars_for_template(self):
+
+        return {
+                'playerIdInSession': self.player.id_in_subsession,
+                'participantCode': self.participant.code,
+                'sessionId': self.session.id,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'page': "initial" if self.round_number == 1 else "",
+                'points': self.player.participant.payoff,
+                'game': 'public_goods'
+        }
+
 
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
@@ -31,6 +43,13 @@ class Results(Page):
     def vars_for_template(self):
         return {
             'total_earnings': self.group.total_contribution * Constants.efficiency_factor,
+            'points': self.player.participant.payoff,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number) + "/" + str(models.Constants.num_rounds),
+            'round': self.round_number,
+            'game': 'public_goods'
         }
 
 

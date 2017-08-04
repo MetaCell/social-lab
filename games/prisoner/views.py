@@ -12,6 +12,18 @@ class Decision(Page):
     form_model = models.Player
     form_fields = ['decision']
 
+    def vars_for_template(self):
+
+        return {
+                'playerIdInSession': self.player.id_in_subsession,
+                'participantCode': self.participant.code,
+                'sessionId': self.session.id,
+                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+                'page': "initial" if self.round_number == 1 else "",
+                'points': self.player.participant.payoff,
+                'game': 'prisoner'
+        }
+
 
 class ResultsWaitPage(WaitPage):
     body_text = 'Waiting for the other participant to choose.'
@@ -29,6 +41,13 @@ class Results(Page):
             'my_decision': self.player.decision.lower(),
             'other_player_decision': self.player.other_player().decision.lower(),
             'same_choice': self.player.decision == self.player.other_player().decision,
+            'points': self.player.participant.payoff,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number) + "/" + str(models.Constants.num_rounds),
+            'round': self.round_number,
+            'game': 'prisoner'
         }
 
 
