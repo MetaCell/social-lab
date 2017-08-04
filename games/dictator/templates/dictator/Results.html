@@ -5,8 +5,9 @@
 {% block current %}
     {% if player.id_in_group == 1 %}
         You decided to keep <strong>{{ group.kept }}</strong> for yourself.
+        The other participant gets <strong>{{ offer }}</strong>.
     {% else %}
-        Participant 1 decided to keep <strong>{{ group.kept }}</strong>, so
+        The other participant decided to keep <strong>{{ group.kept }}</strong>, so
         you got <strong>{{ offer }}</strong>.
     {% endif %}
 {% endblock %}
@@ -14,7 +15,7 @@
 
 {% block otherballoon %}
     {% if player.id_in_group == 1 %}
-        mmm... {{ offer }} thanks!
+        Mmm... {{ offer }} thanks!
     {% else %}
         I kept {{ group.kept }}
     {% endif %}
@@ -24,7 +25,7 @@
     {% if player.id_in_group == 1 %}
         You are welcome :)
     {% else %}
-        ...ehm...thanks!
+        Thanks!
     {% endif %}
     {% next_button %}
     <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
