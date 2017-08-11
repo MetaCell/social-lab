@@ -12,30 +12,28 @@ QuestionsController = {
     getQuestions: function (round, page) {
         var gameQuestions = {};
 
-        if(this.gameConfig != undefined){
+        if (this.gameConfig != undefined) {
             for (var i = 0; i < this.gameConfig.length; i++) {
                 var addQuestion = false;
                 if (this.gameConfig[i].round != undefined) {
-                    if(this.gameConfig[i].round == "initial"){
+                    if (this.gameConfig[i].round == "initial") {
                         addQuestion = (page == "initial");
-                    }
-                    else if(this.gameConfig[i].round == "final"){
+                    } else if (this.gameConfig[i].round == "final") {
                         addQuestion = (page == "final");
-                    }
-                    else {
+                    } else {
                         addQuestion = (this.gameConfig[i].round == round);
                     }
-                }
-                else if (this.gameConfig[i].frequency != undefined) {
-                    if(!isNaN(parseInt(round))) {
+                } else if (this.gameConfig[i].frequency != undefined) {
+                    if (!isNaN(parseInt(round))) {
                         addQuestion = ((round % this.gameConfig[i].frequency) == 0);
                     }
                 }
+
                 if (addQuestion) {
                     var id = this.gameConfig[i].questionId;
                     gameQuestions[id] = this.questions[id];
                 }
-        }
+            }
         }
 
         return gameQuestions;
