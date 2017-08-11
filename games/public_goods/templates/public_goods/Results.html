@@ -1,0 +1,30 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block current %}
+    You contributed {{ player.contribution }}, the other participant contributed
+        {% for p in player.get_others_in_group %}
+            {{ p.contribution }}
+        {% endfor %}.
+
+    The total contribution is {{ group.total_contribution }}.
+    Total earnings from the project are {{ total_earnings }}.
+    Your earnings from the project are {{ group.individual_share }}, thus in total you earned {{ player.payoff }}.
+{% endblock %}
+
+
+{% block otherballoon %}
+    I contributed
+    {% for p in player.get_others_in_group %}
+                {{ p.contribution }}
+    {% endfor %}.
+{% endblock %}
+
+{% block selfballoon %}
+    I contribute {{ player.contribution }}.
+    {% next_button %}
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
+{% endblock %}
+
+

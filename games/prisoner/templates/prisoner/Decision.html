@@ -1,0 +1,22 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block current %}
+    You and your partner in crime were both caught and now you are both being interrogated.
+    Will you rat him out?
+{% endblock %}
+
+{% block otherballoon %}
+    Shall I cooperate or defect?
+{% endblock %}
+
+{% block selfballoon %}
+
+    <button name="decision" value="Cooperate" class="btn socialblue ">I will cooperate</button>
+    <button name="decision" value="Defect" class="btn socialblue ">I will defect</button>
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
+
+{% endblock %}
+
+

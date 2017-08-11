@@ -4,7 +4,7 @@ from otree.api import (
 
 
 class Constants(BaseConstants):
-    name_in_url = 'humantest'
+    name_in_url = 'endgame'
     players_per_group = None
     num_rounds = 1
 

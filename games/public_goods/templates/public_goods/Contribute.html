@@ -1,0 +1,21 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block current %}
+    You and the other participant have the opportunity to undertake a joint project.
+    Each of you decides how much they are going to contribute to the project out of a maximum of {{ Constants.endowment }} each.
+{% endblock %}
+
+{% block otherballoon %}
+    Mmm... how much will I contribute?
+{% endblock %}
+
+{% block selfballoon %}
+
+    {% formfield player.contribution with label="I will contribute" %}
+    {% next_button %}
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
+
+{% endblock %}
+
+
