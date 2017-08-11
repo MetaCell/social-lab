@@ -1,0 +1,7 @@
+{
+  "testQuestionnaire":{
+      "label": "A test questionnaire",
+      "type": "questionnaire",
+      "questions": ["testQuestion", "harmfulIntent", "humanRobot"]
+  }
+}

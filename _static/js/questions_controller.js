@@ -51,6 +51,9 @@ QuestionsController = {
             this.socket = new WebSocket(ws_scheme + "://" + window.location.host + "/question/" + sessionId + "," + playerIdInSession + "," + participantCode + "/");
             //load the questions
             var that = this;
+
+            // TODO: load questionnaires.js
+
             $.getJSON("/_static/questions/questions.json", function (json) {
                 that.questions = json;
             });
