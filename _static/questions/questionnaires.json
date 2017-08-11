@@ -3,5 +3,10 @@
       "label": "A test questionnaire",
       "type": "questionnaire",
       "questions": ["testQuestion", "harmfulIntent", "humanRobot"]
+  },
+  "anotherTestQuestionnaire":{
+      "label": "Another test questionnaire",
+      "type": "questionnaire",
+      "questions": ["feel", "harmfulIntent", "selfInterest"]
   }
 }

@@ -52,7 +52,7 @@ QuestionsController = {
             //load the questions
             var that = this;
 
-            // TODO: load questionnaires.js
+            // TODO: load questionnaires.json here
 
             $.getJSON("/_static/questions/questions.json", function (json) {
                 that.questions = json;
