@@ -3,7 +3,7 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class HumanTest(Page):
+class EndGame(Page):
     form_model = models.Player
     form_fields = ['guess']
 

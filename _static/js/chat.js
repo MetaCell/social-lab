@@ -51,7 +51,12 @@ $(document).ready(function () {
     var roundMsgReceivedCounter = 0;
     var msgCounter = 0;
 
-    var endOfRatingsCallback = function () {
+    var endOfRatingsCallback = function (questionsDictionary) {
+        // add marker to plain history with ids of questions
+        for(var key in questionsDictionary){
+            plainHistory.val( plainHistory.val() + " \n<question id='" + key +"'>");
+        }
+
         // check if we should show the blocking dialog
         if (showBlockingDialog) {
             // show blocking dialog, we need to wait for the other player to complete ratings

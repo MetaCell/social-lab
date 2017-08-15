@@ -79,7 +79,7 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
         this.mouseEvent('click', 'input[value="Next"]', "Clicking next button");
         // wait game to start up to 15 seconds (give time to bot to kick in)
         casper.waitForSelector('button[name="guess"]', function () {
-            test.assertEquals(true, casper.getCurrentUrl().endsWith('/humantest/HumanTest/6/'), "Casper is correctly on peace/war game results screen");
+            test.assertEquals(true, casper.getCurrentUrl().endsWith('/endgame/EndGame/6/'), "Casper is correctly on peace/war game results screen");
             test.assertExists('button[value="Human"]', "Human guess button found");
             test.assertExists('button[value="Robot"]', "Robot guess button found");
         }, null, 10000);
@@ -90,7 +90,7 @@ casper.test.begin('Social Lab - Peace/War Game test vs Bot', 21, function suite(
         this.mouseEvent('click', 'button[value="Robot"]', "Clicking Robot guess button");
         // wait game to start up to 15 seconds (give time to bot to kick in)
         casper.waitForSelector('button[name="leave"]', function () {
-            test.assertEquals(true, casper.getCurrentUrl().endsWith('/humantest/TestResult/7/'), "Casper is correctly on thanks/leave screen");
+            test.assertEquals(true, casper.getCurrentUrl().endsWith('/endgame/TestResult/7/'), "Casper is correctly on thanks/leave screen");
             test.assertExists('button[name="leave"]', "Leave button found");
         }, null, 5000);
     });

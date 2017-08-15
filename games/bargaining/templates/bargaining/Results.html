@@ -1,0 +1,22 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block current %}
+
+    You demanded {{ player.request_amount }}, the other participant demanded {{ player.other_player.request_amount }}.
+    The sum of your demands is {{ sum }} thus you earn {{ player.payoff }}.
+
+{% endblock %}
+
+
+{% block otherballoon %}
+    I want {{ player.other_player.request_amount }}.
+{% endblock %}
+
+{% block selfballoon %}
+    I want {{ player.request_amount }}.
+    {% next_button %}
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
+{% endblock %}
+
+

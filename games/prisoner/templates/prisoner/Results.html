@@ -1,0 +1,24 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block current %}
+
+    {% if my_decision == other_player_decision %}
+        You both decided to {{ my_decision }}, you earn {{ player.payoff }}.
+    {% else %}
+        You decided to {{ my_decision }} and your accomplice decided to {{ other_player_decision }}, you earn {{ player.payoff }}.
+    {% endif %}
+
+{% endblock %}
+
+
+{% block otherballoon %}
+    I decide to {{ other_player_decision }}
+{% endblock %}
+
+{% block selfballoon %}
+    I want to {{ my_decision }}
+    {% next_button %}
+    <button class="btn help" data-toggle="modal" data-target="#instructionsModal">?</button>
+{% endblock %}
+
