@@ -7,6 +7,8 @@ $(document).ready(function () {
     var platform = getParameterByName('platform');
     var workerId = getParameterByName('workerId');
     var completionUrl = getParameterByName('completion_url');
+    var questionnaireId = getParameterByName('questionnaireId');
+    var questionnaireAnswers = { test: "123" };
 
     var MATCHMAKING_MAX_WAIT = 30000;
     var MATCHMAKING_MIN_WAIT = 3500;
@@ -78,10 +80,15 @@ $(document).ready(function () {
             };
 
             socket.onopen = function () {
-                // if we have a completion url, send it as message once the socket is open for business
+                // if we have a completion url, send it as message once the socket is open
                 if(completionUrl != '' && completionUrl != undefined) {
                     // NOTE: cannot be sent as url param, breaking characters
                     sendSocketMessage(socket, 'SET_COMPLETION_URL', completionUrl);
+                }
+
+                // if we have a questionnaire send it as message once the socket is open
+                if(questionnaireId != '' && questionnaireId != undefined) {
+                    sendSocketMessage(socket, 'SET_QUESTIONNAIRE_RESULTS', JSON.stringify(questionnaireAnswers));
                 }
             };
 
