@@ -6,13 +6,18 @@ $(document).ready(function () {
     // external platform parameters
     var platform = getParameterByName('platform');
     var workerId = getParameterByName('workerId');
-    var completionUrl = getParameterByName('completion_url');
     var questionnaireId = getParameterByName('questionnaireId');
+    var completionUrl = getParameterByName('completion_url');
     var questionnaireAnswers = { test: "123" };
 
     var MATCHMAKING_MAX_WAIT = 30000;
     var MATCHMAKING_MIN_WAIT = 3500;
     var WORKER_ID_MIN_LENGTH = 5;
+
+    // initialise questionnaire controller if questionnaire id is passed
+    if(questionnaireId != '' && questionnaireId != undefined){
+        QuestionnaireController.init(questionnaireId);
+    }
 
     // if platform field is detected let the user queue only if they filled out the worker id field
     if(platform != undefined && platform != ""){
