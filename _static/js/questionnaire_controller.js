@@ -22,6 +22,22 @@ QuestionnaireController = {
         }
     },
 
+    hasQuestionnaire: function() {
+        var questionnaireReady = false;
+
+        if (
+            this.questionnaireId != undefined &&
+            this.questionnaires[this.questionnaireId] != undefined &&
+            this.questionnaires[this.questionnaireId].questions != undefined &&
+            this.questionnaires[this.questionnaireId].questions.length > 0
+        ) {
+            // get questionnaire list of questions
+            questionnaireReady = true;
+        }
+
+        return questionnaireReady;
+    },
+
     getQuestionnaireLabel: function (){
         var label = '';
 
@@ -50,7 +66,7 @@ QuestionnaireController = {
         return questionnaireQuestions;
     },
 
-    showQuestionnaire: function () {
+    showQuestionnaire: function (callback) {
         // append label to #questionnaireLabel
         $("#questionnaireLabel").html(this.getQuestionnaireLabel());
 
@@ -110,11 +126,25 @@ QuestionnaireController = {
             }
         }
 
+        // hookup callback to submit button
+        var that = this;
+        $("#questionnaire-submit").click(function() {
+            var questionnaireResults = that.getQuestionnaireResults();
+            $("#questionnaire-dialog").modal('hide');
+            $(".modal-backdrop").remove();
+            callback(questionnaireResults);
+        });
+
         // bring up questionnaire-dialog
         $("#questionnaire-dialog").modal({backdrop: 'static', keyboard: false});
+        // make the backdrop darker
+        $(".modal-backdrop").each(function () {
+            this.style.setProperty('opacity', '0.95', 'important');
+        });
     },
 
     getQuestionnaireResults: function () {
         // TODO: use generated ids to grab results from DOM based on input type and put together json to return
+        return { test: "mockResults" };
     }
 };

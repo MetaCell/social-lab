@@ -22,6 +22,11 @@
     font-size: 20px;
 }
 
+#questionnaireSubmitContainer {
+    width: 100%;
+    text-align: center;
+}
+
 .bootstrap-select button {
     height: 35px;
     color: black !important;

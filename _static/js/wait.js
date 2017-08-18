@@ -8,7 +8,6 @@ $(document).ready(function () {
     var workerId = getParameterByName('workerId');
     var questionnaireId = getParameterByName('questionnaireId');
     var completionUrl = getParameterByName('completion_url');
-    var questionnaireAnswers = { test: "123" };
 
     var MATCHMAKING_MAX_WAIT = 30000;
     var MATCHMAKING_MIN_WAIT = 3500;
@@ -51,6 +50,17 @@ $(document).ready(function () {
     }
 
     $('#ready-button').click(function () {
+        if(QuestionnaireController.hasQuestionnaire()){
+            // bring up questionnaire passing makeMatch as a callback
+            QuestionnaireController.showQuestionnaire(makeMatch);
+        } else {
+            // if no questionnaire just queu up for a match
+            makeMatch();
+        }
+    });
+
+    // declare here so it has a closure on all the variables it needs
+    var makeMatch = function(questionnaireAnswers) {
         $('#ready-button').hide();
         $('#instructions_label').hide();
         $("#loader").show();
@@ -92,7 +102,7 @@ $(document).ready(function () {
                 }
 
                 // if we have a questionnaire send it as message once the socket is open
-                if(questionnaireId != '' && questionnaireId != undefined) {
+                if(questionnaireId != '' && questionnaireId != undefined && questionnaireAnswers != undefined) {
                     sendSocketMessage(socket, 'SET_QUESTIONNAIRE_RESULTS', JSON.stringify(questionnaireAnswers));
                 }
             };
@@ -104,10 +114,13 @@ $(document).ready(function () {
 
             var pollingInterval = Math.round(Math.random() * (MATCHMAKING_MAX_WAIT - MATCHMAKING_MIN_WAIT)) + MATCHMAKING_MIN_WAIT;
             pollingInterval = startPolling(socket, pollingInterval);
+
+            // scroll to top in case of long instructions to make sure the loader is visible
+            window.scrollTo(0, 0);
         } else {
             console.log('Error: no game selected!');
         }
-    });
+    }
 });
 
 function sendSocketMessage(w_socket, status, value){
