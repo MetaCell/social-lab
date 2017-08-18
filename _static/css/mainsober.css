@@ -72,7 +72,7 @@ footer {
 
 body.ingame {
     padding: 40px;
-    overflow-x: hidden; /* For Opera */
+    overflow: hidden !important; /* For Opera */
     -webkit-box-shadow: inset #519f8f 0 0 0 5px,
     inset #5fbba8 0 0 0 1px,
     inset #69ceb9 0 0 0 10px,
