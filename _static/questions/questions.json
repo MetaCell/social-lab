@@ -11,6 +11,10 @@
       "question": "How do you feel?",
       "type": "text"
   },
+  "testTextQuestion":{
+      "question": "This is a test text question",
+      "type": "text"
+  },
   "testQuestion":{
       "question": "This is a test question. Yes or no?",
       "type": "choice",

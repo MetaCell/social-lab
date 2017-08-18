@@ -2,10 +2,33 @@
     z-index: 9999999;
 }
 
-.modal-content {
-    background: rgba(66, 59, 59, 0.8);
-    border-radius: 0px !important;
-    color: grey;
+.questionnaire-modal-content {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index:15;
+    text-align: left;
+    font-size: 15px;
+}
+
+.question {
+    color: white;
+}
+
+#questionnaireLabel {
+    font-size: 20px;
+}
+
+.bootstrap-select button {
+    height: 35px;
+    color: black !important;
+}
+
+#questionnaireContent input {
+    color: white;
 }
 
 .dialog-backdrop {
@@ -38,6 +61,6 @@
 }
 
 #worker-id-feedback {
-    margin-top: 25px;
     color: white;
+    margin: 25px 50px 0px 50px;
 }
