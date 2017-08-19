@@ -10,7 +10,7 @@ $(document).ready(function () {
         P2: 2
     };
 
-    var MAX_ROUNDS = 1;
+    var MAX_ROUNDS = 10;
 
     // token used for special messaging to indicate end of ratings phase
     var END_OF_RATINGS_TOKEN = '#END_OF_RATINGS#';
