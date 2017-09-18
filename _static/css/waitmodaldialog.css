@@ -15,7 +15,7 @@
 }
 
 .question {
-    color: white;
+    color: #a4ffe8
 }
 
 #questionnaireLabel {
@@ -25,6 +25,26 @@
 #questionnaireSubmitContainer {
     width: 100%;
     text-align: center;
+}
+
+#questionnaire-dialog{
+    background: #b3b3b3;
+
+}
+#questionnaireLabel{
+    text-align: center;
+}
+.questionContainer{
+    background: #7b7b7b;
+    padding: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    color: white;
+}
+
+input[type="radio"]{
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .bootstrap-select button {

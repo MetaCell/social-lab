@@ -117,11 +117,10 @@ QuestionnaireController = {
                 // append
                 $.tmpl(choiceFieldTemplate, choiceFieldData).appendTo("#questionnaireContent");
                 // add options
-                var choiceSelector = choiceFieldData.questionId  + "-choice-field";
+                var choiceOptions = choiceFieldData.questionId  + "-options";
                 for(var c in question.value.choices){
-                    $("#" + choiceSelector).append("<option>"+question.value.choices[c]+"</option>");
+                    $("#" + choiceOptions).append("<input type='radio' name="+choiceFieldData.questionId+">"+question.value.choices[c]+"</input></br>");
                 }
-                $("#" + choiceSelector).selectpicker();
                 $("#" + choiceFieldData.questionId + " .btn").removeClass("btn-default");
             }
         }

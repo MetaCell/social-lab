@@ -48,9 +48,9 @@
     <div class="modal fade" tabindex="-1" role="dialog" id="questionnaire-dialog" style="display:none">
         <div class="modal-dialog modal-lg" role="document">
             <div class="questionnaire-modal-content">
-                <div id="questionnaireLabel" class="question"></div>
+                <div id="questionnaireLabel"></div>
                 <br>
-                <div id="questionnaireContent" class="question"></div>
+                <div id="questionnaireContent"></div>
                 <div id="questionnaireSubmitContainer">
                     <input  class="btn socialblue"  id="questionnaire-submit" type="button" value="Submit" />
                 </div>
@@ -59,32 +59,37 @@
     </div>
 
     <script id="textQuestionTemplate" type="text/html">
-        <div class="question">${label}</div>
-        <div>
-            <input id="${questionId}" type="text"/>
+        <div class="questionContainer">
+            <div class="question">${label}</div>
+            <div>
+                <input id="${questionId}" type="text"/>
+            </div>
+            <br>
         </div>
-        <br>
     </script>
 
     <script id="choiceQuestionTemplate" type="text/html">
-        <div class="question">${label}</div>
-        <br>
-        <div id="${questionId}">
-            <select id="${questionId}-choice-field" class="selectpicker"></select>
+        <div class="questionContainer">
+            <div class="question">${label}</div>
+            <br>
+            <form id="${questionId}-options">
+            </form>
+            <br>
         </div>
-        <br>
     </script>
 
     <script id="rangeQuestionTemplate" type="text/html">
-        <div class="question">${label}</div>
-        <br>
-        <div id="${questionId}">
-            <span id="question-range-min" class="question-range-label">${minLabel}</span>
-            <span style="margin: 10px">
-                <input id="${questionId}-range-field" data-slider-tooltip="hide" />
-            </span>
-            <span id="question-range-max" class="question-range-label">${maxLabel}</span>
+        <div class="questionContainer">
+            <div class="question">${label}</div>
+            <br>
+            <div id="${questionId}">
+                <span id="question-range-min" class="question-range-label">${minLabel}</span>
+                <span style="margin: 10px">
+                    <input id="${questionId}-range-field" data-slider-tooltip="hide" />
+                </span>
+                <span id="question-range-max" class="question-range-label">${maxLabel}</span>
+            </div>
+            <br>
         </div>
-        <br>
     </script>
 {% endblock %}
