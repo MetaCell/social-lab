@@ -339,4 +339,4 @@ RANDOMISATION_STATUS_MAP = {
 if environ.get('CLINICAL') not in {None, '', '0'}:
     CLINICAL = True
 else:
-    CLINICAL = False
+    CLINICAL = True

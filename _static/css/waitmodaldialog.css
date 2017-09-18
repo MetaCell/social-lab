@@ -1,6 +1,9 @@
 .modal {
     z-index: 9999999;
 }
+.modal-open{
+    overflow: hidden!important;
+}
 
 .questionnaire-modal-content {
     position: absolute;
