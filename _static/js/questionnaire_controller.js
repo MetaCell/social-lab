@@ -81,7 +81,7 @@ QuestionnaireController = {
                 // build data to inject
                 var textFieldData = {
                     questionId: question.id + i,
-                    label: (i+1) + " - " + question.value.question
+                    label: (i+1) + ". " + question.value.question
                 };
                 // append
                 $.tmpl(textFieldTemplate, textFieldData).appendTo("#questionnaireContent");
@@ -91,7 +91,7 @@ QuestionnaireController = {
                 // inject id, label, minRange, maxRange
                 var rangeFieldData = {
                     questionId: question.id + i,
-                    label: (i+1) + " - " + question.value.question,
+                    label: (i+1) + ". " + question.value.question,
                     maxLabel: question.value.maxLabel != undefined ? question.value.maxLabel : question.value.max,
                     minLabel: question.value.minLabel != undefined ? question.value.minLabel : question.value.min
                 };
@@ -112,16 +112,20 @@ QuestionnaireController = {
                 // inject id, label
                 var choiceFieldData = {
                     questionId: question.id + i,
-                    label: (i+1) + " - " + question.value.question
+                    label: (i+1) + ". " + question.value.question
                 };
                 // append
                 $.tmpl(choiceFieldTemplate, choiceFieldData).appendTo("#questionnaireContent");
                 // add options
                 var choiceOptions = choiceFieldData.questionId  + "-options";
+                var checked = true;
                 for(var c in question.value.choices){
-                    $("#" + choiceOptions).append("<input type='radio' name="+choiceFieldData.questionId+">"+question.value.choices[c]+"</input></br>");
+                    var checkedMarkup = checked ? " checked " : "";
+                    var valueMarkup = " value='"+ question.value.choices[c] +"' ";
+                    $("#" + choiceOptions).append("<input type='radio' name='" + choiceFieldData.questionId + "' " + checkedMarkup + valueMarkup + " >" + question.value.choices[c] + "</br>");
+                    // default checked only first item
+                    checked = false;
                 }
-                $("#" + choiceFieldData.questionId + " .btn").removeClass("btn-default");
             }
         }
 
@@ -143,7 +147,32 @@ QuestionnaireController = {
     },
 
     getQuestionnaireResults: function () {
-        // TODO: use generated ids to grab results from DOM based on input type and put together json to return
-        return { test: "mockResults" };
+        var results = [];
+        // loop and use generated ids to grab results from DOM based on input type and put together json to return
+        var questions = this.getQuestionnaireQuestions();
+        for(var i=0; i<questions.length; i++) {
+
+            var question = questions[i];
+            var elementId = question.id + i;
+            if(question.value.type == "text"){
+                // question id is unchanged
+            } else if (question.value.type == "range"){
+                elementId += "-range-field";
+            } else if (question.value.type == "choice"){
+                elementId += "-options";
+            }
+
+            var value = "";
+            if(question.value.type == "choice"){
+                value = $("#" + elementId + " input:checked").val();
+            } else {
+                value = $("#" + elementId).val();
+            }
+
+            var result = { questionId: question.id, questionIndex: i, result: value};
+            results.push(result);
+        }
+
+        return results;
     }
 };
