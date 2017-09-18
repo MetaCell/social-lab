@@ -7,6 +7,6 @@
   "anotherTestQuestionnaire":{
       "label": "Please answer the questions below to start the game:",
       "type": "questionnaire",
-      "questions": ["feel", "testTextQuestion", "harmfulIntent", "testQuestion"]
+      "questions": ["feel", "testTextQuestion", "harmfulIntent", "testQuestion", "selfInterest", "humanRobot", "feel", "finalchatq"]
   }
 }

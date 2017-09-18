@@ -40,5 +40,10 @@
       "question": "Final decision: have you been playing against a human or a computer?",
       "type": "choice",
       "choices":["Human","Computer"]
+  },
+  "interestOrPleasure": {
+      "question": "Little interest of pleasure in doing things?",
+      "type": "choice",
+      "choices":["Not at all","Several days", "More than half the days", "Nearly every day"]
   }
 }
