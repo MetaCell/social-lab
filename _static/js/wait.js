@@ -6,11 +6,17 @@ $(document).ready(function () {
     // external platform parameters
     var platform = getParameterByName('platform');
     var workerId = getParameterByName('workerId');
+    var questionnaireId = getParameterByName('questionnaireId');
     var completionUrl = getParameterByName('completion_url');
 
     var MATCHMAKING_MAX_WAIT = 30000;
     var MATCHMAKING_MIN_WAIT = 3500;
     var WORKER_ID_MIN_LENGTH = 5;
+
+    // initialise questionnaire controller if questionnaire id is passed
+    if(questionnaireId != '' && questionnaireId != undefined){
+        QuestionnaireController.init(questionnaireId);
+    }
 
     // if platform field is detected let the user queue only if they filled out the worker id field
     if(platform != undefined && platform != ""){
@@ -44,6 +50,17 @@ $(document).ready(function () {
     }
 
     $('#ready-button').click(function () {
+        if(QuestionnaireController.hasQuestionnaire()){
+            // bring up questionnaire passing makeMatch as a callback
+            QuestionnaireController.showQuestionnaire(makeMatch);
+        } else {
+            // if no questionnaire just queu up for a match
+            makeMatch();
+        }
+    });
+
+    // declare here so it has a closure on all the variables it needs
+    var makeMatch = function(questionnaireAnswers) {
         $('#ready-button').hide();
         $('#instructions_label').hide();
         $("#loader").show();
@@ -78,10 +95,15 @@ $(document).ready(function () {
             };
 
             socket.onopen = function () {
-                // if we have a completion url, send it as message once the socket is open for business
+                // if we have a completion url, send it as message once the socket is open
                 if(completionUrl != '' && completionUrl != undefined) {
                     // NOTE: cannot be sent as url param, breaking characters
                     sendSocketMessage(socket, 'SET_COMPLETION_URL', completionUrl);
+                }
+
+                // if we have a questionnaire send it as message once the socket is open
+                if(questionnaireId != '' && questionnaireId != undefined && questionnaireAnswers != undefined) {
+                    sendSocketMessage(socket, 'SET_QUESTIONNAIRE_RESULTS', JSON.stringify(questionnaireAnswers));
                 }
             };
 
@@ -92,10 +114,13 @@ $(document).ready(function () {
 
             var pollingInterval = Math.round(Math.random() * (MATCHMAKING_MAX_WAIT - MATCHMAKING_MIN_WAIT)) + MATCHMAKING_MIN_WAIT;
             pollingInterval = startPolling(socket, pollingInterval);
+
+            // scroll to top in case of long instructions to make sure the loader is visible
+            window.scrollTo(0, 0);
         } else {
             console.log('Error: no game selected!');
         }
-    });
+    }
 });
 
 function sendSocketMessage(w_socket, status, value){
