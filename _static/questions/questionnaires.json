@@ -1,0 +1,12 @@
+{
+  "testQuestionnaire":{
+      "label": "Test questionnaire - please answer the questions to start the game:",
+      "type": "questionnaire",
+      "questions": ["testQuestion", "harmfulIntent", "humanRobot"]
+  },
+  "anotherTestQuestionnaire":{
+      "label": "Please answer the questions below to start the game:",
+      "type": "questionnaire",
+      "questions": ["feel", "testTextQuestion", "harmfulIntent", "testQuestion", "selfInterest", "humanRobot", "feel", "finalchatq"]
+  }
+}
