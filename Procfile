@@ -1,1 +1,1 @@
-web: otree webandworkers
+web: python manage.py webandworkers
