@@ -1,1 +1,1 @@
-web: python ./otree/management/commands/webandworkers
+web: python ./otree/otree/management/commands/webandworkers.py
