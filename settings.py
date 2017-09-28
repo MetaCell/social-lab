@@ -315,7 +315,7 @@ SESSION_CONFIGS = [
     {
         'name': 'public_goods',
         'display_name': "Public Goods",
-        'num_demo_participants': 3,
+        'num_demo_participants': 2,
         'app_sequence': ['games.public_goods', 'games.end_game'],
     }
 ]
