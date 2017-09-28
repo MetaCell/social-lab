@@ -1,1 +1,1 @@
-web: python manage.py webandworkers 0.0.0.0:$PORT
+web: python manage.py runprodserver 0.0.0.0:$PORT
