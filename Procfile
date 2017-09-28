@@ -1,1 +1,1 @@
-web: python ./otree/otree/management/commands/webandworkers.py
+web: python manage.py runserver 0.0.0.0:$PORT
