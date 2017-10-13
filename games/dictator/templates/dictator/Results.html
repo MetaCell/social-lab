@@ -10,6 +10,13 @@
         The other participant decided to keep <strong>{{ group.kept }}</strong>, so
         you got <strong>{{ offer }}</strong>.
     {% endif %}
+
+    <div style="display: none">
+        <div id="platform">{{ participant_platform }}</div>
+        <div id="worker_id">{{ participant_worker_id }}</div>
+        <div id="completion_url">{{ participant_completion_url }}</div>
+        <div id="session_id">{{ sessionId }}</div>
+    </div>
 {% endblock %}
 
 

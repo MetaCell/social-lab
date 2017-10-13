@@ -8,6 +8,12 @@
 {% block current %}
     <div id="chatHistory">Send a message!</div>
     <input id="plainHistory" name="sent_text" type="text" style="display:none" />
+    <div style="display: none">
+        <div id="platform">{{ participant_platform }}</div>
+        <div id="worker_id">{{ participant_worker_id }}</div>
+        <div id="completion_url">{{ participant_completion_url }}</div>
+        <div id="session_id">{{ sessionId }}</div>
+    </div>
 {% endblock %}
 
 

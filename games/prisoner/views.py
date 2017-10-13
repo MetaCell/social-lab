@@ -1,6 +1,5 @@
 from . import models
 from ._builtin import Page, WaitPage
-from otree.api import Currency as c, currency_range
 from .models import Constants
 
 
@@ -15,22 +14,33 @@ class Decision(Page):
     def vars_for_template(self):
 
         return {
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'page': "initial" if self.round_number == 1 else "",
-                'points': self.player.participant.payoff,
-                'game': 'prisoner'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'page': "initial" if self.round_number == 1 else "",
+            'points': self.player.participant.payoff,
+            'game': 'prisoner'
         }
 
 
 class ResultsWaitPage(WaitPage):
-    body_text = 'Waiting for the other participant to choose.'
-
     def after_all_players_arrive(self):
         for p in self.group.get_players():
             p.set_payoff()
+
+    def vars_for_template(self):
+        body_text = 'Waiting for the other participant to choose.'
+        return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'sessionId': self.session.id,
+            'body_text': body_text
+        }
 
 
 class Results(Page):
@@ -38,6 +48,9 @@ class Results(Page):
         self.player.set_payoff()
 
         return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
             'my_decision': self.player.decision.lower(),
             'other_player_decision': self.player.other_player().decision.lower(),
             'same_choice': self.player.decision == self.player.other_player().decision,
