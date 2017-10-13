@@ -64,7 +64,7 @@ $(document).ready(function () {
         $('#ready-button').hide();
         $('#instructions_label').hide();
         $("#loader").show();
-        $('#message-panel').append('<p>Looking for a partner...</p>');
+        $('#message-panel').html('<p>Looking for a partner...</p>');
 
         if (game != undefined && game != null) {
             var pollingInterval = undefined;
@@ -120,6 +120,20 @@ $(document).ready(function () {
         } else {
             console.log('Error: no game selected!');
         }
+
+        // if they are waiting for more than the max interval something went wrong - show error
+        setTimeout(function(){
+            // close polling socket
+            socket.close();
+
+            // show error message
+            $("#loader").hide();
+            $('#message-panel').html('<p style="color: yellow">Could not find a partner, please scroll down and hit the ready button to try again</p>');
+
+            // show ready button again
+            $('#ready-button').show();
+            $('#instructions_label').show();
+        }, MATCHMAKING_MAX_WAIT + 5000);
     }
 });
 
