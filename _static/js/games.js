@@ -137,14 +137,14 @@ function setupDisconnectionPollingMessages(pollingSocket) {
             if (platform != '') {
                 // append rest of the message message in case of external platform
                 var contentText = (platform == 'mturk') ? MTURK_DESCRIPTION : PROLIFIC_DESCRIPTION;
-                $('#external-platform-dialog .modal-content').append("<p>" + contentText + "</p>");
+                $('#disconnection-notification-dialog .modal-content').append("<p>" + contentText + "</p>");
 
                 // show session id
-                $('#external-platform-dialog .modal-content').append("<p>Session Code: <b style='color:red'>" + session_id + "</b></p>");
+                $('#disconnection-notification-dialog .modal-content').append("<p>Session Code: <b style='color:red'>" + session_id + "</b></p>");
 
                 // show completion url if any as clickable
                 if (completion_url != '') {
-                    $('#external-platform-dialog .modal-content').append("<p><a href='" + completion_url + "' target='_blank'>Click here to complete the task</p>");
+                    $('#disconnection-notification-dialog .modal-content').append("<p><a href='" + completion_url + "' target='_blank'>Click here to complete the task</p>");
                 }
             }
 
