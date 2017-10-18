@@ -1,4 +1,9 @@
 {
+  "twoleadersCompQ":{
+      "label": "Instructions check",
+      "type": "questionnaire",
+      "questions": ["PeaceWarComprehensionQ1", "PeaceWarComprehensionQ2", "PeaceWarComprehensionQ3"]
+  },
   "testQuestionnaire":{
       "label": "Test questionnaire - please answer the questions to start the game:",
       "type": "questionnaire",

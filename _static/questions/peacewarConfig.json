@@ -9,10 +9,6 @@
   },
   {
     "questionId":"humanRobot",
-    "frequency": 1
-  },
-  {
-    "questionId":"finalchatq",
     "round": "final"
   }
 ]

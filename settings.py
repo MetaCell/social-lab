@@ -276,7 +276,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'peacewar',
-        'display_name': "Peace War",
+        'display_name': "Two Leaders",
         'num_demo_participants': 2,
         'app_sequence': ['games.peacewar', 'games.end_game'],
     },

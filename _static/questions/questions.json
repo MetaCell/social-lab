@@ -7,19 +7,6 @@
       "minLabel": "Computer",
       "maxLabel": "Human"
   },
-  "feel":{
-      "question": "How do you feel?",
-      "type": "text"
-  },
-  "testTextQuestion":{
-      "question": "This is a test text question",
-      "type": "text"
-  },
-  "testQuestion":{
-      "question": "This is a test question. Yes or no?",
-      "type": "choice",
-      "choices":["Yes","No"]
-  },
   "harmfulIntent":{
       "question": "How much is your partner motivated by a desire to reduce your winnings as much as possible?",
       "type": "range",
@@ -35,6 +22,21 @@
       "max": 100,
       "minLabel": "Not at all",
       "maxLabel": "Completely"
+  },
+  "PeaceWarComprehensionQ1":{
+      "question": "If you both choose peace you each win...",
+      "type": "choice",
+      "choices":["10 cents","Nothing", "15 cents"]
+  },
+  "PeaceWarComprehensionQ2":{
+      "question": "If you one person chooses war and the other peace, the person who chooses war wins...",
+      "type": "choice",
+      "choices":["5 cents","Nothing", "15 cents"]
+  },
+  "PeaceWarComprehensionQ3":{
+      "question": "If you both choose war you each win...",
+      "type": "choice",
+      "choices":["5 cents","10 cents", "15 cents"]
   },
   "finalchatq":{
       "question": "Final decision: have you been playing against a human or a computer?",
