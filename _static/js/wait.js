@@ -137,7 +137,7 @@ $(document).ready(function () {
             // show ready button again
             $('#ready-button').show();
             $('#instructions_label').show();
-        }, MATCHMAKING_MAX_WAIT + 5000);
+        }, MATCHMAKING_MAX_WAIT + 8000);
     }
 });
 
