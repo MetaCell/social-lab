@@ -11,6 +11,13 @@
     The total contribution is {{ group.total_contribution }}.
     Total earnings from the project are {{ total_earnings }}.
     Your earnings from the project are {{ group.individual_share }}, thus in total you earned {{ player.payoff }}.
+
+    <div style="display: none">
+        <div id="platform">{{ participant_platform }}</div>
+        <div id="worker_id">{{ participant_worker_id }}</div>
+        <div id="completion_url">{{ participant_completion_url }}</div>
+        <div id="session_id">{{ sessionId }}</div>
+    </div>
 {% endblock %}
 
 

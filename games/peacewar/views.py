@@ -10,6 +10,9 @@ class Intention(Page):
     def vars_for_template(self):
 
         return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
             'playerIdInSession': self.player.id_in_subsession,
             'participantCode': self.participant.code,
             'sessionId': self.session.id,
@@ -28,6 +31,9 @@ class Decision(Page):
     def vars_for_template(self):
 
         return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
             'my_intention': self.player.intention.lower(),
             'other_player_intention': self.player.other_player().intention.lower(),
             'playerIdInSession': self.player.id_in_subsession,
@@ -43,13 +49,15 @@ class WaitForOther(WaitPage):
     def vars_for_template(self):
 
         return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
             'playerIdInSession': self.player.id_in_subsession,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'sessionId': self.session.id,
             'points': self.player.participant.payoff,
             'game': 'peacewar'
         }
-
 
 
 class ResultsWaitPage(WaitPage):
@@ -60,6 +68,9 @@ class ResultsWaitPage(WaitPage):
     def vars_for_template(self):
 
         return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
             'playerIdInSession': self.player.id_in_subsession,
             'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
             'sessionId': self.session.id,
@@ -74,6 +85,9 @@ class Results(Page):
         self.player.set_payoff()
 
         return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
             'my_intention': self.player.intention.lower(),
             'other_player_intention': self.player.other_player().intention.lower(),
             'my_decision': self.player.decision.lower(),

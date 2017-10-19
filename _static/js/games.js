@@ -120,11 +120,34 @@ function setupDisconnectionPollingMessages(pollingSocket) {
         } else {
             // kill disconnection polling loop
             window.clearInterval(window.disconnectionPollingInterval);
-            // raise disconnection message
+
+            var MTURK_DESCRIPTION = "mTurk Task Completed!<br/> Please copy-paste the session code below into the survey before closing this page.";
+            var PROLIFIC_DESCRIPTION = "Prolific Task Completed!<br/> Please copy-paste the session code below into the survey and click on the link before closing this page.";
+            var platform = $('#platform').html();
+            var worker_id = $('#worker_id').html();
+            var completion_url = $('#completion_url').html();
+            var session_id = $('#session_id').html();
+
             // TODO: make sure the user is not at the end already in that case disconnection is normal
-            // TODO: extend to show different message in case of external platform
+
+            // raise disconnection message
             var disconnectionMsg = 'Your opponent has disconnected!';
             $('#disconnection-notification-dialog .modal-content').append("<p>" + disconnectionMsg + "</p>");
+
+            if (platform != '') {
+                // append rest of the message message in case of external platform
+                var contentText = (platform == 'mturk') ? MTURK_DESCRIPTION : PROLIFIC_DESCRIPTION;
+                $('#disconnection-notification-dialog .modal-content').append("<p>" + contentText + "</p>");
+
+                // show session id
+                $('#disconnection-notification-dialog .modal-content').append("<p>Session Code: <b style='color:red'>" + session_id + "</b></p>");
+
+                // show completion url if any as clickable
+                if (completion_url != '') {
+                    $('#disconnection-notification-dialog .modal-content').append("<p><a href='" + completion_url + "' target='_blank'>Click here to complete the task</p>");
+                }
+            }
+
             $("#disconnection-notification-dialog").modal({backdrop: 'static', keyboard: false});
         }
     };

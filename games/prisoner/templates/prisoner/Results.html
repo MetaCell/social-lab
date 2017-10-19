@@ -9,6 +9,13 @@
         You decided to {{ my_decision }} and your accomplice decided to {{ other_player_decision }}, you earn {{ player.payoff }}.
     {% endif %}
 
+    <div style="display: none">
+        <div id="platform">{{ participant_platform }}</div>
+        <div id="worker_id">{{ participant_worker_id }}</div>
+        <div id="completion_url">{{ participant_completion_url }}</div>
+        <div id="session_id">{{ sessionId }}</div>
+    </div>
+
 {% endblock %}
 
 

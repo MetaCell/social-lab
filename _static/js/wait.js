@@ -66,8 +66,10 @@ $(document).ready(function () {
         $("#loader").show();
         $('#message-panel').html('<p>Looking for a partner...</p>');
 
+        // interval object for polling
+        var pollingIntervalObj = undefined;
+
         if (game != undefined && game != null) {
-            var pollingInterval = undefined;
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
             // concat platform (mturk/prolific), worker id and options params (url redirect on completion) if any
@@ -82,8 +84,8 @@ $(document).ready(function () {
 
                 // ignore other message types for now
                 if (message.status === 'SESSION_CREATED') {
-                    if (pollingInterval != undefined) {
-                        clearInterval(pollingInterval);
+                    if (pollingIntervalObj != undefined) {
+                        clearInterval(pollingIntervalObj);
                     }
 
                     // grab url and redirect
@@ -113,7 +115,7 @@ $(document).ready(function () {
             }
 
             var pollingInterval = Math.round(Math.random() * (MATCHMAKING_MAX_WAIT - MATCHMAKING_MIN_WAIT)) + MATCHMAKING_MIN_WAIT;
-            pollingInterval = startPolling(socket, pollingInterval);
+            pollingIntervalObj = startPolling(socket, pollingInterval);
 
             // scroll to top in case of long instructions to make sure the loader is visible
             window.scrollTo(0, 0);
@@ -123,8 +125,10 @@ $(document).ready(function () {
 
         // if they are waiting for more than the max interval something went wrong - show error
         setTimeout(function(){
+            // clear polling interval
+            clearInterval(pollingIntervalObj);
             // close polling socket
-            socket.close();
+            window.socket.close();
 
             // show error message
             $("#loader").hide();
