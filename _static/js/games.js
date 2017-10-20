@@ -127,28 +127,36 @@ function setupDisconnectionPollingMessages(pollingSocket) {
             var worker_id = $('#worker_id').html();
             var completion_url = $('#completion_url').html();
             var session_id = $('#session_id').html();
+            var page = $('#page').html();
 
-            // TODO: make sure the user is not at the end already in that case disconnection is normal
+            // make sure the user is not at the end already in that case disconnection is normal
+            if(!(page === 'final')) {
+                // raise disconnection message
+                var disconnectionMsg = 'Your opponent has disconnected!';
+                $('#disconnection-notification-dialog .modal-content').append("<p>" + disconnectionMsg + "</p>");
 
-            // raise disconnection message
-            var disconnectionMsg = 'Your opponent has disconnected!';
-            $('#disconnection-notification-dialog .modal-content').append("<p>" + disconnectionMsg + "</p>");
+                if (platform != '') {
+                    // append rest of the message message in case of external platform
+                    var contentText = (platform == 'mturk') ? MTURK_DESCRIPTION : PROLIFIC_DESCRIPTION;
+                    $('#disconnection-notification-dialog .modal-content').append("<p>" + contentText + "</p>");
 
-            if (platform != '') {
-                // append rest of the message message in case of external platform
-                var contentText = (platform == 'mturk') ? MTURK_DESCRIPTION : PROLIFIC_DESCRIPTION;
-                $('#disconnection-notification-dialog .modal-content').append("<p>" + contentText + "</p>");
+                    // show session id
+                    $('#disconnection-notification-dialog .modal-content').append("<p>Session Code: <b style='color:red'>" + session_id + "</b></p>");
 
-                // show session id
-                $('#disconnection-notification-dialog .modal-content').append("<p>Session Code: <b style='color:red'>" + session_id + "</b></p>");
-
-                // show completion url if any as clickable
-                if (completion_url != '') {
-                    $('#disconnection-notification-dialog .modal-content').append("<p><a href='" + completion_url + "' target='_blank'>Click here to complete the task</p>");
+                    // show completion url if any as clickable
+                    if (completion_url != '') {
+                        $('#disconnection-notification-dialog .modal-content').append("<p><a href='" + completion_url + "' target='_blank'>Click here to complete the task</p>");
+                    }
                 }
-            }
 
-            $("#disconnection-notification-dialog").modal({backdrop: 'static', keyboard: false});
+                // hide any other modal dialog we might have been showing
+                $('div.modal-dialog:visible').hide();
+                $('div.modal:visible').hide();
+                $('div.modal-backdrop:visible').hide();
+
+                // show disconnect notification
+                $("#disconnection-notification-dialog").modal({backdrop: 'static', keyboard: false});
+            }
         }
     };
 
