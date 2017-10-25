@@ -1,6 +1,6 @@
 {
   "humanRobot":{
-      "question": "Is your partner a computer or a human?",
+      "question": "How sure are you that your partner is computer or human?",
       "type": "range",
       "min": -100,
       "max": 100,
