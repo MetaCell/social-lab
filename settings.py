@@ -68,7 +68,7 @@ SECRET_KEY = 'oi-f81jw&)^i_n5zd$(l+*=0hg9wih23$3xzt_2$d^@#30q)zw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -315,7 +315,7 @@ SESSION_CONFIGS = [
     {
         'name': 'public_goods',
         'display_name': "Public Goods",
-        'num_demo_participants': 3,
+        'num_demo_participants': 2,
         'app_sequence': ['games.public_goods', 'games.end_game'],
     }
 ]

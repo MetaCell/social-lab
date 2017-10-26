@@ -2,6 +2,7 @@ from ._builtin import Page, WaitPage
 from . import models
 from .models import Constants
 
+
 class Offer(Page):
     form_model = models.Group
     form_fields = ['amount_offered']
@@ -9,24 +10,33 @@ class Offer(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1
 
-
     def vars_for_template(self):
 
         return {
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'page': "initial" if self.round_number == 1 else "",
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'points': self.player.participant.payoff,
-                'game': 'ultimatum'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'page': "initial" if self.round_number == 1 else "",
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'points': self.player.participant.payoff,
+            'game': 'ultimatum'
         }
 
     timeout_seconds = 300
 
 
 class WaitForProposer(WaitPage):
-    pass
+    def vars_for_template(self):
+
+        return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'sessionId': self.session.id
+        }
 
 
 class Accept(Page):
@@ -39,13 +49,16 @@ class Accept(Page):
     def vars_for_template(self):
 
         return {
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'page': "initial" if self.round_number == 1 else "",
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'points': self.player.participant.payoff,
-                'game': 'ultimatum'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'page': "initial" if self.round_number == 1 else "",
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'points': self.player.participant.payoff,
+            'game': 'ultimatum'
         }
 
     timeout_seconds = 300
@@ -59,20 +72,23 @@ class AcceptStrategy(Page):
     def is_displayed(self):
         return self.player.id_in_group == 2 and self.group.strategy
 
-
     def vars_for_template(self):
 
         return {
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'page': "initial" if self.round_number == 1 else "",
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'points': self.player.participant.payoff,
-                'game': 'ultimatum'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'page': "initial" if self.round_number == 1 else "",
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'points': self.player.participant.payoff,
+            'game': 'ultimatum'
         }
 
     timeout_seconds = 300
+
 
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
@@ -81,12 +97,15 @@ class ResultsWaitPage(WaitPage):
     def vars_for_template(self):
 
         return {
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'points': self.player.participant.payoff,
-                'game': 'ultimatum'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'points': self.player.participant.payoff,
+            'game': 'ultimatum'
         }
 
 
@@ -94,13 +113,16 @@ class Results(Page):
     def vars_for_template(self):
 
         return {
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'round': self.round_number,
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'points': self.player.participant.payoff,
-                'game': 'ultimatum'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'round': self.round_number,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'points': self.player.participant.payoff,
+            'game': 'ultimatum'
         }
 
 

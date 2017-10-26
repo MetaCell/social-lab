@@ -4,7 +4,14 @@
 
 {% block current %}
 
-        You have {{Constants.amount_allocated}} to allocate.
+    You have {{Constants.amount_allocated}} to allocate.
+
+    <div style="display: none">
+        <div id="platform">{{ participant_platform }}</div>
+        <div id="worker_id">{{ participant_worker_id }}</div>
+        <div id="completion_url">{{ participant_completion_url }}</div>
+        <div id="session_id">{{ sessionId }}</div>
+    </div>
 
 {% endblock %}
 

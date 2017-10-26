@@ -6,6 +6,12 @@
     You demanded {{ player.request_amount }}, the other participant demanded {{ player.other_player.request_amount }}.
     The sum of your demands is {{ sum }} thus you earn {{ player.payoff }}.
 
+    <div style="display: none">
+        <div id="platform">{{ participant_platform }}</div>
+        <div id="worker_id">{{ participant_worker_id }}</div>
+        <div id="completion_url">{{ participant_completion_url }}</div>
+        <div id="session_id">{{ sessionId }}</div>
+    </div>
 {% endblock %}
 
 
