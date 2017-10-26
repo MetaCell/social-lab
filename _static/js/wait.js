@@ -9,7 +9,7 @@ $(document).ready(function () {
     var questionnaireId = getParameterByName('questionnaireId');
     var completionUrl = getParameterByName('completion_url');
 
-    var MATCHMAKING_MAX_WAIT = 30000;
+    var MATCHMAKING_MAX_WAIT = 45000;
     var MATCHMAKING_MIN_WAIT = 3500;
     var WORKER_ID_MIN_LENGTH = 5;
 
@@ -64,7 +64,8 @@ $(document).ready(function () {
         $('#ready-button').hide();
         $('#instructions_label').hide();
         $("#loader").show();
-        $('#message-panel').html('<p>Looking for a partner...</p>');
+      
+        $('#message-panel').html('<p>Looking for a partner... Could take up to 1 minute</p>');
 
         // interval object for polling
         var pollingIntervalObj = undefined;
