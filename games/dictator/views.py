@@ -17,13 +17,16 @@ class Offer(Page):
     def vars_for_template(self):
 
         return {
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'page': "initial" if self.round_number == 1 else "",
-                'points': self.player.participant.payoff,
-                'game': 'dictator'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'page': "initial" if self.round_number == 1 else "",
+            'points': self.player.participant.payoff,
+            'game': 'dictator'
         }
 
 
@@ -36,7 +39,13 @@ class ResultsWaitPage(WaitPage):
             body_text = "You are participant 2. Waiting for participant 1 to decide."
         else:
             body_text = 'Please wait'
-        return {'body_text': body_text}
+        return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'sessionId': self.session.id,
+            'body_text': body_text
+        }
 
 
 class Results(Page):
@@ -45,6 +54,9 @@ class Results(Page):
 
     def vars_for_template(self):
         return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
             'offer': Constants.endowment - self.group.kept,
             'points': self.player.participant.payoff,
             'playerIdInSession': self.player.id_in_subsession,

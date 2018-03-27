@@ -5,6 +5,13 @@
 {% block current %}
     You and your partner need to request an amount out of the total available of {{ Constants.amount_shared }}.
     If the sum of what both of you ask combined is larger than {{ Constants.amount_shared }} you will get nothing.
+
+    <div style="display: none">
+        <div id="platform">{{ participant_platform }}</div>
+        <div id="worker_id">{{ participant_worker_id }}</div>
+        <div id="completion_url">{{ participant_completion_url }}</div>
+        <div id="session_id">{{ sessionId }}</div>
+    </div>
 {% endblock %}
 
 {% block otherballoon %}

@@ -14,17 +14,19 @@ class Send(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1
 
-
     def vars_for_template(self):
 
         return {
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'page': "initial" if self.round_number == 1 else "",
-                'points': self.player.participant.payoff,
-                'game': 'trust'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'page': "initial" if self.round_number == 1 else "",
+            'points': self.player.participant.payoff,
+            'game': 'trust'
         }
 
     timeout_seconds = 300
@@ -44,15 +46,18 @@ class SendBack(Page):
         tripled_amount = self.group.sent_amount * Constants.multiplication_factor
 
         return {
-                'tripled_amount': tripled_amount,
-                'prompt': 'Please enter a number from 0 to %s:' % tripled_amount,
-                'playerIdInSession': self.player.id_in_subsession,
-                'participantCode': self.participant.code,
-                'sessionId': self.session.id,
-                'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
-                'page': "initial" if self.round_number == 1 else "",
-                'points': self.player.participant.payoff,
-                'game': 'trust'
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'tripled_amount': tripled_amount,
+            'prompt': 'Please enter a number from 0 to %s:' % tripled_amount,
+            'playerIdInSession': self.player.id_in_subsession,
+            'participantCode': self.participant.code,
+            'sessionId': self.session.id,
+            'roundCount': str(self.round_number)+"/"+str(models.Constants.num_rounds),
+            'page': "initial" if self.round_number == 1 else "",
+            'points': self.player.participant.payoff,
+            'game': 'trust'
         }
 
     def sent_back_amount_max(self):
@@ -61,9 +66,28 @@ class SendBack(Page):
     timeout_seconds = 300
 
 
+class WaitForOther(WaitPage):
+    def vars_for_template(self):
+
+        return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'sessionId': self.session.id,
+        }
+
+
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
+
+    def vars_for_template(self):
+        return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
+            'sessionId': self.session.id
+        }
 
 
 class Results(Page):
@@ -71,6 +95,9 @@ class Results(Page):
 
     def vars_for_template(self):
         return {
+            'participant_platform': self.player.participant.external_platform,
+            'participant_worker_id': self.player.participant.worker_id,
+            'participant_completion_url': self.player.participant.completion_url,
             'tripled_amount': self.group.sent_amount * Constants.multiplication_factor,
             'playerIdInSession': self.player.id_in_subsession,
             'participantCode': self.participant.code,
@@ -84,7 +111,7 @@ class Results(Page):
 
 page_sequence = [
     Send,
-    WaitPage,
+    WaitForOther,
     SendBack,
     ResultsWaitPage,
     Results,
