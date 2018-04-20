@@ -5,7 +5,7 @@ import random
 class Intention(Page):
     timeout_seconds = 30
     form_model = models.Player
-    form_fields = ['intention'] if not ['intention'] else random.choice(['Peace', 'War'])
+    form_fields = ['intention']
 
     def vars_for_template(self):
 
@@ -26,7 +26,7 @@ class Intention(Page):
 class Decision(Page):
     timeout_seconds = 30
     form_model = models.Player
-    form_fields = ['decision'] if not ['decision'] else random.choice(['Peace', 'War'])
+    form_fields = ['decision']
 
     def vars_for_template(self):
 
