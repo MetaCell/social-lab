@@ -1,11 +1,11 @@
 from . import models
 from ._builtin import Page, WaitPage
-
+import random
 
 class Intention(Page):
     timeout_seconds = 0
     form_model = models.Player
-    form_fields = ['intention']
+    form_fields = ['intention'] if not ['intention'] else random.choice(['Peace', 'War'])
 
     def vars_for_template(self):
 
@@ -26,7 +26,7 @@ class Intention(Page):
 class Decision(Page):
     timeout_seconds = 0
     form_model = models.Player
-    form_fields = ['decision']
+    form_fields = ['decision'] if not ['decision'] else random.choice(['Peace', 'War'])
 
     def vars_for_template(self):
 
