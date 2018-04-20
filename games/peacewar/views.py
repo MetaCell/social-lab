@@ -8,8 +8,8 @@ class Intention(Page):
     form_fields = ['intention']
 
     def vars_for_template(self):
-        print('INTENTION / self intention: ' + self.player.intention + ' - player: ' + self.player.id_in_subsession)
-        print('INTENTION / other intention: ' + self.player.other_player().intention + ' - player: ' + self.player.other_player().id_in_subsession)
+        print('INTENTION / self intention: ' + self.player.intention + ' - player: ' + self.player.id_in_subsession))
+        print('INTENTION / other intention: ' + self.player.other_player().intention + ' - player: ' + self.player.other_player().id_in_subsession))
         return {    
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
