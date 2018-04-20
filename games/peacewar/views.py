@@ -8,7 +8,8 @@ class Intention(Page):
     form_fields = ['intention']
 
     def vars_for_template(self):
-
+        print('Decision view / self intention: ' + self.player.intention)
+        print('Decision view / other intention: ' + self.player.other_player().intention)
         return {    
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
