@@ -9,7 +9,7 @@ class Intention(Page):
 
     def vars_for_template(self):
 
-        return {
+        return {    
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
             'participant_completion_url': self.player.participant.completion_url,
@@ -29,7 +29,7 @@ class Decision(Page):
     form_fields = ['decision']
 
     def vars_for_template(self):
-
+        print('Intention value: ' + self.player.intention)
         return {
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
