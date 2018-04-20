@@ -38,16 +38,16 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     decision = models.CharField(
         choices=['Peace', 'War'],
-        default='Peace',
         doc="""This player's decision""",
-        widget=widgets.RadioSelect()
+        widget=widgets.RadioSelect(),
+        default='Peace'
     )
 
     intention = models.CharField(
         choices=['Peace', 'War'],
-        default='Peace',
         doc="""This player's intention""",
-        widget=widgets.RadioSelect()
+        widget=widgets.RadioSelect(),
+        default='Peace'
     )
 
     def other_player(self):
