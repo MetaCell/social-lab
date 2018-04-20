@@ -38,12 +38,14 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     decision = models.CharField(
         choices=['Peace', 'War'],
+        initial='Peace',
         doc="""This player's decision""",
         widget=widgets.RadioSelect()
     )
 
     intention = models.CharField(
         choices=['Peace', 'War'],
+        initial='Peace',
         doc="""This player's intention""",
         widget=widgets.RadioSelect()
     )
