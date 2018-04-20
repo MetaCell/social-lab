@@ -61,8 +61,5 @@ class Player(BasePlayer):
                              'Peace': Constants.betray_payoff,
                              'War': Constants.both_defect_payoff}}
 
-        print('Set payoff / self decision: ' + self.decision)
-        print('Set payoff / other decision: ' + self.other_player().decision)
-
         self.payoff = (points_matrix[self.decision]
                        [self.other_player().decision])
