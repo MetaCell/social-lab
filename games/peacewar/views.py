@@ -65,8 +65,8 @@ class WaitForOther(WaitPage):
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         for p in self.group.get_players():
-            print('Results wait / self decision: ' + self.player.decision)
-            print('Results wait / other decision: ' + self.player.other_player().decision)
+            print('Results wait / self decision: ' + p.decision)
+            print('Results wait / other decision: ' + p.other_player().decision)
             p.set_payoff()
 
     def vars_for_template(self):
