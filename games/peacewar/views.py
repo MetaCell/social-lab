@@ -8,8 +8,6 @@ class Intention(Page):
     form_fields = ['intention']
 
     def vars_for_template(self):
-        print('INTENTION / self intention: ' + self.player.intention + ' - player: ' + str(self.player.id_in_subsession))
-        print('INTENTION / other intention: ' + self.player.other_player().intention + ' - player: ' + str(self.player.other_player().id_in_subsession))
         return {    
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
@@ -30,8 +28,6 @@ class Decision(Page):
     form_fields = ['decision']
 
     def vars_for_template(self):
-        print('DECISION / self intention: ' + self.player.intention + ' - player: ' + str(self.player.id_in_subsession))
-        print('DECISION / other intention: ' + self.player.other_player().intention + ' - player: ' + str(self.player.other_player().id_in_subsession))
         return {
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
@@ -65,8 +61,6 @@ class WaitForOther(WaitPage):
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         for p in self.group.get_players():
-            print('RESULTS WAIT / self decision: ' + p.decision + ' - player: ' + str(p.id_in_subsession))
-            print('RESULTS WAIT / other decision: ' + p.other_player().decision + ' - player: ' + str(p.other_player().id_in_subsession))
             p.set_payoff()
 
     def vars_for_template(self):
