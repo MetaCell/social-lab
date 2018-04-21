@@ -40,6 +40,7 @@ class Player(BasePlayer):
         choices=['Peace', 'War'],
         doc="""This player's decision""",
         widget=widgets.RadioSelect(),
+        default='Peace',
         auto_submit_default='Peace'
     )
 
@@ -47,6 +48,7 @@ class Player(BasePlayer):
         choices=['Peace', 'War'],
         doc="""This player's intention""",
         widget=widgets.RadioSelect(),
+        default='Peace',
         auto_submit_default='Peace'
     )
 
