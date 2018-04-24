@@ -308,7 +308,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'prisoner',
-        'display_name': "Prisoner's Dilemma",
+        'display_name': "Construction Tycoon",
         'num_demo_participants': 2,
         'app_sequence': ['games.prisoner', 'games.end_game'],
     },
