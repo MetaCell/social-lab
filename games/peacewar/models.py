@@ -39,21 +39,24 @@ class Player(BasePlayer):
     decision = models.CharField(
         choices=['Peace', 'War'],
         doc="""This player's decision""",
-        widget=widgets.RadioSelect()
+        widget=widgets.RadioSelect(),
+        auto_submit_default='Peace'
     )
 
     intention = models.CharField(
         choices=['Peace', 'War'],
         doc="""This player's intention""",
-        widget=widgets.RadioSelect()
+        widget=widgets.RadioSelect(),
+        auto_submit_default='Peace'
     )
 
     def other_player(self):
         return self.get_others_in_group()[0]
 
     def set_payoff(self):
-        points_matrix = {'Peace': {'Peace': Constants.both_cooperate_payoff,
-                                       'War': Constants.betrayed_payoff},
+        points_matrix = {'Peace': {
+                             'Peace': Constants.both_cooperate_payoff,
+                             'War': Constants.betrayed_payoff},
                          'War': {
                              'Peace': Constants.betray_payoff,
                              'War': Constants.both_defect_payoff}}

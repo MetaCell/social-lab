@@ -1,15 +1,14 @@
 from . import models
 from ._builtin import Page, WaitPage
-
+import random
 
 class Intention(Page):
-    timeout_seconds = 0
+    timeout_seconds = 30
     form_model = models.Player
     form_fields = ['intention']
 
     def vars_for_template(self):
-
-        return {
+        return {    
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
             'participant_completion_url': self.player.participant.completion_url,
@@ -24,12 +23,11 @@ class Intention(Page):
 
 
 class Decision(Page):
-    timeout_seconds = 0
+    timeout_seconds = 30
     form_model = models.Player
     form_fields = ['decision']
 
     def vars_for_template(self):
-
         return {
             'participant_platform': self.player.participant.external_platform,
             'participant_worker_id': self.player.participant.worker_id,
